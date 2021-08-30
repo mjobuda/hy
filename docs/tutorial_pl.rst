@@ -5,8 +5,8 @@ Tutorial
 .. image:: _static/cuddles-transparent-small.png
    :alt: Karen Rustard's Cuddles
 
-Ten rozdział zawiera krótkie wprowadzenie do Hy. Zakłada podstawowe tło
-w programowaniu, ale bez konkretnej wcześniejszej znajomości Pythona lub Lispu.
+Ten rozdział zawiera krótkie wprowadzenie do Hy. Zakłada podstawową wiedzę
+o programowaniu, ale bez konkretnej wcześniejszej znajomości Pythona lub Lispa.
 
 Lisp-stick on a Python
 ======================
