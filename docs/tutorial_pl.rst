@@ -5,95 +5,94 @@ Tutorial
 .. image:: _static/cuddles-transparent-small.png
    :alt: Karen Rustard's Cuddles
 
-This chapter provides a quick introduction to Hy. It assumes a basic background
-in programming, but no specific prior knowledge of Python or Lisp.
+Ten rozdział zawiera krótkie wprowadzenie do Hy. Zakłada podstawowe tło
+w programowaniu, ale bez konkretnej wcześniejszej znajomości Pythona lub Lispu.
 
 Lisp-stick on a Python
 ======================
-
-Let's start with the classic::
+Zacznijmy od klasyki::
 
     (print "Hy, world!")
 
-This program calls the :func:`print` function, which, like all of Python's
-:ref:`built-in functions <py:built-in-funcs>`, is available in Hy.
+Ten program wywołuje funkcję :func:`print`, która, jak wszystkie w Pythonie
+:ref:`funkcje wbudowane <py:built-in-funcs>`, są dostępne w Hy.
 
-All of Python's :ref:`binary and unary operators <py:expressions>` are
-available, too, although ``==`` is spelled ``=`` in deference to Lisp
-tradition. Here's how we'd use the addition operator ``+``::
+Wszystkie :ref:`binarne i jednoargumentowe operatory <py:expressions>` są
+dostępne również, chociaż ``==`` jest pisane ``=`` ze względu na Lisp
+tradycja. Oto jak użyjemy operatora dodawania ``+``::
 
     (+ 1 3)
 
-This code returns ``4``. It's equivalent to ``1 + 3`` in Python and many other
-languages. Languages in the `Lisp
-<https://en.wikipedia.org/wiki/Lisp_(programming_language)>`_ family, including
-Hy, use a prefix syntax: ``+``, just like ``print`` or ``sqrt``, appears before
-all of its arguments. The call is delimited by parentheses, but the opening
-parenthesis appears before the operator being called instead of after it, so
-instead of ``sqrt(2)``, we write ``(sqrt 2)``. Multiple arguments, such as the
-two integers in ``(+ 1 3)``, are separated by whitespace. Many operators,
-including ``+``, allow more than two arguments: ``(+ 1 2 3)`` is equivalent to
+Ten kod zwraca ``4``. Jest to odpowiednik ``1 + 3`` w Pythonie i wielu innych
+Języki. Języki w „Lispie”
+<https://en.wikipedia.org/wiki/Lisp_(język_programowania)>`_ rodzina, w tym
+Hy, użyj składni prefiksu: ``+``, tak jak ``print`` lub ``sqrt`` pojawia się przed
+wszystkie jego argumenty. Wywołanie jest oddzielone nawiasami, ale otwarcie
+nawias pojawia się przed wywołaniem operatora zamiast po nim, więc
+zamiast ``sqrt(2)`` piszemy ``(sqrt 2)``. Wiele argumentów, takich jak
+dwie liczby całkowite w ``(+ 1 3)`` są oddzielone białymi znakami. Wielu operatorów,
+w tym ``+``, zezwól na więcej niż dwa argumenty: ``(+ 1 2 3)`` jest równoważne
 ``1 + 2 + 3``.
 
-Here's a more complex example::
+Oto bardziej złożony przykład::
 
     (- (* (+ 1 3 88) 2) 8)
 
-This code returns ``176``. Why? We can see the infix equivalent with the
-command ``echo "(- (* (+ 1 3 88) 2) 8)" | hy2py``, which returns the Python
-code corresponding to the given Hy code, or by passing the ``--spy`` option to
-Hy when starting the REPL, which shows the Python equivalent of each input line
-before the result. The infix equivalent in this case is:
+Ten kod zwraca ``176``. Czemu? Możemy zobaczyć odpowiednik wrostka z
+polecenie ``echo "(- (* (+ 1 3 88) 2) 8)" | hy2py``, który zwraca Python
+kod odpowiadający podanemu kodowi Hy lub przekazując opcję ``--spy`` do
+Hy podczas uruchamiania REPL, który pokazuje odpowiednik każdej linii wejściowej w Pythonie
+przed wynikiem. Odpowiednikiem wrostka w tym przypadku jest::
 
 .. code-block:: python
 
     ((1 + 3 + 88) * 2) - 8
 
-To evaluate this infix expression, you'd of course evaluate the innermost
-parenthesized expression first and work your way outwards. The same goes for
-Lisp. Here's what we'd get by evaluating the above Hy code one step at a time::
+Aby ocenić to wyrażenie wrostkowe, oczywiście obliczysz najgłębsze
+najpierw umieść wyrażenie w nawiasach i wyjdź na zewnątrz. To samo dotyczy
+Seplenienie. Oto, co otrzymamy, oceniając powyższy kod Hy krok po kroku::
 
     (- (* (+ 1 3 88) 2) 8)
     (- (* 92 2) 8)
     (- 184 8)
     176
 
-The basic unit of Lisp syntax, which is similar to a C or Python expression, is
-the **form**. ``92``, ``*``, and ``(* 92 2)`` are all forms. A Lisp program
-consists of a sequence of forms nested within forms. Forms are typically
-separated from each other by whitespace, but some forms, such as string
-literals (``"Hy, world!"``), can contain whitespace themselves. An
-**expression** is a form enclosed in parentheses; its first child form, called
-the **head**, determines what the expression does, and should generally be a
-function or macro. Functions are the most ordinary sort of head, whereas macros
-(described in more detail below) are functions executed at compile-time instead
-and return code to be executed at run-time.
+Podstawową jednostką składni Lisp, która jest podobna do wyrażenia C lub Pythona, jest
+**formularz**. ``92``, ``*`` i ``(* 92 2)`` to wszystkie formy. Program Lisp
+składa się z sekwencji formularzy zagnieżdżonych w formularzach. Formularze są zazwyczaj
+oddzielone od siebie białymi znakami, ale niektóre formy, takie jak string
+literały (``"Hej, świat!"``) mogą same zawierać białe znaki. jakiś
+**wyrażenie** to forma ujęta w nawiasy; jego pierwsza forma potomna, zwana
+**głowa** określa, co robi wyrażenie i ogólnie powinna być a
+funkcja lub makro. Funkcje to najzwyklejszy rodzaj głowy, podczas gdy makra
+(opisane bardziej szczegółowo poniżej) są funkcjami wykonywanymi w czasie kompilacji
+i powróć kod do wykonania w czasie wykonywania.
 
-Comments start with a ``;`` character and continue till the end of the line. A
-comment is functionally equivalent to whitespace. ::
+Komentarze zaczynają się od znaku ``;`` i trwają do końca linii. A
+komentarz jest funkcjonalnie równoważny z białymi znakami. ::
 
     (print (** 2 64))   ; Max 64-bit unsigned integer value
 
-Although ``#`` isn't a comment character in Hy, a Hy program can begin with a
-`shebang line <https://en.wikipedia.org/wiki/Shebang_(Unix)>`_, which Hy itself
-will ignore::
+Chociaż ``#`` nie jest znakiem komentarza w Hy, program Hy może zaczynać się od
+`linia shebang <https://en.wikipedia.org/wiki/Shebang_(Unix)>`_, która sama Hy
+zignoruje::
 
    #!/usr/bin/env hy
-   (print "Make me executable, and run me!")
+   (print "Uczyń mnie wykonywalnym i uruchom mnie!")
 
 Literals
 ========
 
-Hy has :ref:`literal syntax <syntax>` for all of the same data types that
-Python does. Here's an example of Hy code for each type and the Python
-equivalent.
+Hy ma :ref:`składnia literalna <składnia>` dla wszystkich tych samych typów danych, które
+Python tak. Oto przykład kodu Hy dla każdego typu i Pythona
+równowartość.
 
 ==============  ================  =================
-Hy              Python            Type
+Hy              Python            Typ
 ==============  ================  =================
-``1``           ``1``             :class:`int`
-``1.2``         ``1.2``           :class:`float`
-``4j``          ``4j``            :class:`complex`
+``1``           ``1``             :class:`int` (liczba całkowita)
+``1.2``         ``1.2``           :class:`float` (liczba zmiennoprzecinkowa)
+``4j``          ``4j``            :class:`complex` (liczba zespolona)
 ``True``        ``True``          :class:`bool`
 ``None``        ``None``          :class:`NoneType`
 ``"hy"``        ``'hy'``          :class:`str`
@@ -104,59 +103,55 @@ Hy              Python            Type
 ``{1 2  3 4}``  ``{1: 2, 3: 4}``  :class:`dict`
 ==============  ================  =================
 
-In addition, Hy has a Clojure-style literal syntax for
-:class:`fractions.Fraction`: ``1/3`` is equivalent to ``fractions.Fraction(1,
-3)``.
+Ponadto Hy ma dosłowną składnię w stylu Clojure dla
+:class:`fractions.Fraction`: ``1/3`` jest odpowiednikiem ``fractions.Fraction(1,
+3)"".
 
-The Hy REPL prints output in Hy syntax by default, with the function :hy:func:`hy.repr`::
+Hy REPL domyślnie drukuje dane wyjściowe w składni Hy, z funkcją :hy:func:`hy.repr`::
 
   => [1 2 3]
   [1 2 3]
-
-But if you start Hy like this::
+Ale jeśli zaczniesz Hy w ten sposób::
 
   $ hy --repl-output-fn=repr
 
-the REPL will use Python's native ``repr`` function instead, so you'll see values in Python syntax::
+REPL użyje zamiast tego natywnej funkcji ``repr`` Pythona, więc zobaczysz wartości w składni Pythona::
 
   => [1 2 3]
   [1, 2, 3]
 
 
-Basic operations
+Podstawowe operacje
 ================
-
-Set variables with :hy:func:`setv`::
+Ustaw zmienne za pomocą :hy:func:`setv`::
 
     (setv zone-plane 8)
-
-Access the elements of a list, dictionary, or other data structure with
-:hy:func:`get <hy.core.shadow.get>`::
+Uzyskaj dostęp do elementów listy, słownika lub innej struktury danych za pomocą
+:hy:func:`pobierz <hy.core.shadow.get>`::
 
     (setv fruit ["apple" "banana" "cantaloupe"])
     (print (get fruit 0))  ; => apple
     (setv (get fruit 1) "durian")
     (print (get fruit 1))  ; => durian
-
-Access a range of elements in an ordered structure with :hy:func:`cut`::
+Uzyskaj dostęp do szeregu elementów w uporządkowanej strukturze za pomocą :hy:func:`cut`::
 
     (print (cut "abcdef" 1 4))  ; => bcd
 
-Conditional logic can be built with :ref:`if`::
+Logika warunkowa może być zbudowana za pomocą :ref:`if`::
 
     (if (= 1 1)
       (print "Math works. The universe is safe.")
       (print "Math has failed. The universe is doomed."))
 
-As in this example, ``if`` is called like ``(if CONDITION THEN ELSE)``. It
-executes and returns the form ``THEN`` if ``CONDITION`` is true (according to
-:class:`bool`) and ``ELSE`` otherwise. If ``ELSE`` is omitted, ``None`` is used
-in its place.
+Tak jak w tym przykładzie, ``if`` jest wywoływane tak jak ``(if CONDITION THEN ELSE)``. Ono
+wykonuje i zwraca formę ``THEN`` jeśli ``CONDITION`` jest prawdziwy (zgodnie z
+:class:`bool`) i ``ELSE`` w przeciwnym razie. Jeśli pominięto ``ELSE``, użyto ``Brak``
+Na swoim miejscu.
 
-What if you want to use more than form in place of the ``THEN`` or ``ELSE``
-clauses, or in place of ``CONDITION``, for that matter? Use the macro
-:hy:func:`do` (known more traditionally in Lisp as ``progn``), which combines
-several forms into one, returning the last::
+Co jeśli chcesz użyć czegoś więcej niż formy zamiast ``THEN`` lub ``ELSE``
+klauzul lub zamiast „WARUNKU”? Użyj makra
+:hy:func:`do` (znany bardziej tradycyjnie w Lispie jako ``progn``), który łączy
+kilka formularzy w jeden, zwracając ostatnią:
 
    (if (do (print "Let's check.") (= 1 1))
      (do
@@ -166,7 +161,7 @@ several forms into one, returning the last::
        (print "Math has failed.")
        (print "The universe is doomed.")))
 
-For branching on more than one case, try :hy:func:`cond <hy.core.macros.cond>`::
+Aby rozgałęziać się na więcej niż jeden przypadek, spróbuj :hy:func:`cond <hy.core.macros.cond>`::
 
    (setv somevar 33)
    (cond
@@ -177,11 +172,11 @@ For branching on more than one case, try :hy:func:`cond <hy.core.macros.cond>`::
     [True
      (print "That variable is jussssst right!")])
 
-The macro ``(when CONDITION THEN-1 THEN-2 …)`` is shorthand for ``(if CONDITION
-(do THEN-1 THEN-2 …))``. ``unless`` works the same as ``when``, but inverts the
-condition with ``not``.
+Makro ``(when CONDITION THEN-1 THEN-2 …)`` jest skrótem dla ``(if CONDITION
+(do THEN-1 THEN-2 …))``. ``unless`` działa tak samo jak ``when``, ale odwraca
+warunek z ``not``.
 
-Hy's basic loops are :ref:`while` and :ref:`for`::
+Podstawowe pętle Hy to :ref:`while` i :ref:`for`::
 
     (setv x 3)
     (while (> x 0)
@@ -191,17 +186,17 @@ Hy's basic loops are :ref:`while` and :ref:`for`::
     (for [x [1 2 3]]
       (print x))         ; => 1 2 3
 
-A more functional way to iterate is provided by the comprehension forms such as
-:hy:func:`lfor`. Whereas ``for`` always returns ``None``, ``lfor`` returns a list
-with one element per iteration. ::
+Bardziej funkcjonalny sposób iteracji zapewniają formy ze zrozumieniem, takie jak
+:hy:funkcja:`lfor`. Podczas gdy ``for`` zawsze zwraca ``Brak``, ``lfor`` zwraca listę
+z jednym elementem na iterację. ::
 
     (print (lfor  x [1 2 3]  (* x 2)))  ; => [2, 4, 6]
 
 
-Functions, classes, and modules
+Funkcje, klasy i moduły
 ===============================
 
-Define named functions with :hy:func:`defn <hy.core.bootstrap.defn>`::
+Zdefiniuj nazwane funkcje za pomocą :hy:func:`defn <hy.core.bootstrap.defn>`::
 
     (defn fib [n]
       (if (< n 2)
@@ -209,25 +204,25 @@ Define named functions with :hy:func:`defn <hy.core.bootstrap.defn>`::
         (+ (fib (- n 1)) (fib (- n 2)))))
     (print (fib 8))  ; => 21
 
-Define anonymous functions with :hy:func:`fn <fn>`::
+Zdefiniuj funkcje anonimowe za pomocą :hy:func:`fn <fn>`::
 
     (print (list (filter (fn [x] (% x 2)) (range 10))))
       ; => [1, 3, 5, 7, 9]
 
-Special symbols in the parameter list of ``defn`` or ``fn`` allow you to
-indicate optional arguments, provide default values, and collect unlisted
-arguments::
+Specjalne symbole na liście parametrów ``defn`` lub ``fn`` pozwalają na
+wskaż opcjonalne argumenty, podaj wartości domyślne i zbierz niewymienione
+argumenty::
 
     (defn test [a b [c None] [d "x"] #* e]
       [a b c d e])
     (print (test 1 2))            ; => [1, 2, None, 'x', ()]
     (print (test 1 2 3 4 5 6 7))  ; => [1, 2, 3, 4, (5, 6, 7)]
 
-Set a function parameter by name with a ``:keyword``::
+Ustaw parametr funkcji według nazwy z ``:keyword``::
 
     (test 1 2 :d "y")             ; => [1, 2, None, 'y', ()]
 
-Define classes with :hy:func:`defclass`::
+Zdefiniuj klasy za pomocą :hy:func:`defclass`::
 
     (defclass FooBar []
       (defn __init__ [self x]
@@ -235,8 +230,8 @@ Define classes with :hy:func:`defclass`::
       (defn get-x [self]
         self.x))
 
-Here we create a new instance ``fb`` of ``FooBar`` and access its attributes by
-various means::
+Tutaj tworzymy nową instancję ``fb`` ``FooBar`` i uzyskujemy dostęp do jej atrybutów przez
+różne środki::
 
     (setv fb (FooBar 15))
     (print fb.x)         ; => 15
@@ -244,28 +239,28 @@ various means::
     (print (.get-x fb))  ; => 15
     (print (fb.get-x))   ; => 15
 
-Note that syntax like ``fb.x`` and ``fb.get-x`` only works when the object
-being invoked (``fb``, in this case) is a simple variable name. To get an
-attribute or call a method of an arbitrary form ``FORM``, you must use the
-syntax ``(. FORM x)`` or ``(.get-x FORM)``.
+Zauważ, że składnia taka jak ``fb.x`` i ``fb.get-x`` działa tylko wtedy, gdy obiekt
+wywoływana (w tym przypadku ``fb``) jest prostą nazwą zmiennej. Aby uzyskać
+atrybut lub wywołaj metodę o dowolnej formie ``FORM``, musisz użyć
+składnia ``(. FORM x)`` lub ``(.get-x FORM)``.
 
-Access an external module, whether written in Python or Hy, with
+Uzyskaj dostęp do zewnętrznego modułu, napisanego w Pythonie lub Hy, za pomocą
 :ref:`import`::
 
     (import math)
     (print (math.sqrt 2))  ; => 1.4142135623730951
 
-Python can import a Hy module like any other module so long as Hy itself has
-been imported first, which, of course, must have already happened if you're
-running a Hy program.
+Python może zaimportować moduł Hy jak każdy inny moduł, o ile sam Hy to posiada
+został zaimportowany jako pierwszy, co oczywiście musiało już mieć miejsce, jeśli jesteś
+uruchamianie programu Hy.
 
-Macros
+Makra
 ======
 
-Macros are the basic metaprogramming tool of Lisp. A macro is a function that
-is called at compile time (i.e., when a Hy program is being translated to
-Python :mod:`ast` objects) and returns code, which becomes part of the final
-program. Here's a simple example::
+Makra są podstawowym narzędziem metaprogramowania Lispa. Makro to funkcja, która
+jest wywoływana w czasie kompilacji (tj. gdy program Hy jest tłumaczony na
+Python :mod:`ast` obiektów) i zwraca kod, który staje się częścią finalnego
+program. Oto prosty przykład::
 
     (print "Executing")
     (defmacro m []
@@ -275,8 +270,7 @@ program. Here's a simple example::
       x)
     (print "Value:" (m))
     (print "Done executing")
-
-If you run this program twice in a row, you'll see this::
+Jeśli uruchomisz ten program dwa razy z rzędu, zobaczysz to::
 
     $ hy example.hy
     Now for a slow computation
@@ -289,28 +283,28 @@ If you run this program twice in a row, you'll see this::
     Value: 1
     Done executing
 
-The slow computation is performed while compiling the program on its first
-invocation. Only after the whole program is compiled does normal execution
-begin from the top, printing "Executing". When the program is called a second
-time, it is run from the previously compiled bytecode, which is equivalent to
-simply::
+Wolne obliczenia są wykonywane podczas pierwszej kompilacji programu
+wezwanie. Dopiero po skompilowaniu całego programu następuje normalne wykonanie
+zacznij od góry, drukując "Wykonywanie". Kiedy program nazywa się sekundą
+czas, jest uruchamiany z wcześniej skompilowanego kodu bajtowego, co jest równoważne
+po prostu::
 
     (print "Executing")
     (print "Value:" 1)
     (print "Done executing")
 
-Our macro ``m`` has an especially simple return value, an integer, which at
-compile-time is converted to an integer literal. In general, macros can return
-arbitrary Hy forms to be executed as code. There are several special operators
-and macros that make it easy to construct forms programmatically, such as
-:hy:func:`quote` (``'``), :hy:func:`quasiquote` (`````), :hy:func:`unquote` (``~``), and
-:hy:func:`defmacro! <hy.core.bootstrap.defmacro!>`. The previous chapter has :hy:func:`a simple example <while>`
-of using ````` and ``~`` to define a new control construct ``do-while``.
+Nasze makro ``m`` ma szczególnie prostą wartość zwracaną, liczbę całkowitą, która w
+czas kompilacji jest konwertowany na literał całkowity. Ogólnie makra mogą zwracać
+dowolne formularze Hy do wykonania jako kod. Jest kilku operatorów specjalnych
+oraz makra, które ułatwiają programowe konstruowanie formularzy, takie jak
+:hy:func:`quote` (``'``), :hy:func:`quasiquote` (`````), :hy:func:`unquote` (``~``), i
+:hy:func:`defmacro! <hy.core.bootstrap.defmacro!>`. Poprzedni rozdział zawiera :hy:func:`prosty przykład <while>`
+używania ````` i ``~`` do zdefiniowania nowej konstrukcji kontrolnej ``do-while``.
 
-Sometimes it's nice to be able to call a one-parameter macro without
-parentheses. Tag macros allow this. The name of a tag macro is often just one
-character long, but since Hy allows most Unicode characters in the name of a
-macro (or ordinary variable), you won't out of characters soon. ::
+Czasami fajnie jest móc wywołać makro jednoparametrowe bez
+zdanie wtrącone. Pozwalają na to makra tagów. Nazwa makra tagu często jest tylko jedna
+długiego znaku, ale ponieważ Hy zezwala na większość znaków Unicode w nazwie a
+makro (lub zwykła zmienna), wkrótce nie zabraknie Ci znaków. ::
 
   => (defmacro "#↻" [code]
   ...  (setv op (get code -1) params (list (butlast code)))
@@ -318,23 +312,23 @@ macro (or ordinary variable), you won't out of characters soon. ::
   => #↻(1 2 3 +)
   6
 
-What if you want to use a macro that's defined in a different module?
-``import`` won't help, because it merely translates to a Python ``import``
-statement that's executed at run-time, and macros are expanded at compile-time,
-that is, during the translation from Hy to Python. Instead, use :hy:func:`require <require>`,
-which imports the module and makes macros available at compile-time.
-``require`` uses the same syntax as ``import``. ::
+Co zrobić, jeśli chcesz użyć makra zdefiniowanego w innym module?
+``import`` nie pomoże, ponieważ tłumaczy się jedynie na ``import`` . w Pythonie
+instrukcja, która jest wykonywana w czasie wykonywania, a makra są rozwijane w czasie kompilacji,
+czyli podczas tłumaczenia z Hy na Pythona. Zamiast tego użyj :hy:func:`require <require>`,
+który importuje moduł i udostępnia makra w czasie kompilacji.
+``require`` używa tej samej składni co ``import``. ::
 
    => (require tutorial.macros)
    => (tutorial.macros.rev (1 2 3 +))
    6
 
-Next steps
-==========
+Następne kroki
+===========
 
-You now know enough to be dangerous with Hy. You may now smile villainously and
-sneak off to your Hydeaway to do unspeakable things.
+Wiesz już wystarczająco dużo, by być niebezpiecznym z Hy. Możesz teraz złośliwie się uśmiechać i
+wymknąć się do Hydeaway, aby robić rzeczy niewyobrażalne.
 
-Refer to Python's documentation for the details of Python semantics, and the
-rest of this manual for Hy-specific features. Like Hy itself, the manual is
-incomplete, but :ref:`contributions <hacking>` are always welcome.
+Zapoznaj się z dokumentacją Pythona, aby uzyskać szczegółowe informacje na temat semantyki Pythona, a
+pozostałą część tej instrukcji dla funkcji specyficznych dla Hy. Podobnie jak sam Hy, instrukcja jest
+niekompletne, ale :ref:`wkłady <hakowanie>` są zawsze mile widziane.
