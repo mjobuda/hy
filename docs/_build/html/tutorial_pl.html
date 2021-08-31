@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Tutorial &mdash; hy 1.0a3+120.g6b92d745 documentation</title>
+  <title>Tutorial &mdash; hy 1.0a3+122.g411349aa documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                1.0a3+120
+                1.0a3+122
               </div>
             
           
@@ -146,7 +146,7 @@
       <li>Tutorial</li>
     
     
-  <li style="margin-left: 1em">Hy version 1.0a3+120.g6b92d745 <strong style='color: red;'>(unstable)</strong></li>
+  <li style="margin-left: 1em">Hy version 1.0a3+122.g411349aa <strong style='color: red;'>(unstable)</strong></li>
   
       <li class="wy-breadcrumbs-aside">
         
@@ -170,8 +170,8 @@
 <img alt="Karen Rustard's Cuddles" src="_images/cuddles-transparent-small.png" />
 <p>Ten rozdział zawiera krótkie wprowadzenie do Hy. Zakłada podstawową wiedzę
 o programowaniu, ale bez konkretnej wcześniejszej znajomości Pythona lub Lispa.</p>
-<div class="section" id="lisp-stick-on-a-python">
-<h2>Lisp-stick on a Python<a class="headerlink" href="#lisp-stick-on-a-python" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="lisp-na-pythonie">
+<h2>Lisp na pythonie<a class="headerlink" href="#lisp-na-pythonie" title="Permalink to this headline">¶</a></h2>
 <p>Zacznijmy od klasyki:</p>
 <div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">print </span><span class="s">&quot;Hy, world!&quot;</span><span class="p">)</span>
 </pre></div>
@@ -201,12 +201,9 @@ w tym <code class="docutils literal notranslate"><span class="pre">+</span></cod
 poleceniem <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;(-</span> <span class="pre">(*</span> <span class="pre">(+</span> <span class="pre">1</span> <span class="pre">3</span> <span class="pre">88)</span> <span class="pre">2)</span> <span class="pre">8)&quot;</span> <span class="pre">|</span> <span class="pre">hy2py</span></code>, który zwraca kod Pythona odpowiadający podanemu kodowi Hy lub przekazując opcję <code class="docutils literal notranslate"><span class="pre">--spy</span></code> do
 Hy podczas uruchamiania wiersza poleceń (po angielsku używa się skrót REPL, Read Eval Print Loop, czyli Czytaj Ewaluuj Wyświetl Pętla), który pokazuje odpowiednik każdej linii wejściowej w Pythonie
 przed wynikiem. Odpowiednikiem wrostkowym w tym przypadku jest:</p>
-<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span>.. code-block:: python
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">88</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">8</span>
 </pre></div>
 </div>
-<blockquote>
-<div><p>((1 + 3 + 88) * 2) - 8</p>
-</div></blockquote>
 <p>Aby ewaluować to wyrażenie infiksowe trzeba zacząć od obliczania formuły leżącej najbardziej wewnątrz i kontynuować z doliczaniem kolejnych wyrażen na zewnątrz. Tak samo się to robi w
 Lispie. Oto, co otrzymamy, ewaluując powyższy kod Hy krok po kroku:</p>
 <div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">- </span><span class="p">(</span><span class="nb">* </span><span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">88</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">8</span><span class="p">)</span>
@@ -236,77 +233,17 @@ zignoruje:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="literals">
-<h2>Literals<a class="headerlink" href="#literals" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="literaly">
+<h2>Literały<a class="headerlink" href="#literaly" title="Permalink to this headline">¶</a></h2>
 <p>Hy ma <span class="xref std std-ref">składnia literalna</span> dla wszystkich typów co Python. Oto przykład kodu Hy dla każdego typu i jego odpowiednik w Pythonie.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 22%" />
-<col style="width: 58%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Hy</p></th>
-<th class="head"><p>Python</p></th>
-<th class="head"><p>Typ</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
-<td><p><a class="reference external" href="https://docs.python.org/3.10/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> (liczba całkowita)</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">1.2</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1.2</span></code></p></td>
-<td><p><a class="reference external" href="https://docs.python.org/3.10/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a> (liczba zmiennoprzecinkowa)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">4j</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">4j</span></code></p></td>
-<td><p><a class="reference external" href="https://docs.python.org/3.10/library/functions.html#complex" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">complex</span></code></a> (liczba zespolona)</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
-<td><p><a class="reference external" href="https://docs.python.org/3.10/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a> (typ logiczny)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">NoneType</span></code> (typ pusty)</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;hy&quot;</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">'hy'</span></code></p></td>
-<td><p><a class="reference external" href="https://docs.python.org/3.10/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> (tekstowy typ danych)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">b&quot;hy&quot;</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">b'hy'</span></code></p></td>
-<td><p><a class="reference external" href="https://docs.python.org/3.10/library/stdtypes.html#bytes" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> (bajt)</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">(,</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">3)</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">2,</span> <span class="pre">3)</span></code></p></td>
-<td><p><a class="reference external" href="https://docs.python.org/3.10/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> (krotka)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[1</span> <span class="pre">2</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code></p></td>
-<td><p><a class="reference external" href="https://docs.python.org/3.10/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> (lista)</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">#{1</span> <span class="pre">2</span> <span class="pre">3}</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">{1,</span> <span class="pre">2,</span> <span class="pre">3}</span></code></p></td>
-<td><p><a class="reference external" href="https://docs.python.org/3.10/library/stdtypes.html#set" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code></a> (zbiór)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{1</span> <span class="pre">2</span>&#160; <span class="pre">3</span> <span class="pre">4}</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">{1:</span> <span class="pre">2,</span> <span class="pre">3:</span> <span class="pre">4}</span></code></p></td>
-<td><p><a class="reference external" href="https://docs.python.org/3.10/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> (tablica asocjacyjna)</p></td>
-</tr>
-</tbody>
-</table>
 <p>Ponadto Hy przwemuje skłądnie ułamków z Clojure dla
-<a class="reference external" href="https://docs.python.org/3.10/library/fractions.html#fractions.Fraction" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">fractions.Fraction</span></code></a>: <code class="docutils literal notranslate"><span class="pre">1/3</span></code> jest odpowiednikiem <a href="#id1"><span class="problematic" id="id2">``</span></a>fractions.Fraction(1,
-3)””.</p>
-<p>Hy REPL domyślnie wyświetla dane wyjściowe w składni Hy, za pmocą funkcji <a class="reference internal" href="api.html#hy.repr" title="hy.repr"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">hy.repr</span></code></a>:</p>
+<a class="reference external" href="https://docs.python.org/3.10/library/fractions.html#fractions.Fraction" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">fractions.Fraction</span></code></a>: <code class="docutils literal notranslate"><span class="pre">1/3</span></code> jest odpowiednikiem <code class="docutils literal notranslate"><span class="pre">fractions.Fraction(1,3)</span></code>.</p>
+<p>Hy REPL domyślnie wyświetla dane wyjściowe w składni Hy, za pomocą funkcji <a class="reference internal" href="api.html#hy.repr" title="hy.repr"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">hy.repr</span></code></a>:</p>
 <div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="nv">=&gt;</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
 <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Ale jeśli wywołasz Hy w taki sposób:</p>
+<p>Natomiast jeśli wywołasz Hy w taki sposób:</p>
 <div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="nv">$</span> <span class="nv">hy</span> <span class="nv">--repl-output-fn=repr</span>
 </pre></div>
 </div>
@@ -323,7 +260,7 @@ zignoruje:</p>
 </pre></div>
 </div>
 <p>Uzyskaj dostęp do elementów listy, słownika lub innej struktury danych za pomocą
-<code class="xref hy hy-func docutils literal notranslate"><span class="pre">pobierz</span></code>:</p>
+<code class="xref hy hy-func docutils literal notranslate"><span class="pre">get</span></code>:</p>
 <div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">setv</span> <span class="nv">owoc</span> <span class="p">[</span><span class="s">&quot;jabłko&quot;</span> <span class="s">&quot;banan&quot;</span> <span class="s">&quot;melon&quot;</span><span class="p">])</span>
 <span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nb">get </span><span class="nv">owoc</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1">; =&gt; jabłko</span>
 <span class="p">(</span><span class="nf">setv</span> <span class="p">(</span><span class="nb">get </span><span class="nv">owoc</span> <span class="mi">1</span><span class="p">)</span> <span class="s">&quot;durian&quot;</span><span class="p">)</span>
@@ -344,21 +281,16 @@ zignoruje:</p>
 wykonuje i zwraca formę <code class="docutils literal notranslate"><span class="pre">THEN</span></code> jeśli <code class="docutils literal notranslate"><span class="pre">CONDITION</span></code> jest prawdziwy (zgodnie z
 <a class="reference external" href="https://docs.python.org/3.10/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) i <code class="docutils literal notranslate"><span class="pre">ELSE</span></code> w przeciwnym razie. Jeśli pominięto <code class="docutils literal notranslate"><span class="pre">ELSE</span></code>, to <code class="docutils literal notranslate"><span class="pre">None</span></code> będzie w tym miejscu.</p>
 <p>Co jeśli chcesz użyć czegoś więcej niż formy na miejscu <code class="docutils literal notranslate"><span class="pre">THEN</span></code> lub klauzuli <code class="docutils literal notranslate"><span class="pre">ELSE</span></code> lub zamiast „CONDITION”? Użyj makra
-<a class="reference internal" href="api.html#do" title="do"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">do</span></code></a> (znany bardziej tradycyjnie w Lispie jako <code class="docutils literal notranslate"><span class="pre">progn</span></code>), który łączy
-kilka form w jedną, zwracając ostatnią:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>(if (do (print “Sprawdźmy.”) (= 1 1))</dt><dd><dl class="simple">
-<dt>(do</dt><dd><p>(print “Matematyka działa.”)
-(print “Wschechświat jest bezpieczny.”))</p>
-</dd>
-<dt>(do</dt><dd><p>(print “Matematyka zawiodła.”)
-(print “Armageddon!!”)))</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</div></blockquote>
+<a class="reference internal" href="api.html#do" title="do"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">do</span></code></a> (znany bardziej tradycyjnie w Lispie jako <code class="docutils literal notranslate"><span class="pre">progn</span></code>), który łączy kilka form w jedną, zwracając ostatnią:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="k">do </span><span class="p">(</span><span class="nb">print </span><span class="s">&quot;Sprawdźmy.&quot;</span><span class="p">)</span> <span class="p">(</span><span class="nb">= </span><span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">do</span>
+    <span class="p">(</span><span class="nb">print </span><span class="s">&quot;Matematyka działa.&quot;</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">print </span><span class="s">&quot;Wschechświat jest bezpieczny.&quot;</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">do</span>
+    <span class="p">(</span><span class="nb">print </span><span class="s">&quot;Matematyka zawiodła.&quot;</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">print </span><span class="s">&quot;Armageddon!!&quot;</span><span class="p">)))</span>
+</pre></div>
+</div>
 <p>Aby rozgałęziać na więcej niż jeden przypadek, spróbuj <a class="reference internal" href="api.html#hy.core.macros.cond" title="hy.core.macros.cond"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">cond</span></code></a>:</p>
 <div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">setv</span> <span class="nv">somevar</span> <span class="mi">33</span><span class="p">)</span>
 <span class="p">(</span><span class="nf">cond</span>
@@ -384,7 +316,7 @@ warunek z <code class="docutils literal notranslate"><span class="pre">not</span
 </pre></div>
 </div>
 <p>Bardziej funkcjonalny sposób iteracji zapewniają formy interpetowalne(po angielsku list comprehension, nie kojarzę ładnego polskiego odpowiednika), takie jak
-<a href="#id3"><span class="problematic" id="id4">:hy:funkcja:`lfor`</span></a>. Podczas gdy <code class="docutils literal notranslate"><span class="pre">for</span></code> zawsze zwraca <code class="docutils literal notranslate"><span class="pre">Brak</span></code>, <code class="docutils literal notranslate"><span class="pre">lfor</span></code> zwraca listę
+<a href="#id1"><span class="problematic" id="id2">:hy:funkcja:`lfor`</span></a>. Podczas gdy <code class="docutils literal notranslate"><span class="pre">for</span></code> zawsze zwraca <code class="docutils literal notranslate"><span class="pre">Brak</span></code>, <code class="docutils literal notranslate"><span class="pre">lfor</span></code> zwraca listę
 z jednym elementem z każdej iteracji.</p>
 <div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nf">lfor</span>  <span class="nv">x</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>  <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="mi">2</span><span class="p">)))</span>  <span class="c1">; =&gt; [2, 4, 6]</span>
 </pre></div>
