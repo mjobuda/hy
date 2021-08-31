@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Command Line Interface &mdash; hy 1.0a3+120.g6b92d745 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/overrides.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The Hy REPL" href="repl.html" />
+    <link rel="prev" title="Documentation Index" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> hy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0a3+120
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../whyhy.html">Why Hy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../style-guide.html">Hy Style Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation Index</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Command Line Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hy">hy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#command-line-options">Command Line Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hyc">hyc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Command Line Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hy2py">hy2py</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Command Line Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repl.html">The Hy REPL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interop.html">Hy &lt;-&gt; Python interop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syntax.html">Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_patterns.html">Model Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internals.html">Internal Hy Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking.html">Hacking on Hy</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Documentation Index</a> &raquo;</li>
+        
+      <li>Command Line Interface</li>
+    
+    
+  <li style="margin-left: 1em">Hy version 1.0a3+120.g6b92d745 <strong style='color: red;'>(unstable)</strong></li>
+  
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/language/cli.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="command-line-interface">
+<h1>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hy">
+<span id="id1"></span><h2>hy<a class="headerlink" href="#hy" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="command-line-options">
+<h3>Command Line Options<a class="headerlink" href="#command-line-options" title="Permalink to this headline">¶</a></h3>
+<dl class="std cmdoption">
+<dt id="cmdoption-c">
+<code class="sig-name descname"><span class="pre">-c</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;command&gt;</span></code><a class="headerlink" href="#cmdoption-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the Hy code in <em>command</em>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ hy -c <span class="s2">&quot;(print (+ 2 2))&quot;</span>
+<span class="m">4</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-i">
+<code class="sig-name descname"><span class="pre">-i</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;command&gt;</span></code><a class="headerlink" href="#cmdoption-i" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the Hy code in <em>command</em>, then stay in REPL.</p>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-m">
+<code class="sig-name descname"><span class="pre">-m</span></code><code class="sig-prename descclassname"> <span class="pre">&lt;module&gt;</span></code><a class="headerlink" href="#cmdoption-m" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the Hy code in <em>module</em>, including <code class="docutils literal notranslate"><span class="pre">defmain</span></code> if defined.</p>
+<p>The <a class="reference internal" href="#cmdoption-m"><code class="xref std std-option docutils literal notranslate"><span class="pre">-m</span></code></a> flag terminates the options list so that
+all arguments after the <em>module</em> name are passed to the module in
+<code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.11.0.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-spy">
+<code class="sig-name descname"><span class="pre">--spy</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-spy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print equivalent Python code before executing in REPL. For example:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span>=&gt; (defn salutationsnm [name] (print (+ &quot;Hy &quot; name &quot;!&quot;)))
+def salutationsnm(name):
+    return print(&#39;Hy &#39; + name + &#39;!&#39;)
+=&gt; (salutationsnm &quot;YourName&quot;)
+salutationsnm(&#39;YourName&#39;)
+Hy YourName!
+=&gt;
+</pre></div>
+</div>
+<p><cite>–spy</cite> only works on REPL mode.
+.. versionadded:: 0.9.11</p>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-repl-output-fn">
+<code class="sig-name descname"><span class="pre">--repl-output-fn</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-repl-output-fn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format REPL output using specific function (e.g., <code class="docutils literal notranslate"><span class="pre">repr</span></code>)</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.13.0.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-v">
+<code class="sig-name descname"><span class="pre">-v</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-v" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the Hy version number and exit.</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="hyc">
+<span id="id2"></span><h2>hyc<a class="headerlink" href="#hyc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Command Line Options<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<dl class="std cmdoption">
+<dt id="cmdoption-arg-file">
+<span id="cmdoption-arg-fileN"></span><span id="cmdoption-arg-filen"></span><code class="sig-name descname"><span class="pre">file[</span></code><code class="sig-prename descclassname"></code><code class="sig-prename descclassname"><span class="pre">,</span> </code><code class="sig-name descname"><span class="pre">fileN]</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-arg-file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compile Hy code to Python bytecode. For example, save the
+following code as <code class="docutils literal notranslate"><span class="pre">hyname.hy</span></code>:</p>
+<div class="highlight-hy notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="n">defn</span> <span class="n">hy</span><span class="o">-</span><span class="n">hy</span> <span class="o">[</span><span class="n">name</span><span class="o">]</span>
+  <span class="o">(</span><span class="nb">print</span> <span class="o">(+</span> <span class="s">&quot;Hy &quot;</span> <span class="n">name</span> <span class="s">&quot;!&quot;</span><span class="o">)))</span>
+
+<span class="o">(</span><span class="n">hy</span><span class="o">-</span><span class="n">hy</span> <span class="s">&quot;Afroman&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>Then run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ hyc hyname.hy
+$ python hyname.pyc
+Hy Afroman!
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="hy2py">
+<span id="id4"></span><h2>hy2py<a class="headerlink" href="#hy2py" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.10.1.</span></p>
+</div>
+<div class="section" id="id5">
+<h3>Command Line Options<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<dl class="std cmdoption">
+<dt id="cmdoption-s">
+<code class="sig-name descname"><span class="pre">-s</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-s" title="Permalink to this definition">¶</a></dt>
+<dt id="cmdoption-with-source">
+<code class="sig-name descname"><span class="pre">--with-source</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-with-source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show the parsed source structure.</p>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-a">
+<code class="sig-name descname"><span class="pre">-a</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-a" title="Permalink to this definition">¶</a></dt>
+<dt id="cmdoption-with-ast">
+<code class="sig-name descname"><span class="pre">--with-ast</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-with-ast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show the generated AST.</p>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-np">
+<code class="sig-name descname"><span class="pre">-np</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-np" title="Permalink to this definition">¶</a></dt>
+<dt id="cmdoption-without-python">
+<code class="sig-name descname"><span class="pre">--without-python</span></code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-without-python" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not show the Python code generated from the AST.</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="repl.html" class="btn btn-neutral float-right" title="The Hy REPL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Documentation Index" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 the authors.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

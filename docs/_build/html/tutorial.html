@@ -1,0 +1,599 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Tutorial &mdash; hy 1.0a3+120.g6b92d745 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/overrides.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Hy Style Guide" href="style-guide.html" />
+    <link rel="prev" title="Why Hy?" href="whyhy.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> hy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0a3+120
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="whyhy.html">Why Hy?</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lisp-stick-on-a-python">Lisp-stick on a Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#literals">Literals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-operations">Basic operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#functions-classes-and-modules">Functions, classes, and modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#macros">Macros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hyrule">Hyrule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="style-guide.html">Hy Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="language/index.html">Documentation Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking.html">Hacking on Hy</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">hy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Tutorial</li>
+    
+    
+  <li style="margin-left: 1em">Hy version 1.0a3+120.g6b92d745 <strong style='color: red;'>(unstable)</strong></li>
+  
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tutorial.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<img alt="Karen Rustard's Cuddles" src="_images/cuddles-transparent-small.png" />
+<p>This chapter provides a quick introduction to Hy. It assumes a basic background
+in programming, but no specific prior knowledge of Python or Lisp.</p>
+<div class="section" id="lisp-stick-on-a-python">
+<h2>Lisp-stick on a Python<a class="headerlink" href="#lisp-stick-on-a-python" title="Permalink to this headline">¶</a></h2>
+<p>Let’s start with the classic:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">print </span><span class="s">&quot;Hy, world!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This program calls the <a class="reference external" href="https://docs.python.org/3.10/library/functions.html#print" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code></a> function, which, like all of Python’s
+<a class="reference external" href="https://docs.python.org/3/library/functions.html#built-in-funcs" title="(in Python v3.9)"><span class="xref std std-ref">built-in functions</span></a>, is available in Hy.</p>
+<p>All of Python’s <a class="reference external" href="https://docs.python.org/3/reference/expressions.html#expressions" title="(in Python v3.9)"><span class="xref std std-ref">binary and unary operators</span></a> are
+available, too, although <code class="docutils literal notranslate"><span class="pre">==</span></code> is spelled <code class="docutils literal notranslate"><span class="pre">=</span></code> in deference to Lisp
+tradition. Here’s how we’d use the addition operator <code class="docutils literal notranslate"><span class="pre">+</span></code>:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This code returns <code class="docutils literal notranslate"><span class="pre">4</span></code>. It’s equivalent to <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">3</span></code> in Python and many other
+languages. Languages in the <a class="reference external" href="https://en.wikipedia.org/wiki/Lisp_(programming_language)">Lisp</a> family, including
+Hy, use a prefix syntax: <code class="docutils literal notranslate"><span class="pre">+</span></code>, just like <code class="docutils literal notranslate"><span class="pre">print</span></code> or <code class="docutils literal notranslate"><span class="pre">sqrt</span></code>, appears before
+all of its arguments. The call is delimited by parentheses, but the opening
+parenthesis appears before the operator being called instead of after it, so
+instead of <code class="docutils literal notranslate"><span class="pre">sqrt(2)</span></code>, we write <code class="docutils literal notranslate"><span class="pre">(sqrt</span> <span class="pre">2)</span></code>. Multiple arguments, such as the
+two integers in <code class="docutils literal notranslate"><span class="pre">(+</span> <span class="pre">1</span> <span class="pre">3)</span></code>, are separated by whitespace. Many operators,
+including <code class="docutils literal notranslate"><span class="pre">+</span></code>, allow more than two arguments: <code class="docutils literal notranslate"><span class="pre">(+</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">3)</span></code> is equivalent to
+<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">3</span></code>.</p>
+<p>Here’s a more complex example:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">- </span><span class="p">(</span><span class="nb">* </span><span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">88</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This code returns <code class="docutils literal notranslate"><span class="pre">176</span></code>. Why? We can see the infix equivalent with the
+command <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;(-</span> <span class="pre">(*</span> <span class="pre">(+</span> <span class="pre">1</span> <span class="pre">3</span> <span class="pre">88)</span> <span class="pre">2)</span> <span class="pre">8)&quot;</span> <span class="pre">|</span> <span class="pre">hy2py</span></code>, which returns the Python
+code corresponding to the given Hy code, or by passing the <code class="docutils literal notranslate"><span class="pre">--spy</span></code> option to
+Hy when starting the REPL, which shows the Python equivalent of each input line
+before the result. The infix equivalent in this case is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">88</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">8</span>
+</pre></div>
+</div>
+<p>To evaluate this infix expression, you’d of course evaluate the innermost
+parenthesized expression first and work your way outwards. The same goes for
+Lisp. Here’s what we’d get by evaluating the above Hy code one step at a time:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">- </span><span class="p">(</span><span class="nb">* </span><span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">88</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">8</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">- </span><span class="p">(</span><span class="nb">* </span><span class="mi">92</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">8</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">- </span><span class="mi">184</span> <span class="mi">8</span><span class="p">)</span>
+<span class="mi">176</span>
+</pre></div>
+</div>
+<p>The basic unit of Lisp syntax, which is similar to a C or Python expression, is
+the <strong>form</strong>. <code class="docutils literal notranslate"><span class="pre">92</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, and <code class="docutils literal notranslate"><span class="pre">(*</span> <span class="pre">92</span> <span class="pre">2)</span></code> are all forms. A Lisp program
+consists of a sequence of forms nested within forms. Forms are typically
+separated from each other by whitespace, but some forms, such as string
+literals (<code class="docutils literal notranslate"><span class="pre">&quot;Hy,</span> <span class="pre">world!&quot;</span></code>), can contain whitespace themselves. An
+<strong>expression</strong> is a form enclosed in parentheses; its first child form, called
+the <strong>head</strong>, determines what the expression does, and should generally be a
+function or macro. Functions are the most ordinary sort of head, whereas macros
+(described in more detail below) are functions executed at compile-time instead
+and return code to be executed at run-time.</p>
+<p>Comments start with a <code class="docutils literal notranslate"><span class="pre">;</span></code> character and continue till the end of the line. A
+comment is functionally equivalent to whitespace.</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nf">**</span> <span class="mi">2</span> <span class="mi">64</span><span class="p">))</span>   <span class="c1">; Max 64-bit unsigned integer value</span>
+</pre></div>
+</div>
+<p>Although <code class="docutils literal notranslate"><span class="pre">#</span></code> isn’t a comment character in Hy, a Hy program can begin with a
+<a class="reference external" href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang line</a>, which Hy itself
+will ignore:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="o">#</span><span class="nv">!/usr/bin/env</span> <span class="nv">hy</span>
+<span class="p">(</span><span class="nb">print </span><span class="s">&quot;Make me executable, and run me!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="literals">
+<h2>Literals<a class="headerlink" href="#literals" title="Permalink to this headline">¶</a></h2>
+<p>Hy has <a class="reference internal" href="language/syntax.html#syntax"><span class="std std-ref">literal syntax</span></a> for all of the same data types that
+Python does. Here’s an example of Hy code for each type and the Python
+equivalent.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 34%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Hy</p></th>
+<th class="head"><p>Python</p></th>
+<th class="head"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3.10/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">1.2</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.2</span></code></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3.10/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">4j</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4j</span></code></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3.10/library/functions.html#complex" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">complex</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3.10/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">NoneType</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;hy&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'hy'</span></code></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3.10/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">b&quot;hy&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b'hy'</span></code></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3.10/library/stdtypes.html#bytes" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">(,</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">3)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">2,</span> <span class="pre">3)</span></code></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3.10/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[1</span> <span class="pre">2</span> <span class="pre">3]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3.10/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">#{1</span> <span class="pre">2</span> <span class="pre">3}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{1,</span> <span class="pre">2,</span> <span class="pre">3}</span></code></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3.10/library/stdtypes.html#set" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{1</span> <span class="pre">2</span>&#160; <span class="pre">3</span> <span class="pre">4}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{1:</span> <span class="pre">2,</span> <span class="pre">3:</span> <span class="pre">4}</span></code></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3.10/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>In addition, Hy has a Clojure-style literal syntax for
+<a class="reference external" href="https://docs.python.org/3.10/library/fractions.html#fractions.Fraction" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">fractions.Fraction</span></code></a>: <code class="docutils literal notranslate"><span class="pre">1/3</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">fractions.Fraction(1,</span>
+<span class="pre">3)</span></code>.</p>
+<p>The Hy REPL prints output in Hy syntax by default, with the function <a class="reference internal" href="api.html#hy.repr" title="hy.repr"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">hy.repr</span></code></a>:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="nv">=&gt;</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>But if you start Hy like this:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="nv">$</span> <span class="nv">hy</span> <span class="nv">--repl-output-fn=repr</span>
+</pre></div>
+</div>
+<p>the REPL will use Python’s native <code class="docutils literal notranslate"><span class="pre">repr</span></code> function instead, so you’ll see values in Python syntax:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="nv">=&gt;</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span>, <span class="mi">2</span>, <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="basic-operations">
+<h2>Basic operations<a class="headerlink" href="#basic-operations" title="Permalink to this headline">¶</a></h2>
+<p>Set variables with <a class="reference internal" href="api.html#setv" title="setv"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">setv</span></code></a>:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">setv</span> <span class="nv">zone-plane</span> <span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Access the elements of a list, dictionary, or other data structure with
+<code class="xref hy hy-func docutils literal notranslate"><span class="pre">get</span></code>:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">setv</span> <span class="nv">fruit</span> <span class="p">[</span><span class="s">&quot;apple&quot;</span> <span class="s">&quot;banana&quot;</span> <span class="s">&quot;cantaloupe&quot;</span><span class="p">])</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nb">get </span><span class="nv">fruit</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1">; =&gt; apple</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="p">(</span><span class="nb">get </span><span class="nv">fruit</span> <span class="mi">1</span><span class="p">)</span> <span class="s">&quot;durian&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nb">get </span><span class="nv">fruit</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1">; =&gt; durian</span>
+</pre></div>
+</div>
+<p>Access a range of elements in an ordered structure with <a class="reference internal" href="api.html#cut" title="cut"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">cut</span></code></a>:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nf">cut</span> <span class="s">&quot;abcdef&quot;</span> <span class="mi">1</span> <span class="mi">4</span><span class="p">))</span>  <span class="c1">; =&gt; bcd</span>
+</pre></div>
+</div>
+<p>Conditional logic can be built with <a class="reference external" href="https://docs.python.org/3.10/reference/compound_stmts.html#if" title="(in Python v3.10)"><span>The if statement</span></a>:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">print </span><span class="s">&quot;Math works. The universe is safe.&quot;</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">print </span><span class="s">&quot;Math has failed. The universe is doomed.&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>As in this example, <code class="docutils literal notranslate"><span class="pre">if</span></code> is called like <code class="docutils literal notranslate"><span class="pre">(if</span> <span class="pre">CONDITION</span> <span class="pre">THEN</span> <span class="pre">ELSE)</span></code>. It
+executes and returns the form <code class="docutils literal notranslate"><span class="pre">THEN</span></code> if <code class="docutils literal notranslate"><span class="pre">CONDITION</span></code> is true (according to
+<a class="reference external" href="https://docs.python.org/3.10/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) and <code class="docutils literal notranslate"><span class="pre">ELSE</span></code> otherwise. If <code class="docutils literal notranslate"><span class="pre">ELSE</span></code> is omitted, <code class="docutils literal notranslate"><span class="pre">None</span></code> is used
+in its place.</p>
+<p>What if you want to use more than form in place of the <code class="docutils literal notranslate"><span class="pre">THEN</span></code> or <code class="docutils literal notranslate"><span class="pre">ELSE</span></code>
+clauses, or in place of <code class="docutils literal notranslate"><span class="pre">CONDITION</span></code>, for that matter? Use the macro
+<a class="reference internal" href="api.html#do" title="do"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">do</span></code></a> (known more traditionally in Lisp as <code class="docutils literal notranslate"><span class="pre">progn</span></code>), which combines
+several forms into one, returning the last:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="k">do </span><span class="p">(</span><span class="nb">print </span><span class="s">&quot;Let&#39;s check.&quot;</span><span class="p">)</span> <span class="p">(</span><span class="nb">= </span><span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">do</span>
+    <span class="p">(</span><span class="nb">print </span><span class="s">&quot;Math works.&quot;</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">print </span><span class="s">&quot;The universe is safe.&quot;</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">do</span>
+    <span class="p">(</span><span class="nb">print </span><span class="s">&quot;Math has failed.&quot;</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">print </span><span class="s">&quot;The universe is doomed.&quot;</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>For branching on more than one case, try <a class="reference internal" href="api.html#hy.core.macros.cond" title="hy.core.macros.cond"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">cond</span></code></a>:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">setv</span> <span class="nv">somevar</span> <span class="mi">33</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">cond</span>
+ <span class="p">[(</span><span class="nb">&gt; </span><span class="nv">somevar</span> <span class="mi">50</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">print </span><span class="s">&quot;That variable is too big!&quot;</span><span class="p">)]</span>
+ <span class="p">[(</span><span class="nb">&lt; </span><span class="nv">somevar</span> <span class="mi">10</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">print </span><span class="s">&quot;That variable is too small!&quot;</span><span class="p">)]</span>
+ <span class="p">[</span><span class="nv">True</span>
+  <span class="p">(</span><span class="nb">print </span><span class="s">&quot;That variable is jussssst right!&quot;</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p>The macro <code class="docutils literal notranslate"><span class="pre">(when</span> <span class="pre">CONDITION</span> <span class="pre">THEN-1</span> <span class="pre">THEN-2</span> <span class="pre">…)</span></code> is shorthand for <code class="docutils literal notranslate"><span class="pre">(if</span> <span class="pre">CONDITION</span>
+<span class="pre">(do</span> <span class="pre">THEN-1</span> <span class="pre">THEN-2</span> <span class="pre">…))</span></code>. <code class="docutils literal notranslate"><span class="pre">unless</span></code> works the same as <code class="docutils literal notranslate"><span class="pre">when</span></code>, but inverts the
+condition with <code class="docutils literal notranslate"><span class="pre">not</span></code>.</p>
+<p>Hy’s basic loops are <a class="reference external" href="https://docs.python.org/3.10/reference/compound_stmts.html#while" title="(in Python v3.10)"><span>The while statement</span></a> and <a class="reference external" href="https://docs.python.org/3.10/reference/compound_stmts.html#for" title="(in Python v3.10)"><span>The for statement</span></a>:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">setv</span> <span class="nv">x</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">while</span> <span class="p">(</span><span class="nb">&gt; </span><span class="nv">x</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">print </span><span class="nv">x</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">setv</span> <span class="nv">x</span> <span class="p">(</span><span class="nb">- </span><span class="nv">x</span> <span class="mi">1</span><span class="p">)))</span>  <span class="c1">; =&gt; 3 2 1</span>
+
+<span class="p">(</span><span class="nb">for </span><span class="p">[</span><span class="nv">x</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]]</span>
+  <span class="p">(</span><span class="nb">print </span><span class="nv">x</span><span class="p">))</span>         <span class="c1">; =&gt; 1 2 3</span>
+</pre></div>
+</div>
+<p>A more functional way to iterate is provided by the comprehension forms such as
+<a class="reference internal" href="api.html#lfor" title="lfor"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">lfor</span></code></a>. Whereas <code class="docutils literal notranslate"><span class="pre">for</span></code> always returns <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">lfor</span></code> returns a list
+with one element per iteration.</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nf">lfor</span>  <span class="nv">x</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>  <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="mi">2</span><span class="p">)))</span>  <span class="c1">; =&gt; [2, 4, 6]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="functions-classes-and-modules">
+<h2>Functions, classes, and modules<a class="headerlink" href="#functions-classes-and-modules" title="Permalink to this headline">¶</a></h2>
+<p>Define named functions with <code class="xref hy hy-func docutils literal notranslate"><span class="pre">defn</span></code>:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">defn </span><span class="nv">fib</span> <span class="p">[</span><span class="nv">n</span><span class="p">]</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="nv">n</span>
+    <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span><span class="p">))</span> <span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)))))</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nf">fib</span> <span class="mi">8</span><span class="p">))</span>  <span class="c1">; =&gt; 21</span>
+</pre></div>
+</div>
+<p>Define anonymous functions with <a class="reference internal" href="api.html#fn" title="fn"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">fn</span></code></a>:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nb">list </span><span class="p">(</span><span class="nb">filter </span><span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">x</span><span class="p">]</span> <span class="p">(</span><span class="nf">%</span> <span class="nv">x</span> <span class="mi">2</span><span class="p">))</span> <span class="p">(</span><span class="nb">range </span><span class="mi">10</span><span class="p">))))</span>
+  <span class="c1">; =&gt; [1, 3, 5, 7, 9]</span>
+</pre></div>
+</div>
+<p>Special symbols in the parameter list of <code class="docutils literal notranslate"><span class="pre">defn</span></code> or <code class="docutils literal notranslate"><span class="pre">fn</span></code> allow you to
+indicate optional arguments, provide default values, and collect unlisted
+arguments:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">defn </span><span class="nb">test </span><span class="p">[</span><span class="nv">a</span> <span class="nv">b</span> <span class="p">[</span><span class="nv">c</span> <span class="nv">None</span><span class="p">]</span> <span class="p">[</span><span class="nv">d</span> <span class="s">&quot;x&quot;</span><span class="p">]</span> <span class="o">#</span><span class="nb">* </span><span class="nv">e</span><span class="p">]</span>
+  <span class="p">[</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span> <span class="nv">d</span> <span class="nv">e</span><span class="p">])</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nb">test </span><span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>            <span class="c1">; =&gt; [1, 2, None, &#39;x&#39;, ()]</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nb">test </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span><span class="p">))</span>  <span class="c1">; =&gt; [1, 2, 3, 4, (5, 6, 7)]</span>
+</pre></div>
+</div>
+<p>Set a function parameter by name with a <code class="docutils literal notranslate"><span class="pre">:keyword</span></code>:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">test </span><span class="mi">1</span> <span class="mi">2</span> <span class="ss">:d</span> <span class="s">&quot;y&quot;</span><span class="p">)</span>             <span class="c1">; =&gt; [1, 2, None, &#39;y&#39;, ()]</span>
+</pre></div>
+</div>
+<p>Define classes with <a class="reference internal" href="api.html#defclass" title="defclass"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">defclass</span></code></a>:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">defclass</span> <span class="nv">FooBar</span> <span class="p">[]</span>
+  <span class="p">(</span><span class="kd">defn </span><span class="nv">__init__</span> <span class="p">[</span><span class="nv">self</span> <span class="nv">x</span><span class="p">]</span>
+    <span class="p">(</span><span class="nf">setv</span> <span class="nv">self.x</span> <span class="nv">x</span><span class="p">))</span>
+  <span class="p">(</span><span class="kd">defn </span><span class="nv">get-x</span> <span class="p">[</span><span class="nv">self</span><span class="p">]</span>
+    <span class="nv">self.x</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Here we create a new instance <code class="docutils literal notranslate"><span class="pre">fb</span></code> of <code class="docutils literal notranslate"><span class="pre">FooBar</span></code> and access its attributes by
+various means:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">setv</span> <span class="nv">fb</span> <span class="p">(</span><span class="nf">FooBar</span> <span class="mi">15</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">print </span><span class="nv">fb.x</span><span class="p">)</span>         <span class="c1">; =&gt; 15</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="k">. </span><span class="nv">fb</span> <span class="nv">x</span><span class="p">))</span>     <span class="c1">; =&gt; 15</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nf">.get-x</span> <span class="nv">fb</span><span class="p">))</span>  <span class="c1">; =&gt; 15</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nf">fb.get-x</span><span class="p">))</span>   <span class="c1">; =&gt; 15</span>
+</pre></div>
+</div>
+<p>Note that syntax like <code class="docutils literal notranslate"><span class="pre">fb.x</span></code> and <code class="docutils literal notranslate"><span class="pre">fb.get-x</span></code> only works when the object
+being invoked (<code class="docutils literal notranslate"><span class="pre">fb</span></code>, in this case) is a simple variable name. To get an
+attribute or call a method of an arbitrary form <code class="docutils literal notranslate"><span class="pre">FORM</span></code>, you must use the
+syntax <code class="docutils literal notranslate"><span class="pre">(.</span> <span class="pre">FORM</span> <span class="pre">x)</span></code> or <code class="docutils literal notranslate"><span class="pre">(.get-x</span> <span class="pre">FORM)</span></code>.</p>
+<p>Access an external module, whether written in Python or Hy, with
+<a class="reference external" href="https://docs.python.org/3.10/reference/simple_stmts.html#import" title="(in Python v3.10)"><span>The import statement</span></a>:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">import </span><span class="nv">math</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nf">math.sqrt</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1">; =&gt; 1.4142135623730951</span>
+</pre></div>
+</div>
+<p>Python can import a Hy module like any other module so long as Hy itself has
+been imported first, which, of course, must have already happened if you’re
+running a Hy program.</p>
+</div>
+<div class="section" id="macros">
+<h2>Macros<a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
+<p>Macros are the basic metaprogramming tool of Lisp. A macro is a function that
+is called at compile time (i.e., when a Hy program is being translated to
+Python <a class="reference external" href="https://docs.python.org/3.10/library/ast.html#module-ast" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ast</span></code></a> objects) and returns code, which becomes part of the final
+program. Here’s a simple example:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">print </span><span class="s">&quot;Executing&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="kd">defmacro </span><span class="nv">m</span> <span class="p">[]</span>
+  <span class="p">(</span><span class="nb">print </span><span class="s">&quot;Now for a slow computation&quot;</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">setv</span> <span class="nv">x</span> <span class="p">(</span><span class="nf">%</span> <span class="p">(</span><span class="nf">**</span> <span class="mi">10</span> <span class="mi">10</span> <span class="mi">7</span><span class="p">)</span> <span class="mi">3</span><span class="p">))</span>
+  <span class="p">(</span><span class="nb">print </span><span class="s">&quot;Done computing&quot;</span><span class="p">)</span>
+  <span class="nv">x</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">print </span><span class="s">&quot;Value:&quot;</span> <span class="p">(</span><span class="nf">m</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">print </span><span class="s">&quot;Done executing&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you run this program twice in a row, you’ll see this:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span>$ hy example.hy
+Now for a slow computation
+Done computing
+Executing
+Value: 1
+Done executing
+$ hy example.hy
+Executing
+Value: 1
+Done executing
+</pre></div>
+</div>
+<p>The slow computation is performed while compiling the program on its first
+invocation. Only after the whole program is compiled does normal execution
+begin from the top, printing “Executing”. When the program is called a second
+time, it is run from the previously compiled bytecode, which is equivalent to
+simply:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">print </span><span class="s">&quot;Executing&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">print </span><span class="s">&quot;Value:&quot;</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">print </span><span class="s">&quot;Done executing&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Our macro <code class="docutils literal notranslate"><span class="pre">m</span></code> has an especially simple return value, an integer, which at
+compile-time is converted to an integer literal. In general, macros can return
+arbitrary Hy forms to be executed as code. There are several special operators
+and macros that make it easy to construct forms programmatically, such as
+<a class="reference internal" href="api.html#quote" title="quote"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">quote</span></code></a> (<code class="docutils literal notranslate"><span class="pre">'</span></code>), <a class="reference internal" href="api.html#quasiquote" title="quasiquote"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">quasiquote</span></code></a> (<code class="docutils literal notranslate"><span class="pre">`</span></code>), <a class="reference internal" href="api.html#unquote" title="unquote"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">unquote</span></code></a> (<code class="docutils literal notranslate"><span class="pre">~</span></code>), and
+<code class="xref hy hy-func docutils literal notranslate"><span class="pre">defmacro!</span></code>. The previous chapter has <a class="reference internal" href="api.html#while" title="while"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">a</span> <span class="pre">simple</span> <span class="pre">example</span></code></a>
+of using <code class="docutils literal notranslate"><span class="pre">`</span></code> and <code class="docutils literal notranslate"><span class="pre">~</span></code> to define a new control construct <code class="docutils literal notranslate"><span class="pre">do-while</span></code>.</p>
+<p>Sometimes it’s nice to be able to call a one-parameter macro without
+parentheses. Tag macros allow this. The name of a tag macro is often just one
+character long, but since Hy allows most Unicode characters in the name of a
+macro (or ordinary variable), you won’t out of characters soon.</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span>=&gt; (defmacro &quot;#↻&quot; [code]
+...  (setv op (get code -1) params (list (cut code -1)))
+...  `(~op ~@params))
+=&gt; #↻(1 2 3 +)
+6
+</pre></div>
+</div>
+<p>What if you want to use a macro that’s defined in a different module?
+<code class="docutils literal notranslate"><span class="pre">import</span></code> won’t help, because it merely translates to a Python <code class="docutils literal notranslate"><span class="pre">import</span></code>
+statement that’s executed at run-time, and macros are expanded at compile-time,
+that is, during the translation from Hy to Python. Instead, use <a class="reference internal" href="api.html#require" title="require"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">require</span></code></a>,
+which imports the module and makes macros available at compile-time.
+<code class="docutils literal notranslate"><span class="pre">require</span></code> uses the same syntax as <code class="docutils literal notranslate"><span class="pre">import</span></code>.</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="nv">=&gt;</span> <span class="p">(</span><span class="nf">require</span> <span class="nv">tutorial.macros</span><span class="p">)</span>
+<span class="nv">=&gt;</span> <span class="p">(</span><span class="nf">tutorial.macros.rev</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="nv">+</span><span class="p">))</span>
+<span class="mi">6</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hyrule">
+<h2>Hyrule<a class="headerlink" href="#hyrule" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/hylang/hyrule">Hyrule</a> is Hy’s standard utility library.
+It provides a variety of functions and macros that are useful for writing Hy
+programs.</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="nv">=&gt;</span> <span class="p">(</span><span class="nb">import </span><span class="nv">hyrule</span> <span class="p">[</span><span class="nv">inc</span><span class="p">])</span>
+<span class="nv">=&gt;</span> <span class="p">(</span><span class="nb">list </span><span class="p">(</span><span class="nb">map inc </span><span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="p">[</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">]</span>
+<span class="nv">=&gt;</span> <span class="p">(</span><span class="nf">require</span> <span class="nv">hyrule</span> <span class="p">[</span><span class="nv">assoc</span><span class="p">])</span>
+<span class="nv">=&gt;</span> <span class="p">(</span><span class="nf">setv</span> <span class="nv">d</span> <span class="p">{})</span>
+<span class="nv">=&gt;</span> <span class="p">(</span><span class="nb">assoc </span><span class="nv">d</span>  <span class="s">&quot;a&quot;</span> <span class="mi">1</span>  <span class="s">&quot;b&quot;</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nv">=&gt;</span> <span class="nv">d</span>
+<span class="p">{</span><span class="s">&quot;a&quot;</span> <span class="mi">1</span>  <span class="s">&quot;b&quot;</span> <span class="mi">2</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p>You now know enough to be dangerous with Hy. You may now smile villainously and
+sneak off to your Hydeaway to do unspeakable things.</p>
+<p>Refer to Python’s documentation for the details of Python semantics, and the
+rest of this manual for Hy-specific features. Like Hy itself, the manual is
+incomplete, but <a class="reference internal" href="hacking.html#hacking"><span class="std std-ref">contributions</span></a> are always welcome.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="style-guide.html" class="btn btn-neutral float-right" title="Hy Style Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="whyhy.html" class="btn btn-neutral float-left" title="Why Hy?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 the authors.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

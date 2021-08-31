@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Model Patterns &mdash; hy 1.0a3+120.g6b92d745 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/overrides.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Internal Hy Documentation" href="internals.html" />
+    <link rel="prev" title="Syntax" href="syntax.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> hy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0a3+120
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../whyhy.html">Why Hy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../style-guide.html">Hy Style Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation Index</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cli.html">Command Line Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repl.html">The Hy REPL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interop.html">Hy &lt;-&gt; Python interop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syntax.html">Syntax</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Model Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-motivating-example">A motivating example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="internals.html">Internal Hy Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking.html">Hacking on Hy</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Documentation Index</a> &raquo;</li>
+        
+      <li>Model Patterns</li>
+    
+    
+  <li style="margin-left: 1em">Hy version 1.0a3+120.g6b92d745 <strong style='color: red;'>(unstable)</strong></li>
+  
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/language/model_patterns.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="model-patterns">
+<h1>Model Patterns<a class="headerlink" href="#model-patterns" title="Permalink to this headline">¶</a></h1>
+<p>The module <code class="docutils literal notranslate"><span class="pre">hy.model-patterns</span></code> provides a library of parser combinators for
+parsing complex trees of Hy models. Model patterns exist mostly to help
+implement the compiler, but they can also be useful for writing macros.</p>
+<div class="section" id="a-motivating-example">
+<h2>A motivating example<a class="headerlink" href="#a-motivating-example" title="Permalink to this headline">¶</a></h2>
+<p>The kind of problem that model patterns are suited for is the following.
+Suppose you want to validate and extract the components of a form like:</p>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">setv</span> <span class="nv">form</span> <span class="o">&#39;</span><span class="p">(</span><span class="nf">try</span>
+  <span class="p">(</span><span class="nf">foo1</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">foo2</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">except</span> <span class="p">[</span><span class="nv">EType1</span><span class="p">]</span>
+    <span class="p">(</span><span class="nf">foo3</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">except</span> <span class="p">[</span><span class="nv">e</span> <span class="nv">EType2</span><span class="p">]</span>
+    <span class="p">(</span><span class="nf">foo4</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">foo5</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">except</span> <span class="p">[]</span>
+    <span class="p">(</span><span class="nf">foo6</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">finally</span>
+    <span class="p">(</span><span class="nf">foo7</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">foo8</span><span class="p">))))</span>
+</pre></div>
+</div>
+<p>You could do this with loops and indexing, but it would take a lot of code and
+be error-prone. Model patterns concisely express the general form of an
+expression to be matched, like what a regular expression does for text. Here’s
+a pattern for a <code class="docutils literal notranslate"><span class="pre">try</span></code> form of the above kind:</p>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">import </span><span class="nv">funcparserlib.parser</span> <span class="p">[</span><span class="nv">maybe</span> <span class="nv">many</span><span class="p">])</span>
+<span class="p">(</span><span class="nb">import </span><span class="nv">hy.model-patterns</span> <span class="p">[</span><span class="nv">*</span><span class="p">])</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">parser</span> <span class="p">(</span><span class="nf">whole</span> <span class="p">[</span>
+  <span class="p">(</span><span class="nf">sym</span> <span class="s">&quot;try&quot;</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">many</span> <span class="p">(</span><span class="nf">notpexpr</span> <span class="s">&quot;except&quot;</span> <span class="s">&quot;else&quot;</span> <span class="s">&quot;finally&quot;</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">many</span> <span class="p">(</span><span class="nf">pexpr</span>
+    <span class="p">(</span><span class="nf">sym</span> <span class="s">&quot;except&quot;</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">|</span> <span class="p">(</span><span class="nf">brackets</span><span class="p">)</span> <span class="p">(</span><span class="nf">brackets</span> <span class="nv">FORM</span><span class="p">)</span> <span class="p">(</span><span class="nf">brackets</span> <span class="nv">SYM</span> <span class="nv">FORM</span><span class="p">))</span>
+    <span class="p">(</span><span class="nf">many</span> <span class="nv">FORM</span><span class="p">)))</span>
+  <span class="p">(</span><span class="nf">maybe</span> <span class="p">(</span><span class="nf">dolike</span> <span class="s">&quot;else&quot;</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">maybe</span> <span class="p">(</span><span class="nf">dolike</span> <span class="s">&quot;finally&quot;</span><span class="p">))]))</span>
+</pre></div>
+</div>
+<p>You can run the parser with <code class="docutils literal notranslate"><span class="pre">(.parse</span> <span class="pre">parser</span> <span class="pre">form)</span></code>. The result is:</p>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>,
+  <span class="p">[</span><span class="o">&#39;</span><span class="p">(</span><span class="nf">foo1</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="nf">foo2</span><span class="p">)]</span>
+  <span class="p">[</span>
+    <span class="o">&#39;</span><span class="p">([</span><span class="nv">EType1</span><span class="p">]</span> <span class="p">[(</span><span class="nf">foo3</span><span class="p">)])</span>
+    <span class="o">&#39;</span><span class="p">([</span><span class="nv">e</span> <span class="nv">EType2</span><span class="p">]</span> <span class="p">[(</span><span class="nf">foo4</span><span class="p">)</span> <span class="p">(</span><span class="nf">foo5</span><span class="p">)])</span>
+    <span class="o">&#39;</span><span class="p">([]</span> <span class="p">[(</span><span class="nf">foo6</span><span class="p">)])]</span>
+  <span class="nv">None</span>
+  <span class="o">&#39;</span><span class="p">((</span><span class="nf">foo7</span><span class="p">)</span> <span class="p">(</span><span class="nf">foo8</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>which is conveniently utilized with an assignment such as <code class="docutils literal notranslate"><span class="pre">(setv</span> <span class="pre">[body</span>
+<span class="pre">except-clauses</span> <span class="pre">else-part</span> <span class="pre">finally-part]</span> <span class="pre">result)</span></code>. Notice that <code class="docutils literal notranslate"><span class="pre">else-part</span></code>
+will be set to <code class="docutils literal notranslate"><span class="pre">None</span></code> because there is no <code class="docutils literal notranslate"><span class="pre">else</span></code> clause in the original
+form.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Model patterns are implemented as <a class="reference external" href="https://github.com/vlasovskikh/funcparserlib">funcparserlib</a> parser combinators. We won’t
+reproduce funcparserlib’s own documentation, but here are some important
+built-in parsers:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(+</span> <span class="pre">...)</span></code> matches its arguments in sequence.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(|</span> <span class="pre">...)</span></code> matches any one of its arguments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(&gt;&gt;</span> <span class="pre">parser</span> <span class="pre">function)</span></code> matches <code class="docutils literal notranslate"><span class="pre">parser</span></code>, then feeds the result through
+<code class="docutils literal notranslate"><span class="pre">function</span></code> to change the value that’s produced on a successful parse.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(skip</span> <span class="pre">parser)</span></code> matches <code class="docutils literal notranslate"><span class="pre">parser</span></code>, but doesn’t add it to the produced
+value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(maybe</span> <span class="pre">parser)</span></code> matches <code class="docutils literal notranslate"><span class="pre">parser</span></code> if possible. Otherwise, it produces
+the value <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(some</span> <span class="pre">function)</span></code> takes a predicate <code class="docutils literal notranslate"><span class="pre">function</span></code> and matches a form if it
+satisfies the predicate.</p></li>
+</ul>
+<p>The best reference for Hy’s parsers is the docstrings (use <code class="docutils literal notranslate"><span class="pre">(help</span>
+<span class="pre">hy.model-patterns)</span></code>), but again, here are some of the more important ones:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FORM</span></code> matches anything.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SYM</span></code> matches any symbol.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(sym</span> <span class="pre">&quot;foo&quot;)</span></code> or <code class="docutils literal notranslate"><span class="pre">(sym</span> <span class="pre">&quot;:foo&quot;)</span></code> matches and discards (per <code class="docutils literal notranslate"><span class="pre">skip</span></code>) the
+named symbol or keyword.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(brackets</span> <span class="pre">...)</span></code> matches the arguments in square brackets.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(pexpr</span> <span class="pre">...)</span></code> matches the arguments in parentheses.</p></li>
+</ul>
+<p>Here’s how you could write a simple macro using model patterns:</p>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">defmacro </span><span class="nv">pairs</span> <span class="p">[</span><span class="o">#</span><span class="nb">* </span><span class="nv">args</span><span class="p">]</span>
+  <span class="p">(</span><span class="nb">import </span><span class="nv">funcparserlib.parser</span> <span class="p">[</span><span class="nv">many</span><span class="p">])</span>
+  <span class="p">(</span><span class="nb">import </span><span class="nv">hy.model-patterns</span> <span class="p">[</span><span class="nv">whole</span> <span class="nv">SYM</span> <span class="nv">FORM</span><span class="p">])</span>
+  <span class="p">(</span><span class="nf">setv</span> <span class="p">[</span><span class="nv">args</span><span class="p">]</span> <span class="p">(</span><span class="nf">.parse</span>
+    <span class="p">(</span><span class="nf">whole</span> <span class="p">[(</span><span class="nf">many</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">SYM</span> <span class="nv">FORM</span><span class="p">))])</span>
+    <span class="nv">args</span><span class="p">))</span>
+  <span class="o">`</span><span class="p">[</span><span class="o">~@</span><span class="p">(</span><span class="nf">gfor</span>  <span class="p">[</span><span class="nv">a1</span> <span class="nv">a2</span><span class="p">]</span> <span class="nv">args</span>  <span class="p">(</span>, <span class="p">(</span><span class="nb">str </span><span class="nv">a1</span><span class="p">)</span> <span class="nv">a2</span><span class="p">))])</span>
+
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nf">pairs</span>  <span class="nv">a</span> <span class="mi">1</span>  <span class="nv">b</span> <span class="mi">2</span>  <span class="nv">c</span> <span class="mi">3</span><span class="p">))</span>
+<span class="c1">; =&gt; [[&quot;a&quot; 1] [&quot;b&quot; 2] [&quot;c&quot; 3]]</span>
+</pre></div>
+</div>
+<p>A failed parse will raise <code class="docutils literal notranslate"><span class="pre">funcparserlib.parser.NoParseError</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="internals.html" class="btn btn-neutral float-right" title="Internal Hy Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="syntax.html" class="btn btn-neutral float-left" title="Syntax" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 the authors.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

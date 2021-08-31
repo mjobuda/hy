@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Cheatsheet &mdash; hy 1.0a3+120.g6b92d745 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/overrides.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API" href="api.html" />
+    <link rel="prev" title="Internal Hy Documentation" href="language/internals.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> hy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0a3+120
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="whyhy.html">Why Hy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="style-guide.html">Hy Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="language/index.html">Documentation Index</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Cheatsheet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hy">Hy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#core">Core</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking.html">Hacking on Hy</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">hy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Cheatsheet</li>
+    
+    
+  <li style="margin-left: 1em">Hy version 1.0a3+120.g6b92d745 <strong style='color: red;'>(unstable)</strong></li>
+  
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/cheatsheet.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cheatsheet">
+<span id="id1"></span><h1>Cheatsheet<a class="headerlink" href="#cheatsheet" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hy">
+<h2>Hy<a class="headerlink" href="#hy" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>IO</p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="api.html#hy.repr" title="hy.repr"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">repr</span></code></a> <a class="reference internal" href="api.html#hy.repr-register" title="hy.repr-register"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">repr-register</span></code></a> <a class="reference internal" href="api.html#hy.mangle" title="hy.mangle"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">mangle</span></code></a> <a class="reference internal" href="api.html#hy.unmangle" title="hy.unmangle"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">unmangle</span></code></a> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">read</span></code> <a class="reference internal" href="api.html#hy.read-str" title="hy.read-str"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">read-str</span></code></a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Reader</p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="api.html#hy.eval" title="hy.eval"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">eval</span></code></a> <a class="reference internal" href="api.html#hy.gensym" title="hy.gensym"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">gensym</span></code></a> <a class="reference internal" href="api.html#hy.macroexpand" title="hy.macroexpand"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">macroexpand</span></code></a> <a class="reference internal" href="api.html#hy.macroexpand-1" title="hy.macroexpand-1"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">macroexpand-1</span></code></a> <a class="reference internal" href="api.html#hy.disassemble" title="hy.disassemble"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">disassemble</span></code></a> <a class="reference internal" href="api.html#hy.as-model" title="hy.as-model"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">as-model</span></code></a></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="core">
+<h2>Core<a class="headerlink" href="#core" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Meta</p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="api.html#hy.core.macros.doc" title="hy.core.macros.doc"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">doc</span></code></a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Macros</p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="api.html#hy.core.macros.when" title="hy.core.macros.when"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">when</span></code></a> <a class="reference internal" href="api.html#hy.core.macros.cond" title="hy.core.macros.cond"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">cond</span></code></a></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Special Forms</p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="api.html#^" title="^"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">^</span></code></a> <a class="reference internal" href="api.html#dot"><span class="std std-ref">.</span></a> <a class="reference internal" href="api.html#annotate" title="annotate"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">annotate</span></code></a> <a class="reference internal" href="api.html#fn" title="fn"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">fn</span></code></a> <a class="reference internal" href="api.html#fn/a" title="fn/a"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">fn/a</span></code></a> <a class="reference internal" href="api.html#defn" title="defn"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">defn</span></code></a> <a class="reference internal" href="api.html#defn/a" title="defn/a"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">defn/a</span></code></a> <a class="reference internal" href="api.html#defmacro" title="defmacro"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">defmacro</span></code></a> <a class="reference internal" href="api.html#if" title="if"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">if</span></code></a> <a class="reference internal" href="api.html#assert" title="assert"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">assert</span></code></a> <a class="reference internal" href="api.html#get" title="get"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">get</span></code></a> <a class="reference internal" href="api.html#global" title="global"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">global</span></code></a> <a class="reference internal" href="api.html#import" title="import"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">import</span></code></a> <a class="reference internal" href="api.html#eval-and-compile" title="eval-and-compile"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">eval-and-compile</span></code></a> <a class="reference internal" href="api.html#eval-when-compile" title="eval-when-compile"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">eval-when-compile</span></code></a> <a class="reference internal" href="api.html#await" title="await"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">await</span></code></a> <a class="reference internal" href="api.html#break" title="break"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">break</span></code></a> <a class="reference internal" href="api.html#chainc" title="chainc"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">chainc</span></code></a> <a class="reference internal" href="api.html#continue" title="continue"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">continue</span></code></a> <a class="reference internal" href="api.html#do" title="do"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">do</span></code></a> <a class="reference internal" href="api.html#for" title="for"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">for</span></code></a> <a class="reference internal" href="api.html#lfor" title="lfor"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">lfor</span></code></a> <a class="reference internal" href="api.html#dfor" title="dfor"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">dfor</span></code></a> <a class="reference internal" href="api.html#gfor" title="gfor"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">gfor</span></code></a> <a class="reference internal" href="api.html#sfor" title="sfor"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">sfor</span></code></a> <a class="reference internal" href="api.html#setv" title="setv"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">setv</span></code></a> <a class="reference internal" href="api.html#setx" title="setx"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">setx</span></code></a> <a class="reference internal" href="api.html#match" title="match"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">match</span></code></a> <a class="reference internal" href="api.html#defclass" title="defclass"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">defclass</span></code></a> <a class="reference internal" href="api.html#del" title="del"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">del</span></code></a> <a class="reference internal" href="api.html#nonlocal" title="nonlocal"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">nonlocal</span></code></a> <a class="reference internal" href="api.html#py" title="py"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">py</span></code></a> <a class="reference internal" href="api.html#pys" title="pys"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">pys</span></code></a> <a class="reference internal" href="api.html#quasiquote" title="quasiquote"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">quasiquote</span></code></a> <a class="reference internal" href="api.html#quote" title="quote"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">quote</span></code></a> <a class="reference internal" href="api.html#require" title="require"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">require</span></code></a> <a class="reference internal" href="api.html#return" title="return"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">return</span></code></a> <a class="reference internal" href="api.html#cut" title="cut"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">cut</span></code></a> <a class="reference internal" href="api.html#raise" title="raise"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">raise</span></code></a> <a class="reference internal" href="api.html#try" title="try"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">try</span></code></a> <a class="reference internal" href="api.html#unpack-iterable/unpack-mapping" title="unpack-iterable/unpack-mapping"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">unpack-iterable/unpack-mapping</span></code></a> <a class="reference internal" href="api.html#unquote" title="unquote"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">unquote</span></code></a> <a class="reference internal" href="api.html#unquote-splice" title="unquote-splice"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">unquote-splice</span></code></a> <a class="reference internal" href="api.html#while" title="while"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">while</span></code></a> <a class="reference internal" href="api.html#with" title="with"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">with</span></code></a> <a class="reference internal" href="api.html#with/a" title="with/a"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">with/a</span></code></a> <a class="reference internal" href="api.html#with-decorator" title="with-decorator"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">with-decorator</span></code></a> <a class="reference internal" href="api.html#yield" title="yield"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">yield</span></code></a> <a class="reference internal" href="api.html#yield-from" title="yield-from"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">yield-from</span></code></a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Arithmetic</p></td>
+<td><div class="line-block">
+<div class="line"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">&#64;</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">%</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">+</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">-</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">*</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">**</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">/</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">//</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Comparison</p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="api.html#hy.core.macros.cond" title="hy.core.macros.cond"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">cond</span></code></a> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">&lt;</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">&gt;</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">&lt;=</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">&gt;=</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">=</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">!=</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">is</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">not?</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">in</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">not-in</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Bitwise</p></td>
+<td><div class="line-block">
+<div class="line"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">&lt;&lt;</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">&amp;</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">|</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">^</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">~</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Logic</p></td>
+<td><div class="line-block">
+<div class="line"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">not</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">and</span></code> <code class="xref hy hy-func docutils literal notranslate"><span class="pre">or</span></code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="api.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="language/internals.html" class="btn btn-neutral float-left" title="Internal Hy Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 the authors.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

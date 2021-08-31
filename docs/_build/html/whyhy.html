@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Why Hy? &mdash; hy 1.0a3+120.g6b92d745 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/overrides.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial" href="tutorial.html" />
+    <link rel="prev" title="The Hy Manual" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> hy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0a3+120
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Why Hy?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hy-versus-python">Hy versus Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hy-versus-other-lisps">Hy versus other Lisps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="style-guide.html">Hy Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="language/index.html">Documentation Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking.html">Hacking on Hy</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">hy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Why Hy?</li>
+    
+    
+  <li style="margin-left: 1em">Hy version 1.0a3+120.g6b92d745 <strong style='color: red;'>(unstable)</strong></li>
+  
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/whyhy.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="why-hy">
+<h1>Why Hy?<a class="headerlink" href="#why-hy" title="Permalink to this headline">¶</a></h1>
+<p>Hy is a multi-paradigm general-purpose programming language in the <a class="reference external" href="https://en.wikipedia.org/wiki/Lisp_(programming_language)">Lisp family</a>. It’s implemented
+as a kind of alternative syntax for Python. Compared to Python, Hy offers a
+variety of extra features, generalizations, and syntactic simplifications, as
+would be expected of a Lisp. Compared to other Lisps, Hy provides direct access
+to Python’s built-ins and third-party Python libraries, while allowing you to
+freely mix imperative, functional, and object-oriented styles of programming.</p>
+<div class="section" id="hy-versus-python">
+<h2>Hy versus Python<a class="headerlink" href="#hy-versus-python" title="Permalink to this headline">¶</a></h2>
+<p>The first thing a Python programmer will notice about Hy is that it has Lisp’s
+traditional parenthesis-heavy prefix syntax in place of Python’s C-like infix
+syntax. For example, <code class="docutils literal notranslate"><span class="pre">print(&quot;The</span> <span class="pre">answer</span> <span class="pre">is&quot;,</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">object.method(arg))</span></code> could
+be written <code class="docutils literal notranslate"><span class="pre">(print</span> <span class="pre">&quot;The</span> <span class="pre">answer</span> <span class="pre">is&quot;</span> <span class="pre">(+</span> <span class="pre">2</span> <span class="pre">(.method</span> <span class="pre">object</span> <span class="pre">arg)))</span></code> in Hy.
+Consequently, Hy is free-form: structure is indicated by parentheses rather
+than whitespace, making it convenient for command-line use.</p>
+<p>As in other Lisps, the value of a simplistic syntax is that it facilitates
+Lisp’s signature feature: <a class="reference external" href="https://en.wikipedia.org/wiki/Metaprogramming">metaprogramming</a> through macros, which are
+functions that manipulate code objects at compile time to produce new code
+objects, which are then executed as if they had been part of the original code.
+In fact, Hy allows arbitrary computation at compile-time. For example, here’s a
+simple macro that implements a C-style do-while loop, which executes its body
+for as long as the condition is true, but at least once.</p>
+<div class="highlight-clojure notranslate" id="do-while"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">defmacro </span><span class="nv">do-while</span> <span class="p">[</span><span class="nv">condition</span> <span class="o">#</span><span class="nb">* </span><span class="nv">body</span><span class="p">]</span>
+  <span class="o">`</span><span class="p">(</span><span class="nf">do</span>
+    <span class="o">~</span><span class="nv">body</span>
+    <span class="p">(</span><span class="nf">while</span> <span class="o">~</span><span class="nv">condition</span>
+      <span class="o">~</span><span class="nv">body</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">x</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">do-while</span> <span class="nv">x</span>
+  <span class="p">(</span><span class="nb">print </span><span class="s">&quot;This line is executed once.&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Hy also removes Python’s restrictions on mixing expressions and statements,
+allowing for more direct and functional code. For example, Python doesn’t allow
+<a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#with" title="(in Python v3.9)"><span class="xref std std-ref">with</span></a> blocks, which close a resource once you’re done using it,
+to return values. They can only execute a set of statements:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">o</span><span class="p">:</span>
+   <span class="n">f1</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">o</span><span class="p">:</span>
+   <span class="n">f2</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">f2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>In Hy, <a class="reference external" href="https://docs.python.org/3.10/reference/compound_stmts.html#with" title="(in Python v3.10)"><span>The with statement</span></a> returns the value of its last body form, so you can use it
+like an ordinary function call:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nf">+</span>
+  <span class="p">(</span><span class="nf">len</span> <span class="p">(</span><span class="nf">with</span> <span class="p">[</span><span class="nv">o</span> <span class="p">(</span><span class="nf">open</span> <span class="s">&quot;foo&quot;</span><span class="p">)]</span> <span class="p">(</span><span class="nf">.read</span> <span class="nv">o</span><span class="p">)))</span>
+  <span class="p">(</span><span class="nf">len</span> <span class="p">(</span><span class="nf">with</span> <span class="p">[</span><span class="nv">o</span> <span class="p">(</span><span class="nf">open</span> <span class="s">&quot;bar&quot;</span><span class="p">)]</span> <span class="p">(</span><span class="nf">.read</span> <span class="nv">o</span><span class="p">)))))</span>
+</pre></div>
+</div>
+<p>To be even more concise, you can put a <code class="docutils literal notranslate"><span class="pre">with</span></code> form in a <a class="reference internal" href="api.html#gfor" title="gfor"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">gfor</span></code></a>:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nf">sum</span> <span class="p">(</span><span class="nf">gfor</span>
+  <span class="nv">filename</span> <span class="p">[</span><span class="s">&quot;foo&quot;</span> <span class="s">&quot;bar&quot;</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">len</span> <span class="p">(</span><span class="nf">with</span> <span class="p">[</span><span class="nv">o</span> <span class="p">(</span><span class="nf">open</span> <span class="nv">filename</span><span class="p">)]</span> <span class="p">(</span><span class="nf">.read</span> <span class="nv">o</span><span class="p">))))))</span>
+</pre></div>
+</div>
+<p>Finally, Hy offers several generalizations to Python’s binary operators.
+Operators can be given more than two arguments (e.g., <code class="docutils literal notranslate"><span class="pre">(+</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">3)</span></code>), including
+augmented assignment operators (e.g., <code class="docutils literal notranslate"><span class="pre">(+=</span> <span class="pre">x</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">3)</span></code>). They are also provided
+as ordinary first-class functions of the same name, allowing them to be passed
+to higher-order functions: <code class="docutils literal notranslate"><span class="pre">(sum</span> <span class="pre">xs)</span></code> could be written <code class="docutils literal notranslate"><span class="pre">(reduce</span> <span class="pre">+</span> <span class="pre">xs)</span></code>,
+after importing the function <code class="docutils literal notranslate"><span class="pre">+</span></code> from the module <code class="docutils literal notranslate"><span class="pre">hy.pyops</span></code>.</p>
+<p>The Hy compiler works by reading Hy source code into Hy model objects and
+compiling the Hy model objects into Python abstract syntax tree (<a class="reference external" href="https://docs.python.org/3.10/library/ast.html#module-ast" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ast</span></code></a>)
+objects. Python AST objects can then be compiled and run by Python itself,
+byte-compiled for faster execution later, or rendered into Python source code.
+You can even <a class="reference internal" href="language/interop.html#interop"><span class="std std-ref">mix Python and Hy code in the same project, or even the same
+file,</span></a> which can be a good way to get your feet wet in Hy.</p>
+</div>
+<div class="section" id="hy-versus-other-lisps">
+<h2>Hy versus other Lisps<a class="headerlink" href="#hy-versus-other-lisps" title="Permalink to this headline">¶</a></h2>
+<p>At run-time, Hy is essentially Python code. Thus, while Hy’s design owes a lot
+to <a class="reference external" href="https://clojure.org">Clojure</a>, it is more tightly coupled to Python than
+Clojure is to Java; a better analogy is <a class="reference external" href="https://coffeescript.org">CoffeeScript’s</a> relationship to JavaScript. Python’s built-in
+<a class="reference external" href="https://docs.python.org/3/library/functions.html#built-in-funcs" title="(in Python v3.9)"><span class="xref std std-ref">functions</span></a> and <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-types" title="(in Python v3.9)"><span class="xref std std-ref">data structures</span></a> are directly available:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nb">int </span><span class="s">&quot;deadbeef&quot;</span> <span class="ss">:base</span> <span class="mi">16</span><span class="p">))</span>  <span class="c1">; 3735928559</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nf">len</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">10</span> <span class="mi">100</span><span class="p">]))</span>           <span class="c1">; 3</span>
+</pre></div>
+</div>
+<p>The same goes for third-party Python libraries from <a class="reference external" href="https://pypi.org">PyPI</a>
+and elsewhere. Here’s a tiny <a class="reference external" href="https://cherrypy.org">CherryPy</a> web application
+in Hy:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">import </span><span class="nv">cherrypy</span><span class="p">)</span>
+
+<span class="p">(</span><span class="nf">defclass</span> <span class="nv">HelloWorld</span> <span class="p">[]</span>
+  <span class="o">#@</span><span class="p">(</span><span class="nf">cherrypy.expose</span> <span class="p">(</span><span class="kd">defn </span><span class="nb">index </span><span class="p">[</span><span class="nv">self</span><span class="p">]</span>
+    <span class="s">&quot;Hello World!&quot;</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="nf">cherrypy.quickstart</span> <span class="p">(</span><span class="nf">HelloWorld</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>You can even run Hy on <a class="reference external" href="https://pypy.org">PyPy</a> for a particularly speedy
+Lisp.</p>
+<p>Like all Lisps, Hy is <a class="reference external" href="https://en.wikipedia.org/wiki/Homoiconicity">homoiconic</a>. Its syntax is represented not
+with cons cells or with Python’s basic data structures, but with simple
+subclasses of Python’s basic data structures called <a class="reference internal" href="language/internals.html#models"><span class="std std-ref">models</span></a>.
+Using models in place of plain <code class="docutils literal notranslate"><span class="pre">list</span></code>s, <code class="docutils literal notranslate"><span class="pre">set</span></code>s, and so on has two
+purposes: models can keep track of their line and column numbers for the
+benefit of error messages, and models can represent syntactic features that the
+corresponding primitive type can’t, such as the order in which elements appear
+in a set literal. However, models can be concatenated and indexed just like
+plain lists, and you can return ordinary Python types from a macro or give them
+to <code class="docutils literal notranslate"><span class="pre">hy.eval</span></code> and Hy will automatically promote them to models.</p>
+<p>Hy takes much of its semantics from Python. For example, Hy is a Lisp-1 because
+Python functions use the same namespace as objects that aren’t functions. In
+general, any Python code should be possible to literally translate to Hy. At
+the same time, Hy goes to some lengths to allow you to do typical Lisp things
+that aren’t straightforward in Python. For example, Hy provides the
+aforementioned mixing of statements and expressions, <a class="reference internal" href="language/syntax.html#mangling"><span class="std std-ref">name mangling</span></a> that transparently converts symbols with names like <code class="docutils literal notranslate"><span class="pre">valid?</span></code> to
+Python-legal identifiers, and a <code class="xref hy hy-func docutils literal notranslate"><span class="pre">let</span></code> macro to provide block-level scoping
+in place of Python’s usual function-level scoping.</p>
+<p>Overall, Hy, like Common Lisp, is intended to be an unopinionated big-tent
+language that lets you do what you want. If you’re interested in a more
+small-and-beautiful approach to Lisp, in the style of Scheme, check out
+<a class="reference external" href="https://github.com/gilch/hissp">Hissp</a>, another Lisp embedded in Python
+that was created by a Hy developer.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tutorial.html" class="btn btn-neutral float-right" title="Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="The Hy Manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 the authors.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

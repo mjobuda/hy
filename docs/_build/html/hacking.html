@@ -1,0 +1,474 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Hacking on Hy &mdash; hy 1.0a3+120.g6b92d745 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/overrides.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="API" href="api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> hy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0a3+120
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="whyhy.html">Why Hy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="style-guide.html">Hy Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="language/index.html">Documentation Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Hacking on Hy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#join-our-hyve">Join our Hyve!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hack">Hack!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test">Test!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#document">Document!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contributor-guidelines">Contributor Guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#issues">Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pull-requests">Pull requests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#deciding-what-to-do">Deciding what to do</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#commit-formatting">Commit formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing">Testing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#news-and-authors">NEWS and AUTHORS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-pr-itself">The PR itself</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#contributor-code-of-conduct">Contributor Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#core-team">Core Team</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">hy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Hacking on Hy</li>
+    
+    
+  <li style="margin-left: 1em">Hy version 1.0a3+120.g6b92d745 <strong style='color: red;'>(unstable)</strong></li>
+  
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/hacking.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hacking-on-hy">
+<span id="hacking"></span><h1>Hacking on Hy<a class="headerlink" href="#hacking-on-hy" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="join-our-hyve">
+<h2>Join our Hyve!<a class="headerlink" href="#join-our-hyve" title="Permalink to this headline">¶</a></h2>
+<p>Please come hack on Hy!</p>
+<p>Please come hang out with us on <code class="docutils literal notranslate"><span class="pre">#hy</span></code> on <code class="docutils literal notranslate"><span class="pre">irc.freenode.net</span></code>!</p>
+<p>Please talk about it on Twitter with the <code class="docutils literal notranslate"><span class="pre">#hy</span></code> hashtag!</p>
+<p>Please blog about it!</p>
+<p>Please don’t spraypaint it on your neighbor’s fence (without asking nicely)!</p>
+</div>
+<div class="section" id="hack">
+<h2>Hack!<a class="headerlink" href="#hack" title="Permalink to this headline">¶</a></h2>
+<p>Do this:</p>
+<ol class="arabic">
+<li><p>Create a <a class="reference external" href="https://pypi.python.org/pypi/virtualenv">virtual environment</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virtualenv venv
+</pre></div>
+</div>
+<p>and activate it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ . venv/bin/activate
+</pre></div>
+</div>
+<p>or use <a class="reference external" href="https://virtualenvwrapper.readthedocs.io/en/latest/#introduction">virtualenvwrapper</a>
+to create and manage your virtual environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkvirtualenv hy
+$ workon hy
+</pre></div>
+</div>
+</li>
+<li><p>Get the source code:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/hylang/hy.git
+</pre></div>
+</div>
+<p>or use your fork:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone git@github.com:&lt;YOUR_USERNAME&gt;/hy.git
+</pre></div>
+</div>
+</li>
+<li><p>Install for hacking:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> hy/
+$ pip install -e .
+</pre></div>
+</div>
+</li>
+<li><p>Install other develop-y requirements:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install -r requirements-dev.txt
+</pre></div>
+</div>
+</li>
+<li><p>Do awesome things; make someone shriek in delight/disgust at what
+you have wrought.</p></li>
+</ol>
+</div>
+<div class="section" id="test">
+<h2>Test!<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h2>
+<p>Tests are located in <code class="docutils literal notranslate"><span class="pre">tests/</span></code>. We use <a class="reference external" href="http://pytest.org">pytest</a>.</p>
+<p>To run the tests:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pytest
+</pre></div>
+</div>
+<p>Write tests—tests are good!</p>
+<p>Also, it is good to run the tests for all the platforms supported and for
+PEP 8 compliant code. You can do so by running tox:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tox
+</pre></div>
+</div>
+</div>
+<div class="section" id="document">
+<h2>Document!<a class="headerlink" href="#document" title="Permalink to this headline">¶</a></h2>
+<p>Documentation is located in <code class="docutils literal notranslate"><span class="pre">docs/</span></code>. We use <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a>.</p>
+<p>To build the docs in HTML:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> docs
+$ make html
+</pre></div>
+</div>
+<p>Write docs—docs are good! Even this doc!</p>
+</div>
+<div class="section" id="contributor-guidelines">
+<h2>Contributor Guidelines<a class="headerlink" href="#contributor-guidelines" title="Permalink to this headline">¶</a></h2>
+<p>Contributions are welcome and greatly appreciated. Every little bit
+helps in making Hy better. Potential contributions include:</p>
+<ul class="simple">
+<li><p>Reporting and fixing bugs.</p></li>
+<li><p>Requesting features.</p></li>
+<li><p>Adding features.</p></li>
+<li><p>Writing tests for outstanding bugs or untested features.
+- You can mark tests that Hy can’t pass yet as <a class="reference external" href="https://docs.pytest.org/en/latest/skipping.html#mark-a-test-function-as-expected-to-fail">xfail</a>.</p></li>
+<li><p>Cleaning up the code.</p></li>
+<li><p>Improving the documentation.</p></li>
+<li><p>Answering questions on <a class="reference external" href="https://github.com/hylang/hy/discussions">the Github Discussions page</a> or
+<a class="reference external" href="https://stackoverflow.com/questions/tagged/hy">Stack Overflow</a>.</p></li>
+<li><p>Evangelizing for Hy in your organization, user group, conference, or
+bus stop.</p></li>
+</ul>
+<div class="section" id="issues">
+<h3>Issues<a class="headerlink" href="#issues" title="Permalink to this headline">¶</a></h3>
+<p>In order to report bugs or request features, search the <a class="reference external" href="https://github.com/hylang/hy/issues">issue tracker</a> to
+check for a duplicate. (If you’re reporting a bug, make sure you can
+reproduce it with the very latest, bleeding-edge version of Hy from
+the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch on GitHub. Bugs in stable versions of Hy are
+fixed on <code class="docutils literal notranslate"><span class="pre">master</span></code> before the fix makes it into a new stable
+release.) If there aren’t any duplicates, then you can make a new issue.</p>
+<p>It’s totally acceptable to create an issue when you’re unsure whether
+something is a bug or not. We’ll help you figure it out.</p>
+<p>Use the same issue tracker to report problems with the documentation.</p>
+</div>
+<div class="section" id="pull-requests">
+<h3>Pull requests<a class="headerlink" href="#pull-requests" title="Permalink to this headline">¶</a></h3>
+<p>Submit proposed changes to the code or documentation as pull requests
+(PRs) on <a class="reference external" href="https://github.com/hylang/hy">GitHub</a>. Git can be intimidating and confusing to the
+uninitiated. <a class="reference external" href="http://rogerdudler.github.io/git-guide/">This getting-started guide</a> may be helpful. However, if
+you’re overwhelmed by Git, GitHub, or the rules below, don’t sweat
+it. We want to keep the barrier to contribution low, so we’re happy to
+help you with these finicky things or do them for you if necessary.</p>
+<div class="section" id="deciding-what-to-do">
+<h4>Deciding what to do<a class="headerlink" href="#deciding-what-to-do" title="Permalink to this headline">¶</a></h4>
+<p>Issues tagged <a class="reference external" href="https://github.com/hylang/hy/issues?q=is%3Aissue+is%3Aopen+label%3Agood-first-bug">good-first-bug</a> are expected to be relatively easy to
+fix, so they may be good targets for your first PR for Hy.</p>
+<p>If you’re proposing a major change to the Hy language, or you’re
+unsure of the proposed change, create an issue to discuss it before
+you write any code. This will allow others to give feedback on your
+idea, and it can avoid wasted work.</p>
+</div>
+<div class="section" id="commit-formatting">
+<h4>Commit formatting<a class="headerlink" href="#commit-formatting" title="Permalink to this headline">¶</a></h4>
+<p>Many PRs are small enough that only one commit is necessary, but
+bigger ones should be organized into logical units as separate
+commits. PRs should be free of merge commits and commits that fix or
+revert other commits in the same PR (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span></code> is your friend).</p>
+<p>Avoid committing spurious whitespace changes.</p>
+<p>Don’t commit comments tagged with things like “FIXME”, “TODO”, or
+“XXX”. Ideas for how the code or documentation should change go in the
+issues list, not the code or documentation itself.</p>
+<p>The first line of a commit message should describe the overall change in 50
+characters or less. If you wish to add more information, separate it from the
+first line with a blank line.</p>
+</div>
+<div class="section" id="testing">
+<h4>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h4>
+<p>New features and bug fixes should be tested. If you’ve caused an
+<a class="reference external" href="https://docs.pytest.org/en/latest/skipping.html#mark-a-test-function-as-expected-to-fail">xfail</a> test to start passing, remove the xfail mark. If you’re
+testing a bug that has a GitHub issue, include a comment with the URL
+of the issue.</p>
+<p>No PR may be merged if it causes any tests to fail. You can run the
+test suite and check the style of your code with <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">d</span></code>. The byte-compiled
+versions of the test files can be purged using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clean</span> <span class="pre">-dfx</span> <span class="pre">tests/</span></code>.
+If you want to run the tests while skipping the slow ones in <code class="docutils literal notranslate"><span class="pre">test_bin.py</span></code>,
+use <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">--ignore=tests/test_bin.py</span></code>.</p>
+</div>
+<div class="section" id="news-and-authors">
+<h4>NEWS and AUTHORS<a class="headerlink" href="#news-and-authors" title="Permalink to this headline">¶</a></h4>
+<p>If you’re making user-visible changes to the code, add one or more
+items describing it to the NEWS file.</p>
+<p>Finally, add yourself to the AUTHORS file (as a separate commit): you
+deserve it. :)</p>
+</div>
+<div class="section" id="the-pr-itself">
+<h4>The PR itself<a class="headerlink" href="#the-pr-itself" title="Permalink to this headline">¶</a></h4>
+<p>PRs should ask to merge a new branch that you created for the PR into
+hylang/hy’s <code class="docutils literal notranslate"><span class="pre">master</span></code> branch, and they should have as their origin
+the most recent commit possible.</p>
+<p>If the PR fulfills one or more issues, then the body text of the PR
+(or the commit message for any of its commits) should say “Fixes
+#123” or “Closes #123” for each affected issue number. Use this exact
+(case-insensitive) wording, because when a PR containing such text is
+merged, GitHub automatically closes the mentioned issues, which is
+handy. Conversely, avoid this exact language if you want to mention
+an issue without closing it (because e.g. you’ve partly but not
+entirely fixed a bug).</p>
+<p>There are two situations in which a PR is allowed to be merged:</p>
+<ol class="arabic simple">
+<li><p>When it is approved by <strong>two</strong> members of Hy’s core team other than the PR’s
+author. Changes to the documentation, or trivial changes to code, need only
+<strong>one</strong> approving member.</p></li>
+<li><p>When the PR is at least <strong>three days</strong> old and <strong>no</strong> member of the Hy core
+team has expressed disapproval of the PR in its current state. (Exception: a
+PR to create a new release is not eligible to be merged under this criterion,
+only the first one.)</p></li>
+</ol>
+<p>Anybody on the Hy core team may perform the merge. Merging should create a merge
+commit (don’t squash unnecessarily, because that would remove separation between
+logically separate commits, and don’t fast-forward, because that would throw
+away the history of the commits as a separate branch), which should include the
+PR number in the commit message. The typical workflow for this is to run the
+following commands on your own machine, then press the merge button on GitHub.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git checkout master
+<span class="gp">$ </span>git pull
+<span class="gp">$ </span>git checkout <span class="nv">$PR_BRANCH</span>
+<span class="gp">$ </span>git fetch
+<span class="gp">$ </span>get reset --hard <span class="nv">$REMOTE</span>/<span class="nv">$PR_BRANCH</span>
+<span class="gp">$ </span>git rebase master
+<span class="gp">$ </span>git push -f
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="contributor-code-of-conduct">
+<h2>Contributor Code of Conduct<a class="headerlink" href="#contributor-code-of-conduct" title="Permalink to this headline">¶</a></h2>
+<p>As contributors and maintainers of this project, we pledge to respect
+all people who contribute through reporting issues, posting feature
+requests, updating documentation, submitting pull requests or patches,
+and other activities.</p>
+<p>We are committed to making participation in this project a
+harassment-free experience for everyone, regardless of level of
+experience, gender, gender identity and expression, sexual
+orientation, disability, personal appearance, body size, race,
+ethnicity, age, or religion.</p>
+<p>Examples of unacceptable behavior by participants include the use of
+sexual language or imagery, derogatory comments or personal attacks,
+trolling, public or private harassment, insults, or other
+unprofessional conduct.</p>
+<p>Project maintainers have the right and responsibility to remove, edit,
+or reject comments, commits, code, wiki edits, issues, and other
+contributions that are not aligned to this Code of Conduct. Project
+maintainers who do not follow the Code of Conduct may be removed from
+the project team.</p>
+<p>This code of conduct applies both within project spaces and in public
+spaces when an individual is representing the project or its
+community.</p>
+<p>Instances of abusive, harassing, or otherwise unacceptable behavior
+may be reported by opening an issue or contacting one or more of the
+project maintainers.</p>
+<p>This Code of Conduct is adapted from the <a class="reference external" href="http://contributor-covenant.org">Contributor Covenant</a>,
+version 1.1.0, available at
+<a class="reference external" href="http://contributor-covenant.org/version/1/1/0/">http://contributor-covenant.org/version/1/1/0/</a>.</p>
+</div>
+<div class="section" id="core-team">
+<h2>Core Team<a class="headerlink" href="#core-team" title="Permalink to this headline">¶</a></h2>
+<p>The core development team of Hy consists of following developers:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/Kodiologist">Kodi B. Arfer</a></p></li>
+<li><p><a class="reference external" href="https://github.com/olasd">Nicolas Dandrimont</a></p></li>
+<li><p><a class="reference external" href="https://github.com/jd">Julien Danjou</a></p></li>
+<li><p><a class="reference external" href="https://github.com/rkday">Rob Day</a></p></li>
+<li><p><a class="reference external" href="https://github.com/vodik">Simon Gomizelj</a></p></li>
+<li><p><a class="reference external" href="https://github.com/refi64">Ryan Gonzalez</a></p></li>
+<li><p><a class="reference external" href="https://github.com/theanalyst">Abhishek Lekshmanan</a></p></li>
+<li><p><a class="reference external" href="https://github.com/Foxboron">Morten Linderud</a></p></li>
+<li><p><a class="reference external" href="https://github.com/gilch">Matthew Odendahl</a></p></li>
+<li><p><a class="reference external" href="https://github.com/paultag">Paul Tagliamonte</a></p></li>
+<li><p><a class="reference external" href="https://github.com/brandonwillard">Brandon T. Willard</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="api.html" class="btn btn-neutral float-left" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 the authors.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

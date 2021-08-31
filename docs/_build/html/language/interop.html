@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Hy &lt;-&gt; Python interop &mdash; hy 1.0a3+120.g6b92d745 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/overrides.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Syntax" href="syntax.html" />
+    <link rel="prev" title="The Hy REPL" href="repl.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> hy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0a3+120
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../whyhy.html">Why Hy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../style-guide.html">Hy Style Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation Index</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cli.html">Command Line Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repl.html">The Hy REPL</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Hy &lt;-&gt; Python interop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-python-from-hy">Using Python from Hy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-hy-from-python">Using Hy from Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#compiled-files">Compiled files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#launching-a-hy-repl-from-python">Launching a Hy REPL from Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#evaluating-strings-of-hy-code-from-python">Evaluating strings of Hy code from Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="syntax.html">Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_patterns.html">Model Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internals.html">Internal Hy Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking.html">Hacking on Hy</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Documentation Index</a> &raquo;</li>
+        
+      <li>Hy &lt;-&gt; Python interop</li>
+    
+    
+  <li style="margin-left: 1em">Hy version 1.0a3+120.g6b92d745 <strong style='color: red;'>(unstable)</strong></li>
+  
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/language/interop.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hy-python-interop">
+<span id="interop"></span><h1>Hy &lt;-&gt; Python interop<a class="headerlink" href="#hy-python-interop" title="Permalink to this headline">¶</a></h1>
+<p>Despite being a Lisp, Hy aims to be fully compatible with Python. That means
+every Python module or package can be imported in Hy code, and vice versa.</p>
+<p><a class="reference internal" href="syntax.html#mangling"><span class="std std-ref">Mangling</span></a> allows variable names to be spelled differently in
+Hy and Python. For example, Python’s <code class="docutils literal notranslate"><span class="pre">str.format_map</span></code> can be written
+<code class="docutils literal notranslate"><span class="pre">str.format-map</span></code> in Hy, and a Hy function named <code class="docutils literal notranslate"><span class="pre">valid?</span></code> would be called
+<code class="docutils literal notranslate"><span class="pre">is_valid</span></code> in Python. In Python, you can import Hy’s core functions
+<code class="docutils literal notranslate"><span class="pre">mangle</span></code> and <code class="docutils literal notranslate"><span class="pre">unmangle</span></code> directly from the <code class="docutils literal notranslate"><span class="pre">hy</span></code> package.</p>
+<div class="section" id="using-python-from-hy">
+<h2>Using Python from Hy<a class="headerlink" href="#using-python-from-hy" title="Permalink to this headline">¶</a></h2>
+<p>You can embed Python code directly into a Hy program with the special operators
+<a class="reference internal" href="../api.html#py" title="py"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">py</span></code></a> and <a class="reference internal" href="../api.html#pys" title="pys"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">pys</span></code></a>.</p>
+<p>Using a Python module from Hy is nice and easy: you just have to <a class="reference external" href="https://docs.python.org/3.10/reference/simple_stmts.html#import" title="(in Python v3.10)"><span>The import statement</span></a>
+it. If you have the following in <code class="docutils literal notranslate"><span class="pre">greetings.py</span></code> in Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello,&quot;</span> <span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can use it in Hy:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">import </span><span class="nv">greetings</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">.greet</span> <span class="nv">greetings</span> <span class="s">&quot;foo&quot;</span><span class="p">)</span> <span class="c1">; prints &quot;hello, foo&quot;</span>
+</pre></div>
+</div>
+<p>You can also import <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> bytecode files, of course.</p>
+</div>
+<div class="section" id="using-hy-from-python">
+<h2>Using Hy from Python<a class="headerlink" href="#using-hy-from-python" title="Permalink to this headline">¶</a></h2>
+<p>Suppose you have written some useful utilities in Hy, and you want to use them in
+regular Python, or to share them with others as a package. Or suppose you work
+with somebody else, who doesn’t like Hy (!), and only uses Python.</p>
+<p>In any case, you need to know how to use Hy from Python. Fear not, for it is
+easy.</p>
+<p>If you save the following in <code class="docutils literal notranslate"><span class="pre">greetings.hy</span></code>:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">setv</span> <span class="nv">this-will-have-underscores</span> <span class="s">&quot;See?&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">greet</span> <span class="p">[</span><span class="nv">name</span><span class="p">]</span> <span class="p">(</span><span class="nb">print </span><span class="s">&quot;Hello from Hy,&quot;</span> <span class="nv">name</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Then you can use it directly from Python, by importing Hy before importing
+the module. In Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hy</span>
+<span class="kn">import</span> <span class="nn">greetings</span>
+
+<span class="n">greetings</span><span class="o">.</span><span class="n">greet</span><span class="p">(</span><span class="s2">&quot;Foo&quot;</span><span class="p">)</span> <span class="c1"># prints &quot;Hello from Hy, Foo&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">greetings</span><span class="o">.</span><span class="n">this_will_have_underscores</span><span class="p">)</span> <span class="c1"># prints &quot;See?&quot;</span>
+</pre></div>
+</div>
+<p>If you create a package with Hy code, and you do the <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">hy</span></code> in
+<code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>, you can then directly include the package. Of course, Hy still
+has to be installed.</p>
+<div class="section" id="compiled-files">
+<h3>Compiled files<a class="headerlink" href="#compiled-files" title="Permalink to this headline">¶</a></h3>
+<p>You can also compile a module with <code class="docutils literal notranslate"><span class="pre">hyc</span></code>, which gives you a <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> file. You
+can import that file. Hy does not <em>really</em> need to be installed ; however, if in
+your code, you use any symbol from <a class="reference internal" href="../api.html"><span class="doc">API</span></a>, a corresponding <code class="docutils literal notranslate"><span class="pre">import</span></code>
+statement will be generated, and Hy will have to be installed.</p>
+<p>Even if you do not use a Hy builtin, but just another function or variable with
+the name of a Hy builtin, the <code class="docutils literal notranslate"><span class="pre">import</span></code> will be generated. For example, the previous code
+causes the import of <code class="docutils literal notranslate"><span class="pre">name</span></code> from <code class="docutils literal notranslate"><span class="pre">hy.core.language</span></code>.</p>
+<p><strong>Bottom line: in most cases, Hy has to be installed.</strong></p>
+</div>
+<div class="section" id="launching-a-hy-repl-from-python">
+<span id="repl-from-py"></span><h3>Launching a Hy REPL from Python<a class="headerlink" href="#launching-a-hy-repl-from-python" title="Permalink to this headline">¶</a></h3>
+<p>You can use the function <code class="docutils literal notranslate"><span class="pre">run_repl()</span></code> to launch the Hy REPL from Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">hy.cmdline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hy</span><span class="o">.</span><span class="n">cmdline</span><span class="o">.</span><span class="n">run_repl</span><span class="p">()</span>
+<span class="go">hy 0.12.1 using CPython(default) 3.6.0 on Linux</span>
+<span class="go">=&gt; (defn foo [] (print &quot;bar&quot;))</span>
+<span class="go">=&gt; (test)</span>
+<span class="go">bar</span>
+</pre></div>
+</div>
+<p>If you want to print the Python code Hy generates for you, use the <code class="docutils literal notranslate"><span class="pre">spy</span></code>
+argument:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">hy.cmdline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hy</span><span class="o">.</span><span class="n">cmdline</span><span class="o">.</span><span class="n">run_repl</span><span class="p">(</span><span class="n">spy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">hy 0.12.1 using CPython(default) 3.6.0 on Linux</span>
+<span class="go">=&gt; (defn test [] (print &quot;bar&quot;))</span>
+<span class="go">def test():</span>
+<span class="go">    return print(&#39;bar&#39;)</span>
+<span class="go">=&gt; (test)</span>
+<span class="go">test()</span>
+<span class="go">bar</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="evaluating-strings-of-hy-code-from-python">
+<h3>Evaluating strings of Hy code from Python<a class="headerlink" href="#evaluating-strings-of-hy-code-from-python" title="Permalink to this headline">¶</a></h3>
+<p>Evaluating a string (or <code class="docutils literal notranslate"><span class="pre">file</span></code> object) containing a Hy expression requires
+two separate steps. First, use the <code class="docutils literal notranslate"><span class="pre">read_str</span></code> function (or <code class="docutils literal notranslate"><span class="pre">read</span></code> for a
+<code class="docutils literal notranslate"><span class="pre">file</span></code> object) to turn the expression into a Hy model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">hy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expr</span> <span class="o">=</span> <span class="n">hy</span><span class="o">.</span><span class="n">read_str</span><span class="p">(</span><span class="s2">&quot;(- (/ (+ 1 3 88) 2) 8)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then, use the <code class="docutils literal notranslate"><span class="pre">hy.eval</span></code> function to evaluate it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hy</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+<span class="go">38.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="syntax.html" class="btn btn-neutral float-right" title="Syntax" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="repl.html" class="btn btn-neutral float-left" title="The Hy REPL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 the authors.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

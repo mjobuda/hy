@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Syntax &mdash; hy 1.0a3+120.g6b92d745 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/overrides.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Model Patterns" href="model_patterns.html" />
+    <link rel="prev" title="Hy &lt;-&gt; Python interop" href="interop.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> hy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0a3+120
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../whyhy.html">Why Hy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../style-guide.html">Hy Style Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation Index</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cli.html">Command Line Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repl.html">The Hy REPL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interop.html">Hy &lt;-&gt; Python interop</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Syntax</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#identifiers">identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#numeric-literals">numeric literals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#string-literals">string literals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#format-strings">format strings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keywords">keywords</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#symbols">symbols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#discard-prefix">discard prefix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="model_patterns.html">Model Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internals.html">Internal Hy Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking.html">Hacking on Hy</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Documentation Index</a> &raquo;</li>
+        
+      <li>Syntax</li>
+    
+    
+  <li style="margin-left: 1em">Hy version 1.0a3+120.g6b92d745 <strong style='color: red;'>(unstable)</strong></li>
+  
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/language/syntax.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="syntax">
+<span id="id1"></span><h1>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="identifiers">
+<h2>identifiers<a class="headerlink" href="#identifiers" title="Permalink to this headline">¶</a></h2>
+<p>An identifier consists of a nonempty sequence of Unicode characters that are not whitespace nor any of the following: <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span> <span class="pre">[</span> <span class="pre">]</span> <span class="pre">{</span> <span class="pre">}</span> <span class="pre">'</span> <span class="pre">&quot;</span></code>. Hy first tries to parse each identifier into a numeric literal, then into a keyword if that fails, and finally into a symbol if that fails.</p>
+</div>
+<div class="section" id="numeric-literals">
+<h2>numeric literals<a class="headerlink" href="#numeric-literals" title="Permalink to this headline">¶</a></h2>
+<p>In addition to regular numbers, standard notation from Python for non-base 10
+integers is used. <code class="docutils literal notranslate"><span class="pre">0x</span></code> for Hex, <code class="docutils literal notranslate"><span class="pre">0o</span></code> for Octal, <code class="docutils literal notranslate"><span class="pre">0b</span></code> for Binary.</p>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">print </span><span class="mi">0</span><span class="nv">x80</span> <span class="mi">0</span><span class="nv">b11101</span> <span class="mi">0</span><span class="nv">o102</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Underscores and commas can appear anywhere in a numeric literal except the very
+beginning. They have no effect on the value of the literal, but they’re useful
+for visually separating digits.</p>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">print </span><span class="mi">10</span>,<span class="mi">000</span>,<span class="mi">000</span>,<span class="mi">000</span> <span class="mi">10</span><span class="nv">_000_000_000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Unlike Python, Hy provides literal forms for NaN and infinity: <code class="docutils literal notranslate"><span class="pre">NaN</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Inf</span></code>, and <code class="docutils literal notranslate"><span class="pre">-Inf</span></code>.</p>
+</div>
+<div class="section" id="string-literals">
+<h2>string literals<a class="headerlink" href="#string-literals" title="Permalink to this headline">¶</a></h2>
+<p>Hy allows double-quoted strings (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;hello&quot;</span></code>), but not single-quoted
+strings like Python. The single-quote character <code class="docutils literal notranslate"><span class="pre">'</span></code> is reserved for
+preventing the evaluation of a form (e.g., <code class="docutils literal notranslate"><span class="pre">'(+</span> <span class="pre">1</span> <span class="pre">1)</span></code>), as in most Lisps.</p>
+<p id="syntax-bracket-strings">Python’s so-called triple-quoted strings (e.g., <code class="docutils literal notranslate"><span class="pre">'''hello'''</span></code> and
+<code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;hello&quot;&quot;&quot;</span></code>) aren’t supported. However, in Hy, unlike Python, any string
+literal can contain newlines. Furthermore, Hy supports an alternative form of
+string literal called a “bracket string” similar to Lua’s long brackets.
+Bracket strings have customizable delimiters, like the here-documents of other
+languages. A bracket string begins with <code class="docutils literal notranslate"><span class="pre">#[FOO[</span></code> and ends with <code class="docutils literal notranslate"><span class="pre">]FOO]</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">FOO</span></code> is any string not containing <code class="docutils literal notranslate"><span class="pre">[</span></code> or <code class="docutils literal notranslate"><span class="pre">]</span></code>, including the empty
+string. (If <code class="docutils literal notranslate"><span class="pre">FOO</span></code> is exactly <code class="docutils literal notranslate"><span class="pre">f</span></code> or begins with <code class="docutils literal notranslate"><span class="pre">f-</span></code>, the bracket string
+is interpreted as a <a class="reference internal" href="#syntax-fstrings"><span class="std std-ref">format string</span></a>.) For example:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="nv">=&gt;</span> <span class="p">(</span><span class="nb">print </span><span class="o">#</span><span class="p">[[</span><span class="s">&quot;That&#39;s very kind of yuo [sic]&quot;</span> <span class="nv">Tom</span> <span class="nv">wrote</span> <span class="nv">back.</span><span class="p">]])</span>
+<span class="s">&quot;That&#39;s very kind of yuo [sic]&quot;</span> <span class="nv">Tom</span> <span class="nv">wrote</span> <span class="nv">back.</span>
+<span class="nv">=&gt;</span> <span class="p">(</span><span class="nb">print </span><span class="o">#</span><span class="p">[</span><span class="nv">==</span><span class="p">[</span><span class="mi">1</span> <span class="nb">+ </span><span class="mi">1</span> <span class="nb">= </span><span class="mi">2</span><span class="p">]</span><span class="nv">==</span><span class="p">])</span>
+<span class="mi">1</span> <span class="nb">+ </span><span class="mi">1</span> <span class="nb">= </span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>A bracket string can contain newlines, but if it begins with one, the newline
+is removed, so you can begin the content of a bracket string on the line
+following the opening delimiter with no effect on the content. Any leading
+newlines past the first are preserved.</p>
+<p>Plain string literals support <a class="reference external" href="https://docs.python.org/3/reference/lexical_analysis.html#strings" title="(in Python v3.9)"><span class="xref std std-ref">a variety of backslash escapes</span></a>. To create a “raw string” that interprets all backslashes
+literally, prefix the string with <code class="docutils literal notranslate"><span class="pre">r</span></code>, as in <code class="docutils literal notranslate"><span class="pre">r&quot;slash\not&quot;</span></code>. Bracket
+strings are always raw strings and don’t allow the <code class="docutils literal notranslate"><span class="pre">r</span></code> prefix.</p>
+<p>Like Python, Hy treats all string literals as sequences of Unicode characters
+by default. You may prefix a plain string literal (but not a bracket string)
+with <code class="docutils literal notranslate"><span class="pre">b</span></code> to treat it as a sequence of bytes.</p>
+<p>Unlike Python, Hy only recognizes string prefixes (<code class="docutils literal notranslate"><span class="pre">r</span></code>, etc.) in lowercase.</p>
+</div>
+<div class="section" id="format-strings">
+<span id="syntax-fstrings"></span><h2>format strings<a class="headerlink" href="#format-strings" title="Permalink to this headline">¶</a></h2>
+<p>A format string (or “f-string”, or “formatted string literal”) is a string
+literal with embedded code, possibly accompanied by formatting commands. Hy
+f-strings work much like <a class="reference external" href="https://docs.python.org/3/reference/lexical_analysis.html#f-strings" title="(in Python v3.9)"><span class="xref std std-ref">Python f-strings</span></a> except that the
+embedded code is in Hy rather than Python.</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="nv">=&gt;</span> <span class="p">(</span><span class="nb">print </span><span class="nv">f</span><span class="s">&quot;The sum is {(+ 1 1)}.&quot;</span><span class="p">)</span>
+<span class="nv">The</span> <span class="nv">sum</span> <span class="nv">is</span> <span class="mi">2</span><span class="nv">.</span>
+</pre></div>
+</div>
+<p>Since <code class="docutils literal notranslate"><span class="pre">!</span></code> and <code class="docutils literal notranslate"><span class="pre">:</span></code> are identifier characters in Hy, Hy decides where the
+code in a replacement field ends, and any conversion or format specifier
+begins, by parsing exactly one form. You can use <code class="docutils literal notranslate"><span class="pre">do</span></code> to combine several
+forms into one, as usual. Whitespace may be necessary to terminate the form:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span>=&gt; (setv foo &quot;a&quot;)
+=&gt; (print f&quot;{foo:x&lt;5}&quot;)
+…
+NameError: name &#39;hyx_fooXcolonXxXlessHthan_signX5&#39; is not defined
+=&gt; (print f&quot;{foo :x&lt;5}&quot;)
+axxxx
+</pre></div>
+</div>
+<p>Unlike Python, whitespace is allowed between a conversion and a format
+specifier.</p>
+<p>Also unlike Python, comments and backslashes are allowed in replacement fields.
+Hy’s lexer will still process the whole format string normally, like any other
+string, before any replacement fields are considered, so you may need to
+backslash your backslashes, and you can’t comment out a closing brace or the
+string delimiter.</p>
+<p>Hy’s f-strings are compatible with Python’s “=” debugging syntax, subject to
+the above limitations on delimiting identifiers. For example:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="nv">=&gt;</span> <span class="p">(</span><span class="nf">setv</span> <span class="nv">foo</span> <span class="s">&quot;bar&quot;</span><span class="p">)</span>
+<span class="nv">=&gt;</span> <span class="p">(</span><span class="nb">print </span><span class="nv">f</span><span class="s">&quot;{foo = }&quot;</span><span class="p">)</span>
+<span class="nv">foo</span> <span class="nb">= </span><span class="ss">&#39;bar</span><span class="o">&#39;</span>
+<span class="nv">=&gt;</span> <span class="p">(</span><span class="nb">print </span><span class="nv">f</span><span class="s">&quot;{foo = !s :_^7}&quot;</span><span class="p">)</span>
+<span class="nv">foo</span> <span class="nb">= </span><span class="nv">__bar__</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="keywords">
+<span id="syntax-keywords"></span><h2>keywords<a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h2>
+<p>An identifier headed by a colon, such as <code class="docutils literal notranslate"><span class="pre">:foo</span></code>, is a keyword. If a
+literal keyword appears in a function call, it’s used to indicate a keyword
+argument rather than passed in as a value. For example, <code class="docutils literal notranslate"><span class="pre">(f</span> <span class="pre">:foo</span> <span class="pre">3)</span></code> calls
+the function <code class="docutils literal notranslate"><span class="pre">f</span></code> with the keyword argument named <code class="docutils literal notranslate"><span class="pre">foo</span></code> set to <code class="docutils literal notranslate"><span class="pre">3</span></code>. Hence,
+trying to call a function on a literal keyword may fail: <code class="docutils literal notranslate"><span class="pre">(f</span> <span class="pre">:foo)</span></code> yields
+the error <code class="docutils literal notranslate"><span class="pre">Keyword</span> <span class="pre">argument</span> <span class="pre">:foo</span> <span class="pre">needs</span> <span class="pre">a</span> <span class="pre">value</span></code>. To avoid this, you can quote
+the keyword, as in <code class="docutils literal notranslate"><span class="pre">(f</span> <span class="pre">':foo)</span></code>, or use it as the value of another keyword
+argument, as in <code class="docutils literal notranslate"><span class="pre">(f</span> <span class="pre">:arg</span> <span class="pre">:foo)</span></code>. It is important to note that a keyword argument
+cannot be a Python reserved word. This will raise a <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code> similar to Python.
+See <a class="reference internal" href="../api.html#reserved-param-names"><span class="std std-ref">defn</span></a> for examples.</p>
+<p>Keywords can be called like functions as shorthand for <code class="docutils literal notranslate"><span class="pre">get</span></code>. <code class="docutils literal notranslate"><span class="pre">(:foo</span> <span class="pre">obj)</span></code>
+is equivalent to <code class="docutils literal notranslate"><span class="pre">(get</span> <span class="pre">obj</span> <span class="pre">(hy.mangle</span> <span class="pre">&quot;foo&quot;))</span></code>. An optional <code class="docutils literal notranslate"><span class="pre">default</span></code> argument
+is also allowed: <code class="docutils literal notranslate"><span class="pre">(:foo</span> <span class="pre">obj</span> <span class="pre">2)</span></code> or <code class="docutils literal notranslate"><span class="pre">(:foo</span> <span class="pre">obj</span> <span class="pre">:default</span> <span class="pre">2)</span></code> returns <code class="docutils literal notranslate"><span class="pre">2</span></code> if
+<code class="docutils literal notranslate"><span class="pre">(get</span> <span class="pre">obj</span> <span class="pre">&quot;foo&quot;)</span></code> raises a <code class="docutils literal notranslate"><span class="pre">KeyError</span></code>.</p>
+</div>
+<div class="section" id="symbols">
+<span id="mangling"></span><h2>symbols<a class="headerlink" href="#symbols" title="Permalink to this headline">¶</a></h2>
+<p>Symbols are identifiers that are neither legal numeric literals nor legal
+keywords. In most contexts, symbols are compiled to Python variable names. Some
+example symbols are <code class="docutils literal notranslate"><span class="pre">hello</span></code>, <code class="docutils literal notranslate"><span class="pre">+++</span></code>, <code class="docutils literal notranslate"><span class="pre">3fiddy</span></code>, <code class="docutils literal notranslate"><span class="pre">$40</span></code>, <code class="docutils literal notranslate"><span class="pre">just✈wrong</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">🦑</span></code>.</p>
+<p>Since the rules for Hy symbols are much more permissive than the rules for
+Python identifiers, Hy uses a mangling algorithm to convert its own names to
+Python-legal names. The steps are as follows:</p>
+<ol class="arabic">
+<li><p>Remove any leading underscores (<code class="docutils literal notranslate"><span class="pre">_</span></code>). Leading underscores have special
+significance in Python, so we will mangle the remainder of the name and
+then add the leading underscores back in to the final mangled name.</p></li>
+<li><p>Convert hyphens (<code class="docutils literal notranslate"><span class="pre">-</span></code>) to underscores (<code class="docutils literal notranslate"><span class="pre">_</span></code>). Thus, <code class="docutils literal notranslate"><span class="pre">foo-bar</span></code> becomes
+<code class="docutils literal notranslate"><span class="pre">foo_bar</span></code>. If the name at this step starts with a hyphen, this <em>first</em> hyphen is not
+converted, so that we don’t introduce a new leading underscore into the name. Thus
+<code class="docutils literal notranslate"><span class="pre">--has-dashes?</span></code> becomes <code class="docutils literal notranslate"><span class="pre">-_has_dashes?</span></code> at this step.</p></li>
+<li><p>If the name ends with <code class="docutils literal notranslate"><span class="pre">?</span></code>, remove it and prepend <code class="docutils literal notranslate"><span class="pre">is_</span></code>. Thus, <code class="docutils literal notranslate"><span class="pre">tasty?</span></code>
+becomes <code class="docutils literal notranslate"><span class="pre">is_tasty</span></code> and <code class="docutils literal notranslate"><span class="pre">-_has_dashes?</span></code> becomes <code class="docutils literal notranslate"><span class="pre">is_-_has_dashes</span></code>.</p></li>
+<li><p>If the name still isn’t Python-legal, make the following changes. A name
+could be Python-illegal because it contains a character that’s never legal
+in a Python name, it contains a character that’s illegal in that position,
+or it’s equal to a Python reserved word.</p>
+<ul class="simple">
+<li><p>Prepend <code class="docutils literal notranslate"><span class="pre">hyx_</span></code> to the name.</p></li>
+<li><p>Replace each illegal character with <code class="docutils literal notranslate"><span class="pre">XfooX</span></code>, where <code class="docutils literal notranslate"><span class="pre">foo</span></code> is the Unicode
+character name in lowercase, with spaces replaced by underscores and
+hyphens replaced by <code class="docutils literal notranslate"><span class="pre">H</span></code>. Replace leading hyphens and <code class="docutils literal notranslate"><span class="pre">X</span></code> itself the
+same way. If the character doesn’t have a name, use <code class="docutils literal notranslate"><span class="pre">U</span></code> followed by its
+code point in lowercase hexadecimal.</p></li>
+</ul>
+<p>Thus, <code class="docutils literal notranslate"><span class="pre">green☘</span></code> becomes <code class="docutils literal notranslate"><span class="pre">hyx_greenXshamrockX</span></code>, <code class="docutils literal notranslate"><span class="pre">if</span></code> becomes
+<code class="docutils literal notranslate"><span class="pre">hyx_if</span></code>, and <code class="docutils literal notranslate"><span class="pre">is_-_has_dashes</span></code> becomes <code class="docutils literal notranslate"><span class="pre">hyx_is_XhyphenHminusX_has_dashes</span></code>.</p>
+</li>
+<li><p>Finally, any leading underscores removed in the first step are added back
+to the mangled name.
+Thus, <code class="docutils literal notranslate"><span class="pre">(hy.mangle</span> <span class="pre">'_tasty?)</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;_is_tasty&quot;</span></code> instead of <code class="docutils literal notranslate"><span class="pre">&quot;is__tasty&quot;</span></code>
+and <code class="docutils literal notranslate"><span class="pre">(hy.mangle</span> <span class="pre">'__-_has-dashes?)</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;__hyx_is_XhyphenHminusX_has_dashes&quot;</span></code>.</p></li>
+</ol>
+<p>Mangling isn’t something you should have to think about often, but you may see
+mangled names in error messages, the output of <code class="docutils literal notranslate"><span class="pre">hy2py</span></code>, etc. A catch to be
+aware of is that mangling, as well as the inverse “unmangling” operation
+offered by the <code class="docutils literal notranslate"><span class="pre">unmangle</span></code> function, isn’t one-to-one. Two different symbols
+can mangle to the same string and hence compile to the same Python variable.
+The chief practical consequence of this is that (non-initial) <code class="docutils literal notranslate"><span class="pre">-</span></code> and <code class="docutils literal notranslate"><span class="pre">_</span></code> are
+interchangeable in all symbol names, so you shouldn’t use, e.g., both
+<code class="docutils literal notranslate"><span class="pre">foo-bar</span></code> and <code class="docutils literal notranslate"><span class="pre">foo_bar</span></code> as separate variables.</p>
+</div>
+<div class="section" id="discard-prefix">
+<h2>discard prefix<a class="headerlink" href="#discard-prefix" title="Permalink to this headline">¶</a></h2>
+<p>Hy supports the Extensible Data Notation discard prefix, like Clojure.
+Any form prefixed with <code class="docutils literal notranslate"><span class="pre">#_</span></code> is discarded instead of compiled.
+This completely removes the form so it doesn’t evaluate to anything,
+not even None.
+It’s often more useful than linewise comments for commenting out a
+form, because it respects code structure even when part of another
+form is on the same line. For example:</p>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span>=&gt; (print &quot;Hy&quot; &quot;cruel&quot; &quot;World!&quot;)
+Hy cruel World!
+=&gt; (print &quot;Hy&quot; #_&quot;cruel&quot; &quot;World!&quot;)
+Hy World!
+=&gt; (+ 1 1 (print &quot;Math is hard!&quot;))
+Math is hard!
+Traceback (most recent call last):
+   ...
+TypeError: unsupported operand type(s) for +: &#39;int&#39; and &#39;NoneType&#39;
+=&gt; (+ 1 1 #_(print &quot;Math is hard!&quot;))
+2
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="model_patterns.html" class="btn btn-neutral float-right" title="Model Patterns" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="interop.html" class="btn btn-neutral float-left" title="Hy &lt;-&gt; Python interop" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 the authors.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

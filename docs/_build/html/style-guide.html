@@ -1,0 +1,1175 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Hy Style Guide &mdash; hy 1.0a3+120.g6b92d745 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/overrides.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Documentation Index" href="language/index.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> hy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0a3+120
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="whyhy.html">Why Hy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Hy Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#layout-indentation">Layout &amp; Indentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-three-laws">The Three Laws</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#limits">Limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#whitespace">Whitespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alignment">Alignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hold-it-open">Hold it Open</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#snuggle">Snuggle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#grouping">Grouping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#special-arguments">Special Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removing-whitespace">Removing Whitespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#close-bracket-close-line">Close Bracket, Close Line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">Comments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#coding-style">Coding Style</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pythonic-names">Pythonic Names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#threading-macros">Threading Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-calls">Method Calls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-more-arguments">Use More Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#imports">Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#underscores">Underscores</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#thanks">Thanks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="language/index.html">Documentation Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking.html">Hacking on Hy</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">hy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Hy Style Guide</li>
+    
+    
+  <li style="margin-left: 1em">Hy version 1.0a3+120.g6b92d745 <strong style='color: red;'>(unstable)</strong></li>
+  
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/style-guide.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hy-style-guide">
+<h1>Hy Style Guide<a class="headerlink" href="#hy-style-guide" title="Permalink to this headline">¶</a></h1>
+<p>The Hy style guide intends to be a set of ground rules for the Hyve
+(yes, the Hy community prides itself in appending Hy to everything)
+to write idiomatic Hy code. Hy derives a lot from Clojure &amp; Common
+Lisp, while always maintaining Python interoperability.</p>
+<div class="section" id="layout-indentation">
+<h2>Layout &amp; Indentation<a class="headerlink" href="#layout-indentation" title="Permalink to this headline">¶</a></h2>
+<p>The #1 complaint about Lisp?</p>
+<blockquote>
+<div><p><em>It’s too weird looking with all those parentheses! How do you even</em> <strong>read</strong> <em>that?</em></p>
+</div></blockquote>
+<p>And, they’re right! Lisp was originally much too hard to read.
+Then they figured out layout and indentation. And it was glorious.</p>
+<div class="section" id="the-three-laws">
+<h3>The Three Laws<a class="headerlink" href="#the-three-laws" title="Permalink to this headline">¶</a></h3>
+<p>Here’s the secret: <em>Real Lispers don’t count the brackets.</em>
+They fade into the background.
+When reading Lisp, disregard the trailing closing brackets—those are for the computer, not the human.
+As in Python, read the code structure by indentation.</p>
+<p>Lisp code is made of trees—Abstract Syntax Trees—not strings.
+S-expressions are very direct textual representation of AST.
+That’s the level of <em>homoiconicity</em>—the level Lisp macros operate on.
+It’s not like the C-preprocessor or Python’s interpolated eval-string tricks that see code as just letters.
+That’s not how to think of Lisp code; think tree structure, not delimiters.</p>
+<ol class="arabic simple">
+<li><p>Closing brackets must NEVER be left alone, sad and lonesome on their own line.</p></li>
+</ol>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="c1">;; PREFERRED</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">fib</span> <span class="p">[</span><span class="nv">n</span><span class="p">]</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt;= </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="nv">n</span>
+      <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span><span class="p">))</span>
+         <span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)))))</span>  <span class="c1">; Lots of Irritating Superfluous Parentheses</span>
+                                <span class="c1">; L.I.S.P. ;))</span>
+
+<span class="c1">;; How the experienced Lisper sees it. Indented trees. Like Python.</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">fib</span> <span class="p">[</span><span class="nv">n</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt;= </span><span class="nv">n</span> <span class="mi">2</span>
+      <span class="nv">n</span>
+      <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span>
+         <span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">2</span>
+
+<span class="c1">;; BAD</span>
+<span class="c1">;; We&#39;re trying to ignore them and you want to give them their own line?</span>
+<span class="c1">;; Hysterically ridiculous.</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">fib</span> <span class="p">[</span>
+    <span class="nv">n</span>
+<span class="p">]</span>  <span class="c1">; My eyes!</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt;= </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="nv">n</span>
+    <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span><span class="p">))</span> <span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)))</span>
+  <span class="p">)</span>
+<span class="p">)</span>  <span class="c1">; GAH, BURN IT WITH FIRE!</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>New lines must ALWAYS be indented past their parent opening bracket.</p></li>
+</ol>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="c1">;; PREFERRED</span>
+<span class="p">(</span><span class="nf">foo</span> <span class="p">(</span>, <span class="nv">arg1</span>
+        <span class="nv">arg2</span><span class="p">))</span>
+
+<span class="c1">;; BAD. And evil.</span>
+<span class="c1">;; Same bracket structure as above, but not enough indent.</span>
+<span class="p">(</span><span class="nf">foo</span> <span class="p">(</span>, <span class="nv">arg1</span>
+  <span class="nv">arg2</span><span class="p">))</span>
+
+<span class="c1">;; PREFERRED. Same indent as above, but now it matches the brackets.</span>
+<span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">arg</span><span class="p">]</span>
+  <span class="nv">arg</span><span class="p">)</span>
+
+<span class="c1">;; Remember, when reading Lisp, you ignore the trailing brackets.</span>
+<span class="c1">;; Look at what happens if we remove them.</span>
+<span class="c1">;; Can you tell where they should go by the indentation?</span>
+
+<span class="p">(</span><span class="nf">foo</span> <span class="p">(</span>, <span class="nv">arg1</span>
+        <span class="nv">arg2</span>
+
+<span class="p">(</span><span class="nf">foo</span> <span class="p">(</span>, <span class="nv">arg1</span>
+  <span class="nv">arg2</span>
+
+<span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">arg</span>
+  <span class="nv">arg</span>
+
+<span class="c1">;; See how the structure of those last two became indistinguishable?</span>
+
+<span class="c1">;; Reconstruction of the bad example by indent.</span>
+<span class="c1">;; Not what we started with, is it?</span>
+<span class="p">(</span><span class="nf">foo</span> <span class="p">(</span>, <span class="nv">arg1</span><span class="p">)</span>
+  <span class="nv">arg2</span><span class="p">)</span>
+
+<span class="c1">;; Beware of brackets with reader syntax.</span>
+<span class="c1">;; You still have to indent past them.</span>
+
+<span class="c1">;; BAD</span>
+<span class="o">`#</span><span class="p">{(</span><span class="nf">foo</span><span class="p">)</span>
+ <span class="o">~@</span><span class="p">[(</span><span class="nf">bar</span><span class="p">)</span>
+  <span class="mi">1</span> <span class="mi">2</span><span class="p">]}</span>
+
+<span class="c1">;; Above, no trail.</span>
+<span class="o">`#</span><span class="p">{(</span><span class="nf">foo</span>
+ <span class="o">~@</span><span class="p">[(</span><span class="nf">bar</span>
+  <span class="mi">1</span> <span class="mi">2</span>
+
+<span class="c1">;; Reconstruction. Is. Wrong.</span>
+<span class="o">`#</span><span class="p">{(</span><span class="nf">foo</span><span class="p">)}</span>
+ <span class="o">~@</span><span class="p">[(</span><span class="nf">bar</span><span class="p">)]</span>
+  <span class="mi">1</span> <span class="mi">2</span>
+
+<span class="c1">;; PREFERRED</span>
+<span class="o">`#</span><span class="p">{(</span><span class="nf">foo</span><span class="p">)</span>
+   <span class="o">~@</span><span class="p">[(</span><span class="nf">bar</span><span class="p">)</span>
+      <span class="mi">1</span>
+      <span class="mi">2</span><span class="p">]}</span>
+
+<span class="c1">;; OK</span>
+<span class="c1">;; A string is an atom, not a Sequence.</span>
+<span class="p">(</span><span class="nf">foo</span> <span class="s">&quot;abc</span>
+<span class="s">  xyz&quot;</span><span class="p">)</span>
+
+<span class="c1">;; Still readable without trailing brackets.</span>
+<span class="p">(</span><span class="nf">foo</span> <span class="s">&quot;abc</span>
+<span class="s">  xyz&quot;</span>  <span class="c1">; Double-quote isn&#39;t a closing bracket. Don&#39;t ignore it.</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>New lines must NEVER be indented past the previous element’s opening bracket.</p></li>
+</ol>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="c1">;; BAD</span>
+<span class="p">((</span><span class="nf">get-fn</span> <span class="nv">q</span><span class="p">)</span>
+  <span class="nv">x</span>
+  <span class="nv">y</span><span class="p">)</span>
+
+<span class="c1">;; The above with trailing brackets removed. See the problem?</span>
+<span class="p">((</span><span class="nf">get-fn</span> <span class="nv">q</span>
+  <span class="nv">x</span>
+  <span class="nv">y</span>
+
+<span class="c1">;; By indentation, this is where the brackets should go.</span>
+<span class="p">((</span><span class="nf">get-fn</span> <span class="nv">q</span>
+  <span class="nv">x</span>
+  <span class="nv">y</span><span class="p">))</span>
+
+<span class="c1">;; OK</span>
+<span class="p">((</span><span class="nf">get-fn</span> <span class="nv">q</span><span class="p">)</span> <span class="nv">x</span>
+            <span class="nv">y</span><span class="p">)</span>
+
+<span class="c1">;; The above without trailing brackets. Still OK (for humans).</span>
+<span class="p">((</span><span class="nf">get-fn</span> <span class="nv">q</span><span class="p">)</span> <span class="nv">x</span>  <span class="c1">; The ) on this line isn&#39;t trailing!</span>
+            <span class="nv">y</span>
+
+<span class="c1">;; PREFERRED, since the ) should end the line.</span>
+<span class="p">((</span><span class="nf">get-fn</span> <span class="nv">q</span><span class="p">)</span>
+ <span class="nv">x</span>
+ <span class="nv">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="limits">
+<h3>Limits<a class="headerlink" href="#limits" title="Permalink to this headline">¶</a></h3>
+<p>Follow PEP 8 rules for line limits, viz.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>72 columns max for text (docstrings and comments).</p></li>
+<li><p>79 columns max for other code, OR</p></li>
+<li><p>99 for other code if primarily maintained by a team that can agree to 99.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="whitespace">
+<h3>Whitespace<a class="headerlink" href="#whitespace" title="Permalink to this headline">¶</a></h3>
+<p>AVOID trailing spaces. They suck!</p>
+<p>AVOID tabs in code. Indent with spaces only.</p>
+<p>PREFER the <code class="docutils literal notranslate"><span class="pre">\t</span></code> escape sequence to literal tab characters in one-line string literals.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Literal tabs are OK inside multiline strings if you also add a warning comment.</p></li>
+<li><p>But <code class="docutils literal notranslate"><span class="pre">\t</span></code> is still PREFERRED in multiline strings.</p></li>
+<li><p>The comment should PREFERABLY appear just before the string.</p></li>
+<li><p>But a blanket warning at the top of a function, class, or file is OK.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="alignment">
+<h3>Alignment<a class="headerlink" href="#alignment" title="Permalink to this headline">¶</a></h3>
+<p>Line up arguments to function calls when splitting over multiple lines.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The first argument PREFERABLY stays on the first line with the function name,</p></li>
+<li><p>but may instead start on the next line indented one space past its parent bracket.</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="c1">;; PREFERRED. All args aligned with first arg.</span>
+<span class="p">(</span><span class="nf">foofunction</span> <span class="nv">arg1</span>
+             <span class="p">(</span><span class="nf">barfunction</span> <span class="nv">bararg1</span>
+                          <span class="nv">bararg2</span>
+                          <span class="nv">bararg3</span><span class="p">)</span>  <span class="c1">; Aligned with bararg1.</span>
+             <span class="nv">arg3</span><span class="p">)</span>
+
+<span class="c1">;; BAD</span>
+<span class="p">(</span><span class="nf">foofunction</span> <span class="nv">arg1</span>
+             <span class="p">(</span><span class="nf">barfunction</span> <span class="nv">bararg1</span>
+               <span class="nv">bararg2</span>  <span class="c1">; Wrong. Looks like a macro body.</span>
+                    <span class="nv">bararg3</span><span class="p">)</span>  <span class="c1">; Why?!</span>
+             <span class="nv">arg3</span><span class="p">)</span>
+
+<span class="c1">;; PREFERRED. Args can all go on one line if it fits.</span>
+<span class="p">(</span><span class="nf">foofunction</span> <span class="nv">arg1</span>
+             <span class="p">(</span><span class="nf">barfunction</span> <span class="nv">bararg1</span> <span class="nv">bararg2</span> <span class="nv">bararg3</span><span class="p">)</span>
+             <span class="nv">arg3</span><span class="p">)</span>
+
+<span class="c1">;; OK. Args not on first line, but still aligned.</span>
+<span class="p">(</span><span class="nf">foofunction</span>
+  <span class="nv">arg1</span>  <span class="c1">; Indented one column past parent (</span>
+  <span class="p">(</span><span class="nf">barfunction</span>
+    <span class="nv">bararg1</span>  <span class="c1">; Indent again.</span>
+    <span class="nv">bararg2</span>  <span class="c1">; Aligned with bararg1.</span>
+    <span class="nv">bararg3</span><span class="p">)</span>
+  <span class="nv">arg3</span><span class="p">)</span>  <span class="c1">; Aligned with arg1.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hold-it-open">
+<h3>Hold it Open<a class="headerlink" href="#hold-it-open" title="Permalink to this headline">¶</a></h3>
+<p>If you need to separate a bracket trail use a <code class="docutils literal notranslate"><span class="pre">#_</span> <span class="pre">/</span></code> comment to hold it open.
+This avoids violating law #1.</p>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="c1">;; PREFERRED</span>
+<span class="p">[(</span><span class="nf">foo</span><span class="p">)</span>
+ <span class="p">(</span><span class="nf">bar</span><span class="p">)</span>
+ <span class="p">(</span><span class="nf">baz</span><span class="p">)]</span>
+
+<span class="c1">;; OK, especially if the list is long. (Not that three is long.)</span>
+<span class="c1">;; This is better for version control line diffs.</span>
+<span class="p">[</span>  <span class="c1">; Opening brackets can&#39;t be &quot;trailing closing brackets&quot; btw.</span>
+ <span class="p">(</span><span class="nf">foo</span><span class="p">)</span>
+ <span class="p">(</span><span class="nf">bar</span><span class="p">)</span>
+ <span class="p">(</span><span class="nf">baz</span><span class="p">)</span>
+ <span class="o">#</span><span class="nv">_</span> <span class="nv">/</span><span class="p">]</span>  <span class="c1">; Nothing to see here. Move along.</span>
+
+<span class="c1">;; Examples of commenting out items at the end of a list follow.</span>
+<span class="c1">;; As with typing things in the REPL, these cases are less important</span>
+<span class="c1">;; if you&#39;re the only one that sees them. But even so, maintaining</span>
+<span class="c1">;; good style can help prevent errors.</span>
+
+<span class="c1">;; BAD and a syntax error. Lost a bracket.</span>
+<span class="p">[(</span><span class="nf">foo</span><span class="p">)</span>
+ <span class="c1">;; (bar)</span>
+ <span class="c1">;; (baz)]</span>
+
+<span class="c1">;; BAD. Broke law #1.</span>
+<span class="p">[(</span><span class="nf">foo</span><span class="p">)</span>
+ <span class="c1">;; (bar)</span>
+ <span class="c1">;; (baz)</span>
+ <span class="p">]</span>
+
+<span class="c1">;; PREFERRED</span>
+<span class="c1">;; The discard syntax respects code structure,</span>
+<span class="c1">;; so it&#39;s less likely to cause errors.</span>
+<span class="p">[(</span><span class="nf">foo</span><span class="p">)</span>
+ <span class="o">#</span><span class="nv">_</span><span class="p">(</span><span class="nf">bar</span><span class="p">)</span>
+ <span class="o">#</span><span class="nv">_</span><span class="p">(</span><span class="nf">baz</span><span class="p">)]</span>
+
+<span class="c1">;; OK. Adding a final discarded element makes line comments safer.</span>
+<span class="p">[(</span><span class="nf">foo</span><span class="p">)</span>
+ <span class="c1">;; (bar)</span>
+ <span class="c1">;; (baz)</span>
+ <span class="o">#</span><span class="nv">_</span> <span class="nv">/</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="snuggle">
+<h3>Snuggle<a class="headerlink" href="#snuggle" title="Permalink to this headline">¶</a></h3>
+<p>Brackets like to snuggle, don’t leave them out in the cold!</p>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="c1">;; PREFERRED</span>
+<span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">(</span><span class="nf">foo</span> <span class="p">(</span><span class="nf">bar</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1">;; BAD</span>
+<span class="p">[</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="p">]</span>
+<span class="p">(</span> <span class="nv">foo</span> <span class="p">(</span> <span class="nv">bar</span> <span class="mi">2</span> <span class="p">)</span> <span class="p">)</span>
+
+<span class="c1">;; BAD. And ugly.</span>
+<span class="p">[</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">(</span><span class="nf">foo</span><span class="p">(</span> <span class="nv">bar</span> <span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="grouping">
+<h3>Grouping<a class="headerlink" href="#grouping" title="Permalink to this headline">¶</a></h3>
+<p>Use whitespace to show implicit groups, but be consistent within a form.</p>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="c1">;; Older Lisps would typically wrap such groups in even more parentheses.</span>
+<span class="c1">;; (The Common Lisp LOOP macro was a notable exception.)</span>
+<span class="c1">;; But Hy takes after Clojure, which has a lighter touch.</span>
+
+<span class="c1">;; BAD. Can&#39;t tell key from value without counting</span>
+<span class="p">{</span><span class="mi">1</span> <span class="mi">9</span> <span class="mi">2</span> <span class="mi">8</span> <span class="mi">3</span> <span class="mi">7</span> <span class="mi">4</span> <span class="mi">6</span> <span class="mi">5</span> <span class="mi">5</span><span class="p">}</span>
+
+<span class="c1">;; PREFERRED. This can fit on one line. Clojure would have used commas</span>
+<span class="c1">;; here, but those aren&#39;t whitespace in Hy. Use extra spaces instead.</span>
+<span class="p">{</span><span class="mi">1</span> <span class="mi">9</span>  <span class="mi">2</span> <span class="mi">8</span>  <span class="mi">3</span> <span class="mi">7</span>  <span class="mi">4</span> <span class="mi">6</span>  <span class="mi">5</span> <span class="mi">5</span><span class="p">}</span>
+
+<span class="c1">;; OK. And preferred if it couldn&#39;t fit on one line.</span>
+<span class="p">{</span><span class="mi">1</span> <span class="mi">9</span>
+ <span class="mi">2</span> <span class="mi">8</span>
+ <span class="mi">3</span> <span class="mi">7</span>
+ <span class="mi">4</span> <span class="mi">6</span>
+ <span class="mi">5</span> <span class="mi">5</span><span class="p">}</span>  <span class="c1">; Newlines show key-value pairs in dict.</span>
+
+<span class="c1">;; BAD</span>
+<span class="c1">;; This grouping makes no sense.</span>
+<span class="o">#</span><span class="p">{</span><span class="mi">1</span> <span class="mi">2</span>
+  <span class="mi">3</span> <span class="mi">4</span><span class="p">}</span>  <span class="c1">; It&#39;s a set, so why are there pairs?</span>
+
+<span class="c1">;; BAD</span>
+<span class="c1">;; This grouping also makes no sense. But, it could be OK in a macro or</span>
+<span class="c1">;; something if this grouping was somehow meaningful there.</span>
+<span class="p">[</span><span class="mi">1</span>
+ <span class="mi">1</span> <span class="mi">2</span>
+ <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1">; wHy do you like random patterns? [sic pun, sorry]</span>
+
+<span class="c1">;; Be consistent. Separate all groups the same way in a form.</span>
+
+<span class="c1">;; BAD</span>
+<span class="p">{</span><span class="mi">1</span> <span class="mi">9</span>  <span class="mi">2</span> <span class="mi">8</span>
+ <span class="mi">3</span> <span class="mi">7</span>  <span class="mi">4</span> <span class="mi">6</span>  <span class="mi">5</span> <span class="mi">5</span><span class="p">}</span>  <span class="c1">; Pick one or the other!</span>
+
+<span class="c1">;; BAD</span>
+<span class="p">{</span><span class="mi">1</span> <span class="mi">9</span>  <span class="mi">2</span> <span class="mi">8</span> <span class="mi">3</span> <span class="mi">7</span>  <span class="mi">4</span> <span class="mi">6</span>  <span class="mi">5</span> <span class="mi">5</span><span class="p">}</span>  <span class="c1">; You forgot something.</span>
+
+<span class="c1">;; Groups of one must also be consistent.</span>
+
+<span class="c1">;; PREFERRED</span>
+<span class="p">(</span><span class="nf">foo</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1">; No need for extra spaces here.</span>
+
+<span class="c1">;; OK, but you could have fit this on one line.</span>
+<span class="p">(</span><span class="nf">foo</span> <span class="mi">1</span>
+     <span class="mi">2</span>
+     <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1">;; OK, but you still could have fit this on one line.</span>
+<span class="p">[</span><span class="mi">1</span>
+ <span class="mi">2</span><span class="p">]</span>
+
+<span class="c1">;; BAD</span>
+<span class="p">(</span><span class="nf">foo</span> <span class="mi">1</span> <span class="mi">2</span>  <span class="c1">; This isn&#39;t a pair?</span>
+     <span class="mi">3</span><span class="p">)</span>  <span class="c1">; Lines or spaces--pick one or the other!</span>
+
+<span class="c1">;; PREFERRRED</span>
+<span class="p">(</span><span class="nf">foofunction</span> <span class="p">(</span><span class="nf">make-arg</span><span class="p">)</span>
+             <span class="p">(</span><span class="nf">get-arg</span><span class="p">)</span>
+             <span class="o">#</span><span class="nv">tag</span><span class="p">(</span><span class="nf">do-stuff</span><span class="p">)</span>  <span class="c1">; Tags belong with what they tag.</span>
+             <span class="o">#</span><span class="nb">* </span><span class="nv">args</span>  <span class="c1">; #* goes with what it unpacks.</span>
+             <span class="ss">:foo</span> <span class="nv">spam</span>
+             <span class="ss">:bar</span> <span class="nv">eggs</span>  <span class="c1">; Keyword args are also pairs. Group them.</span>
+             <span class="o">#</span><span class="nv">**</span> <span class="nv">kwargs</span><span class="p">)</span>
+
+<span class="c1">;; PREFERRED. Spaces divide groups on one line.</span>
+<span class="p">(</span><span class="nf">quux</span> <span class="ss">:foo</span> <span class="nv">spam</span>  <span class="ss">:bar</span> <span class="nv">eggs</span>  <span class="o">#</span><span class="nb">* </span><span class="nv">with-spam</span><span class="p">)</span>
+<span class="p">{</span><span class="ss">:foo</span> <span class="nv">spam</span>  <span class="ss">:bar</span> <span class="nv">eggs</span><span class="p">}</span>
+
+<span class="c1">;; OK. The colon is still enough to indicate groups.</span>
+<span class="p">(</span><span class="nf">quux</span> <span class="ss">:foo</span> <span class="nv">spam</span> <span class="ss">:bar</span> <span class="nv">eggs</span> <span class="o">#</span><span class="nb">* </span><span class="nv">with-spam</span><span class="p">)</span>
+<span class="p">{</span><span class="ss">:foo</span> <span class="nv">spam</span> <span class="ss">:bar</span> <span class="nv">eggs</span><span class="p">}</span>
+<span class="c1">;; OK.</span>
+<span class="p">(</span><span class="s">&quot;foo&quot;</span> <span class="nv">spam</span> <span class="s">&quot;bar&quot;</span> <span class="nv">eggs</span><span class="p">}</span>
+
+<span class="c1">;; BAD. Can&#39;t tell key from value.</span>
+<span class="p">(</span><span class="nf">quux</span> <span class="ss">:foo</span> <span class="ss">:spam</span> <span class="ss">:bar</span> <span class="ss">:eggs</span> <span class="ss">:baz</span> <span class="ss">:bacon</span><span class="p">)</span>
+<span class="p">{</span><span class="ss">:foo</span> <span class="ss">:spam</span> <span class="ss">:bar</span> <span class="ss">:eggs</span> <span class="ss">:baz</span> <span class="ss">:bacon</span><span class="p">}</span>
+<span class="p">{</span><span class="s">&quot;foo&quot;</span> <span class="s">&quot;spam&quot;</span> <span class="s">&quot;bar&quot;</span> <span class="s">&quot;eggs&quot;</span> <span class="s">&quot;baz&quot;</span> <span class="s">&quot;bacon&quot;</span><span class="p">}</span>
+
+<span class="c1">;; PREFERRED</span>
+<span class="p">(</span><span class="nf">quux</span> <span class="ss">:foo</span> <span class="ss">:spam</span>  <span class="ss">:bar</span> <span class="ss">:eggs</span>  <span class="ss">:baz</span> <span class="ss">:bacon</span><span class="p">)</span>
+<span class="p">{</span><span class="ss">:foo</span> <span class="ss">:spam</span>  <span class="ss">:bar</span> <span class="ss">:eggs</span>  <span class="ss">:baz</span> <span class="ss">:bacon</span><span class="p">}</span>
+<span class="p">{</span><span class="s">&quot;foo&quot;</span> <span class="s">&quot;spam&quot;</span>  <span class="s">&quot;bar&quot;</span> <span class="s">&quot;eggs&quot;</span>  <span class="s">&quot;baz&quot;</span> <span class="s">&quot;bacon&quot;</span><span class="p">}</span>
+
+<span class="c1">;; OK. Yep, those are pairs too.</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">x</span> <span class="mi">1</span>
+      <span class="nv">y</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1">;; PREFERRED. This fits on one line.</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">x</span> <span class="mi">1</span>  <span class="nv">y</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1">;; BAD. Doesn&#39;t separate groups.</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span>
+           <span class="s">&quot;negative&quot;</span>
+           <span class="p">(</span><span class="nb">= </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span>
+           <span class="s">&quot;zero&quot;</span>
+           <span class="p">(</span><span class="nb">&gt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span>
+           <span class="s">&quot;positive&quot;</span>
+           <span class="s">&quot;not a number&quot;</span><span class="p">))</span>
+
+<span class="c1">;; BAD. And evil. Broke law #3. Shows groups but args aren&#39;t aligned.</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span>
+               <span class="s">&quot;negative&quot;</span>
+           <span class="p">(</span><span class="nb">= </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span>
+               <span class="s">&quot;zero&quot;</span>
+           <span class="p">(</span><span class="nb">&gt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span>
+               <span class="s">&quot;positive&quot;</span>
+           <span class="s">&quot;not a number&quot;</span><span class="p">))</span>
+
+<span class="c1">;; BAD. Shows groups but args aren&#39;t aligned.</span>
+<span class="c1">;; If the then-parts weren&#39;t atoms, this would break law #3.</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span>
+         <span class="s">&quot;negative&quot;</span>
+           <span class="p">(</span><span class="nb">= </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span>
+         <span class="s">&quot;zero&quot;</span>
+           <span class="p">(</span><span class="nb">&gt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span>
+         <span class="s">&quot;positive&quot;</span>
+           <span class="s">&quot;not a number&quot;</span><span class="p">))</span>
+
+<span class="c1">;; OK. Redundant (do) forms allow extra indent to show groups</span>
+<span class="c1">;; without violating law #3.</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span>
+           <span class="p">(</span><span class="nf">do</span>
+             <span class="s">&quot;negative&quot;</span><span class="p">)</span>
+           <span class="p">(</span><span class="nb">= </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span>
+           <span class="p">(</span><span class="nf">do</span>
+             <span class="s">&quot;zero&quot;</span><span class="p">)</span>
+           <span class="p">(</span><span class="nb">&gt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span>
+           <span class="p">(</span><span class="nf">do</span>
+             <span class="s">&quot;positive&quot;</span><span class="p">)</span>
+           <span class="s">&quot;not a number&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Separate toplevel forms (including toplevel comments not about a particular form)
+with a single blank line, rather than two as in Python.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>This can be omitted for tightly associated forms.</p></li>
+</ul>
+</div></blockquote>
+<p>Methods within a defclass need not be separated by blank line.</p>
+</div>
+<div class="section" id="special-arguments">
+<h3>Special Arguments<a class="headerlink" href="#special-arguments" title="Permalink to this headline">¶</a></h3>
+<p>Macros and special forms are normally indented one space past the parent bracket,
+but can also have “special” arguments that are indented like function arguments.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Macros with an <code class="docutils literal notranslate"><span class="pre">#*</span> <span class="pre">body</span></code> argument contain an implicit <code class="docutils literal notranslate"><span class="pre">do</span></code>.</p></li>
+<li><p>The body is never special, but the arguments before it are.</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="c1">;; PREFERRED</span>
+<span class="p">(</span><span class="nb">assoc </span><span class="nv">foo</span>  <span class="c1">; foo is special</span>
+  <span class="s">&quot;x&quot;</span> <span class="mi">1</span>  <span class="c1">; remaining args are not special. Indent 2 spaces.</span>
+  <span class="s">&quot;y&quot;</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1">;; PREFERRED</span>
+<span class="c1">;; The do form has no special args. Indent like a function call.</span>
+<span class="p">(</span><span class="k">do </span><span class="p">(</span><span class="nf">foo</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">bar</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">baz</span><span class="p">))</span>
+
+<span class="c1">;; OK</span>
+<span class="c1">;; No special args to distinguish. This is also valid function indent.</span>
+<span class="p">(</span><span class="nf">do</span>
+  <span class="p">(</span><span class="nf">foo</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">bar</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">baz</span><span class="p">))</span>
+
+<span class="c1">;; PREFERRED</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">fib</span> <span class="p">[</span><span class="nv">n</span><span class="p">]</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt;= </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="nv">n</span>
+      <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span><span class="p">))</span>
+         <span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)))))</span>
+
+<span class="c1">;; OK</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">fib</span>
+      <span class="p">[</span><span class="nv">n</span><span class="p">]</span>  <span class="c1">; name and argslist are special. Indent like function args.</span>
+  <span class="c1">;; The defn body is not special. Indent 1 space past parent bracket.</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt;= </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="nv">n</span>
+    <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1">; Emacs-style else indent.</span>
+       <span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)))))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="removing-whitespace">
+<h3>Removing Whitespace<a class="headerlink" href="#removing-whitespace" title="Permalink to this headline">¶</a></h3>
+<p>Removing whitespace can also make groups clearer.</p>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="c1">;; lookups</span>
+
+<span class="c1">;; OK</span>
+<span class="p">(</span><span class="k">. </span><span class="nv">foo</span> <span class="p">[</span><span class="s">&quot;bar&quot;</span><span class="p">])</span>
+
+<span class="c1">;; PREFERRED</span>
+<span class="p">(</span><span class="k">. </span><span class="nv">foo</span><span class="p">[</span><span class="s">&quot;bar&quot;</span><span class="p">])</span>
+
+<span class="c1">;; BAD. Doesn&#39;t show groups clearly.</span>
+<span class="p">(</span><span class="nb">import </span><span class="nv">foo</span> <span class="nv">foo</span> <span class="p">[</span><span class="nv">spam</span> <span class="ss">:as</span> <span class="nv">sp</span> <span class="nv">eggs</span> <span class="ss">:as</span> <span class="nv">eg</span><span class="p">]</span> <span class="nv">bar</span> <span class="nv">bar</span> <span class="p">[</span><span class="nv">bacon</span><span class="p">])</span>
+
+<span class="c1">;; OK. Extra spaces show groups.</span>
+<span class="p">(</span><span class="nb">import </span><span class="nv">foo</span>  <span class="nv">foo</span> <span class="p">[</span><span class="nv">spam</span> <span class="ss">:as</span> <span class="nv">sp</span>  <span class="nv">eggs</span> <span class="ss">:as</span> <span class="nv">eg</span><span class="p">]</span>  <span class="nv">bar</span>  <span class="nv">bar</span> <span class="p">[</span><span class="nv">bacon</span><span class="p">])</span>
+
+<span class="c1">;; PREFERRED. Removing spaces is even clearer.</span>
+<span class="p">(</span><span class="nb">import </span><span class="nv">foo</span> <span class="nv">foo</span><span class="p">[</span><span class="nv">spam</span> <span class="ss">:as</span> <span class="nv">sp</span>  <span class="nv">eggs</span> <span class="ss">:as</span> <span class="nv">eg</span><span class="p">]</span> <span class="nv">bar</span> <span class="nv">bar</span><span class="p">[</span><span class="nv">bacon</span><span class="p">])</span>
+
+<span class="c1">;; OK. Newlines show groups.</span>
+<span class="p">(</span><span class="nb">import </span><span class="nv">foo</span>
+        <span class="nv">foo</span> <span class="p">[</span><span class="nv">spam</span> <span class="ss">:as</span> <span class="nv">sp</span>
+             <span class="nv">eggs</span> <span class="ss">:as</span> <span class="nv">eg</span><span class="p">]</span>
+        <span class="nv">bar</span>
+        <span class="nv">bar</span> <span class="p">[</span><span class="nv">bacon</span><span class="p">])</span>
+
+<span class="c1">;; PREFERRED, It&#39;s more consistent with the preferred one-line version.</span>
+<span class="p">(</span><span class="nb">import </span><span class="nv">foo</span>
+        <span class="nv">foo</span><span class="p">[</span><span class="nv">spam</span> <span class="ss">:as</span> <span class="nv">sp</span>
+            <span class="nv">eggs</span> <span class="ss">:as</span> <span class="nv">eg</span><span class="p">]</span>
+        <span class="nv">bar</span>
+        <span class="nv">bar</span><span class="p">[</span><span class="nv">bacon</span><span class="p">])</span>
+
+<span class="c1">;; Avoid whitespace after tags.</span>
+
+<span class="c1">;; Note which shows groups better.</span>
+
+<span class="c1">;; BAD</span>
+<span class="p">(</span><span class="nf">foofunction</span> <span class="o">#</span><span class="nv">tag</span> <span class="s">&quot;foo&quot;</span> <span class="o">#</span><span class="nv">tag</span> <span class="p">(</span><span class="nf">foo</span><span class="p">)</span> <span class="o">#</span><span class="nb">* </span><span class="p">(</span><span class="nf">get-args</span><span class="p">))</span>
+
+<span class="c1">;; OK</span>
+<span class="p">(</span><span class="nf">foofunction</span> <span class="o">#</span><span class="nv">tag</span> <span class="s">&quot;foo&quot;</span>  <span class="o">#</span><span class="nv">tag</span> <span class="p">(</span><span class="nf">foo</span><span class="p">)</span>  <span class="o">#</span><span class="nb">* </span><span class="p">(</span><span class="nf">get-args</span><span class="p">))</span>
+
+<span class="c1">;; PREFERRED</span>
+<span class="p">(</span><span class="nf">foofunction</span> <span class="o">#</span><span class="nv">tag</span><span class="s">&quot;foo&quot;</span> <span class="o">#</span><span class="nv">tag</span><span class="p">(</span><span class="nf">foo</span><span class="p">)</span> <span class="o">#</span><span class="nv">*</span><span class="p">(</span><span class="nf">get-args</span><span class="p">))</span>
+
+<span class="c1">;; PREFERRED</span>
+<span class="c1">;; Can&#39;t group these by removing whitespace. Use extra spaces instead.</span>
+<span class="p">(</span><span class="nf">foofunction</span> <span class="o">#</span><span class="nv">x</span> <span class="nv">foo</span>  <span class="o">#</span><span class="nv">x</span> <span class="nv">bar</span>  <span class="o">#</span><span class="nb">* </span><span class="nv">args</span><span class="p">)</span>
+
+<span class="c1">;; OK</span>
+<span class="c1">;; Same idea, but this could have fit on one line.</span>
+<span class="p">(</span><span class="nf">foofunction</span> <span class="o">#</span><span class="nv">x</span> <span class="nv">foo</span>
+             <span class="o">#</span><span class="nv">x</span> <span class="nv">bar</span>
+             <span class="o">#</span><span class="nb">* </span><span class="nv">args</span><span class="p">)</span>
+
+<span class="c1">;; OK, but you don&#39;t need to separate function name from first arg.</span>
+<span class="p">(</span><span class="nf">foofunction</span>  <span class="o">#</span><span class="nv">x</span> <span class="nv">foo</span>  <span class="o">#</span><span class="nv">x</span> <span class="nv">bar</span>  <span class="o">#</span><span class="nb">* </span><span class="nv">args</span><span class="p">)</span>
+
+<span class="c1">;; OK. But same idea.</span>
+<span class="c1">;; No need to separate the first group from the function name.</span>
+<span class="p">(</span><span class="nf">foofunction</span>
+  <span class="o">#</span><span class="nv">x</span> <span class="nv">foo</span>
+  <span class="o">#</span><span class="nv">x</span> <span class="nv">bar</span>
+  <span class="o">#</span><span class="nb">* </span><span class="nv">args</span><span class="p">)</span>
+
+<span class="c1">;; PREFERRED. It&#39;s still clear what this is tagging.</span>
+<span class="c1">;; And you don&#39;t have to re-indent.</span>
+<span class="o">#</span><span class="nv">_</span>
+<span class="p">(</span><span class="k">def </span><span class="nv">foo</span> <span class="p">[]</span>
+  <span class="nv">stuff</span><span class="p">)</span>
+
+<span class="c1">;; OK, but more work.</span>
+<span class="o">#</span><span class="nv">_</span><span class="p">(</span><span class="k">def </span><span class="nv">foo</span> <span class="p">[]</span>
+    <span class="nv">stuff</span><span class="p">)</span>
+
+<span class="c1">;; BAD, you messed up the indent and broke law #2.</span>
+<span class="o">#</span><span class="nv">_</span><span class="p">(</span><span class="k">def </span><span class="nv">foo</span> <span class="p">[]</span>
+  <span class="nv">stuff</span><span class="p">)</span>
+
+<span class="c1">;; BAD, keep the tag grouped with its argument.</span>
+<span class="o">#</span><span class="nv">_</span>
+
+<span class="p">(</span><span class="k">def </span><span class="nv">foo</span> <span class="p">[]</span>
+  <span class="nv">stuff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="close-bracket-close-line">
+<h3>Close Bracket, Close Line<a class="headerlink" href="#close-bracket-close-line" title="Permalink to this headline">¶</a></h3>
+<p>A <em>single</em> closing bracket SHOULD end the line,
+unless it’s in the middle of an implicit group.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>If the forms are small and simple you can maybe leave them on one line.</p></li>
+</ul>
+</div></blockquote>
+<p>A <em>train</em> of closing brackets MUST end the line.</p>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="c1">;; One-liners are overrated.</span>
+<span class="c1">;; Maybe OK if you&#39;re just typing into the REPL.</span>
+<span class="c1">;; But even then, maintaining good style can help prevent errors.</span>
+
+<span class="c1">;; BAD. One-liner is too hard to read.</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">fib</span> <span class="p">[</span><span class="nv">n</span><span class="p">]</span> <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt;= </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)</span> <span class="nv">n</span> <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span><span class="p">))</span> <span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)))))</span>
+
+<span class="c1">;; BAD. Getting better, but the first line is still too complex.</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">fib</span> <span class="p">[</span><span class="nv">n</span><span class="p">]</span> <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt;= </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)</span> <span class="nv">n</span> <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span><span class="p">))</span>
+                                <span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)))))</span>
+<span class="c1">;; OK. Barely.</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">fib</span> <span class="p">[</span><span class="nv">n</span><span class="p">]</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt;= </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)</span> <span class="nv">n</span> <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1">; This line is pushing it.</span>
+                    <span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)))))</span>
+
+<span class="c1">;; OK</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">fib</span> <span class="p">[</span><span class="nv">n</span><span class="p">]</span>  <span class="c1">; Saw a &quot;]&quot;, newline.</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt;= </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1">; OK to break here, since there&#39;s only one pair.</span>
+      <span class="nv">n</span>
+    <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1">; Whitespace separation (Emacs else-indent).</span>
+       <span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)))))</span>
+
+<span class="c1">;; OK</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">fib</span> <span class="p">[</span><span class="nv">n</span><span class="p">]</span>  <span class="c1">; Saw a &quot;]&quot;, end line. (Margin comments don&#39;t count.)</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt;= </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)</span> <span class="nv">n</span>  <span class="c1">; Saw a &quot;)&quot;, but it&#39;s in a pair starting in this line.</span>
+      <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1">; Saw a &quot;))&quot; MUST end line.</span>
+         <span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)))))</span>
+
+<span class="c1">;; OK. Pairs.</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span> <span class="s">&quot;negative&quot;</span>  <span class="c1">; Single ) inside group. No break.</span>
+           <span class="p">(</span><span class="nb">= </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span> <span class="s">&quot;zero&quot;</span>
+           <span class="p">(</span><span class="nb">&gt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span> <span class="s">&quot;positive&quot;</span>
+           <span class="ss">:else</span> <span class="s">&quot;not a number&quot;</span><span class="p">))</span>  <span class="c1">; :else is not magic; True works too.</span>
+
+<span class="c1">;; OK. Avoided line breaks at single ) to show pairs.</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span> <span class="s">&quot;negative&quot;</span>
+           <span class="p">(</span><span class="nb">= </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span> <span class="s">&quot;zero&quot;</span>
+           <span class="p">(</span><span class="nb">&gt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span> <span class="p">(</span><span class="k">do </span><span class="p">(</span><span class="nf">do-foo</span><span class="p">)</span>  <span class="c1">; Single ) inside group. No break.</span>
+                         <span class="p">(</span><span class="nf">do-bar</span><span class="p">)</span>
+                         <span class="s">&quot;positive&quot;</span><span class="p">)</span>
+           <span class="s">&quot;not a number&quot;</span><span class="p">))</span>  <span class="c1">; Implicit else is PREFERRED.</span>
+
+<span class="c1">;; BAD</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span> <span class="s">&quot;negative&quot;</span>
+           <span class="p">(</span><span class="nb">= </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span> <span class="s">&quot;zero&quot;</span>
+           <span class="p">(</span><span class="nb">and </span><span class="p">(</span><span class="nf">even?</span> <span class="nv">n</span><span class="p">)</span>
+                <span class="p">(</span><span class="nb">&gt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">))</span> <span class="s">&quot;even-positive&quot;</span>  <span class="c1">; Bad. &quot;))&quot; must break.</span>
+           <span class="p">(</span><span class="nb">&gt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span> <span class="s">&quot;positive&quot;</span>
+           <span class="s">&quot;not a number&quot;</span><span class="p">))</span>
+
+<span class="c1">;; BAD</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span> <span class="s">&quot;negative&quot;</span>
+           <span class="p">(</span><span class="nb">= </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span> <span class="s">&quot;zero&quot;</span>
+           <span class="p">(</span><span class="nb">and </span><span class="p">(</span><span class="nf">even?</span> <span class="nv">n</span><span class="p">)</span>
+                <span class="p">(</span><span class="nb">&gt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">))</span> <span class="p">(</span><span class="k">do </span><span class="p">(</span><span class="nf">do-foo</span><span class="p">)</span>  <span class="c1">; Y U no break?</span>
+                               <span class="p">(</span><span class="nf">do-bar</span><span class="p">)</span>
+                               <span class="s">&quot;even-positive&quot;</span><span class="p">)</span>
+           <span class="p">(</span><span class="nb">&gt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span> <span class="s">&quot;positive&quot;</span>
+           <span class="s">&quot;not a number&quot;</span><span class="p">))</span>
+
+<span class="c1">;; OK. Blank line separates multiline groups.</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span> <span class="s">&quot;negative&quot;</span>
+
+           <span class="p">(</span><span class="nb">= </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span> <span class="s">&quot;zero&quot;</span>
+
+           <span class="p">(</span><span class="nb">and </span><span class="p">(</span><span class="nf">even?</span> <span class="nv">n</span><span class="p">)</span>
+                <span class="p">(</span><span class="nb">&gt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">))</span>
+           <span class="p">(</span><span class="k">do </span><span class="p">(</span><span class="nf">do-foo</span><span class="p">)</span>
+               <span class="p">(</span><span class="nf">do-bar</span><span class="p">)</span>
+                <span class="s">&quot;even-positive&quot;</span><span class="p">)</span>
+
+           <span class="p">(</span><span class="nb">&gt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span> <span class="s">&quot;positive&quot;</span>
+
+           <span class="s">&quot;not a number&quot;</span><span class="p">))</span>
+
+<span class="c1">;; BAD. Groups are not separated consistently.</span>
+<span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span> <span class="s">&quot;negative&quot;</span>
+           <span class="p">(</span><span class="nb">= </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span> <span class="s">&quot;zero&quot;</span>
+
+           <span class="p">(</span><span class="nb">&gt; </span><span class="nv">n</span> <span class="mf">0.0</span><span class="p">)</span>
+           <span class="p">(</span><span class="k">do </span><span class="p">(</span><span class="nf">do-foo</span><span class="p">)</span>
+               <span class="s">&quot;positive&quot;</span><span class="p">)</span>
+
+           <span class="s">&quot;not a number&quot;</span><span class="p">))</span>
+
+<span class="c1">;; OK. Single )&#39;s and forms are simple enough.</span>
+<span class="p">(</span><span class="nf">with</span> <span class="p">[</span><span class="nv">f</span> <span class="p">(</span><span class="nf">open</span> <span class="s">&quot;names.txt&quot;</span><span class="p">)]</span>
+  <span class="p">(</span><span class="nb">-&gt; </span><span class="p">(</span><span class="nf">.read</span> <span class="nv">f</span><span class="p">)</span> <span class="nv">.strip</span> <span class="p">(</span><span class="nf">.replace</span> <span class="s">&quot;\&quot;&quot;</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="p">(</span><span class="nf">.split</span> <span class="s">&quot;,&quot;</span><span class="p">)</span> <span class="nv">sorted</span><span class="p">)))</span>
+
+<span class="c1">;; PREFERRED. Even so, this version is much clearer.</span>
+<span class="p">(</span><span class="nf">with</span> <span class="p">[</span><span class="nv">f</span> <span class="p">(</span><span class="nf">open</span> <span class="s">&quot;names.txt&quot;</span><span class="p">)]</span>
+  <span class="p">(</span><span class="nb">-&gt; </span><span class="p">(</span><span class="nf">.read</span> <span class="nv">f</span><span class="p">)</span>
+      <span class="nv">.strip</span>
+      <span class="p">(</span><span class="nf">.replace</span> <span class="s">&quot;\&quot;&quot;</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+      <span class="p">(</span><span class="nf">.split</span> <span class="s">&quot;,&quot;</span><span class="p">)</span>
+      <span class="nv">sorted</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="comments">
+<h3>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
+<p>Prefer docstrings to comments where applicable—in <code class="docutils literal notranslate"><span class="pre">fn</span></code>, <code class="docutils literal notranslate"><span class="pre">defclass</span></code>,
+at the top of the module, and in any other macros derived from these that can take a docstring
+(e.g. <code class="docutils literal notranslate"><span class="pre">defmacro/g!</span></code>, <code class="docutils literal notranslate"><span class="pre">defn</span></code>).</p>
+<p>Docstrings contents follow the same conventions as Python.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">(comment)</span></code> macro is still subject to the three laws.
+If you’re tempted to violate them, consider discarding a string instead with <code class="docutils literal notranslate"><span class="pre">#_</span></code>.</p>
+<p>Semicolon comments always have one space between the semicolon and the start of the comment.
+Also, try to not comment the obvious.</p>
+<p>Comments with more than a single word should start with a capital letter and use punctuation.</p>
+<p>Separate sentences with a single space.</p>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="c1">;; This commentary is not about a particular form.</span>
+<span class="c1">;; These can span multiple lines. Limit them to column 72, per PEP 8.</span>
+<span class="c1">;; Separate them from the next form or form comment with a blank line.</span>
+
+<span class="c1">;; PREFERRED.</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">ind</span> <span class="p">(</span><span class="nb">dec </span><span class="nv">x</span><span class="p">))</span>  <span class="c1">; Indexing starts from 0,</span>
+                                <span class="c1">; margin comment continues on new line.</span>
+
+<span class="c1">;; OK</span>
+<span class="c1">;; Style-compliant but just states the obvious.</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">ind</span> <span class="p">(</span><span class="nb">dec </span><span class="nv">x</span><span class="p">))</span>  <span class="c1">; Sets index to x-1.</span>
+
+<span class="c1">;; BAD</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">ind</span> <span class="p">(</span><span class="nb">dec </span><span class="nv">x</span><span class="p">))</span><span class="c1">;typing words for fun</span>
+
+<span class="c1">;; Comment about the whole foofunction call.</span>
+<span class="c1">;; These can also span multiple lines.</span>
+<span class="p">(</span><span class="nf">foofunction</span> <span class="c1">;; Form comment about (get-arg1). Not a margin comment!</span>
+             <span class="p">(</span><span class="nf">get-arg1</span><span class="p">)</span>
+             <span class="c1">;; Form comment about arg2. The indent matches.</span>
+             <span class="nv">arg2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Indent form comments at the same level as the form they’re commenting about;
+they must always start with exactly two semicolons <code class="docutils literal notranslate"><span class="pre">;;</span></code>.
+Form comments appear directly above what they’re commenting on, never below.</p>
+<p>General toplevel commentary is not indented;
+these must always start with exactly two semicolons <code class="docutils literal notranslate"><span class="pre">;;</span></code>
+and be separated from the next form with a blank line.
+For long commentary, consider using a <code class="docutils literal notranslate"><span class="pre">#_</span></code> applied to a string for this purpose instead.</p>
+<p>Margin comments start two spaces from the end of the code; they
+must always start with a single semicolon <code class="docutils literal notranslate"><span class="pre">;</span></code>.
+Margin comments may be continued on the next line.</p>
+<p>When commenting out entire forms, prefer the <code class="docutils literal notranslate"><span class="pre">#_</span></code> syntax.
+But if you do need line comments, use the more general double-colon form.</p>
+</div>
+</div>
+<div class="section" id="coding-style">
+<h2>Coding Style<a class="headerlink" href="#coding-style" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pythonic-names">
+<h3>Pythonic Names<a class="headerlink" href="#pythonic-names" title="Permalink to this headline">¶</a></h3>
+<p>Use Python’s naming conventions where still applicable to Hy.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The first parameter of a method is <code class="docutils literal notranslate"><span class="pre">self</span></code>,</p></li>
+<li><p>of a classmethod is <code class="docutils literal notranslate"><span class="pre">cls</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="threading-macros">
+<h3>Threading Macros<a class="headerlink" href="#threading-macros" title="Permalink to this headline">¶</a></h3>
+<p>PREFER the threading macro or the threading tail macros when encountering
+deeply nested s-expressions. However, be judicious when using them. Do
+use them when clarity and readability improves; do not construct
+convoluted, hard to understand expressions.</p>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="c1">;; BAD. Not wrong, but could be much clearer with a threading macro.</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">NAMES</span>
+  <span class="p">(</span><span class="nf">with</span> <span class="p">[</span><span class="nv">f</span> <span class="p">(</span><span class="nf">open</span> <span class="s">&quot;names.txt&quot;</span><span class="p">)]</span>
+    <span class="p">(</span><span class="nf">sorted</span> <span class="p">(</span><span class="nf">.split</span> <span class="p">(</span><span class="nf">.replace</span> <span class="p">(</span><span class="nf">.strip</span> <span class="p">(</span><span class="nf">.read</span> <span class="nv">f</span><span class="p">))</span>
+                              <span class="s">&quot;\&quot;&quot;</span>
+                              <span class="s">&quot;&quot;</span><span class="p">)</span>
+                    <span class="s">&quot;,&quot;</span><span class="p">))))</span>
+
+<span class="c1">;; PREFERRED. This compiles exactly the same way as the above.</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">NAMES</span>
+  <span class="p">(</span><span class="nf">with</span> <span class="p">[</span><span class="nv">f</span> <span class="p">(</span><span class="nf">open</span> <span class="s">&quot;names.txt&quot;</span><span class="p">)]</span>
+    <span class="p">(</span><span class="nb">-&gt; </span><span class="p">(</span><span class="nf">.read</span> <span class="nv">f</span><span class="p">)</span>
+        <span class="nv">.strip</span>
+        <span class="p">(</span><span class="nf">.replace</span> <span class="s">&quot;\&quot;&quot;</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+        <span class="p">(</span><span class="nf">.split</span> <span class="s">&quot;,&quot;</span><span class="p">)</span>
+        <span class="nv">sorted</span><span class="p">)))</span>
+
+<span class="c1">;; BAD. Probably. The macro makes it less clear in this case.</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">square?</span> <span class="p">[</span><span class="nv">x</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">-&gt;&gt;</span> <span class="mi">2</span>
+       <span class="p">(</span><span class="nf">pow</span> <span class="p">(</span><span class="nb">int </span><span class="p">(</span><span class="nf">sqrt</span> <span class="nv">x</span><span class="p">)))</span>
+       <span class="p">(</span><span class="nb">= </span><span class="nv">x</span><span class="p">)))</span>
+
+<span class="c1">;; OK. Much clearer than the previous example above.</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">square?</span> <span class="p">[</span><span class="nv">x</span><span class="p">]</span>
+  <span class="p">(</span><span class="nb">-&gt; </span><span class="nv">x</span>
+      <span class="nv">sqrt</span>
+      <span class="nv">int</span>
+      <span class="p">(</span><span class="nf">pow</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="p">(</span><span class="nb">= </span><span class="nv">x</span><span class="p">))</span>
+
+<span class="c1">;; PREFERRED. Judicious use.</span>
+<span class="c1">;; You don&#39;t have to thread everything if it improves clarity.</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">square?</span> <span class="p">[</span><span class="nv">x</span><span class="p">]</span>
+  <span class="p">(</span><span class="nb">= </span><span class="nv">x</span> <span class="p">(</span><span class="nb">-&gt; </span><span class="nv">x</span> <span class="nv">sqrt</span> <span class="nb">int </span><span class="p">(</span><span class="nf">pow</span> <span class="mi">2</span><span class="p">))))</span>
+
+<span class="c1">;; OK. Still clear enough with no threading macro this time.</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">square?</span> <span class="p">[</span><span class="nv">x</span><span class="p">]</span>
+  <span class="p">(</span><span class="nb">= </span><span class="nv">x</span> <span class="p">(</span><span class="nf">pow</span> <span class="p">(</span><span class="nb">int </span><span class="p">(</span><span class="nf">sqrt</span> <span class="nv">x</span><span class="p">))</span>  <span class="c1">; saw a &quot;))&quot;, break.</span>
+            <span class="mi">2</span><span class="p">))</span>  <span class="c1">; aligned with first arg to pow</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="method-calls">
+<h3>Method Calls<a class="headerlink" href="#method-calls" title="Permalink to this headline">¶</a></h3>
+<p>Clojure-style dot notation is PREFERRED over the direct call of
+the object’s method, though both will continue to be supported.</p>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="c1">;; PREFERRED</span>
+<span class="p">(</span><span class="nf">with</span> <span class="p">[</span><span class="nv">fd</span> <span class="p">(</span><span class="nf">open</span> <span class="s">&quot;/etc/passwd&quot;</span><span class="p">)]</span>
+  <span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nf">.readlines</span> <span class="nv">fd</span><span class="p">)))</span>
+
+<span class="c1">;; OK</span>
+<span class="p">(</span><span class="nf">with</span> <span class="p">[</span><span class="nv">fd</span> <span class="p">(</span><span class="nf">open</span> <span class="s">&quot;/etc/passwd&quot;</span><span class="p">)]</span>
+  <span class="p">(</span><span class="nb">print </span><span class="p">(</span><span class="nf">fd.readlines</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-more-arguments">
+<h3>Use More Arguments<a class="headerlink" href="#use-more-arguments" title="Permalink to this headline">¶</a></h3>
+<p>PREFER using multiple arguments to multiple forms.
+But judicious use of redundant forms can clarify intent.
+AVOID the separating blank line for toplevel forms in this case.</p>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="c1">;; BAD</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">x</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">y</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">z</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">foo</span> <span class="mi">9</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">bar</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1">;; OK</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">x</span> <span class="mi">1</span>
+      <span class="nv">y</span> <span class="mi">2</span>
+      <span class="nv">z</span> <span class="mi">3</span>
+      <span class="nv">foo</span> <span class="mi">9</span>
+      <span class="nv">bar</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1">;; PREFERRED</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">x</span> <span class="mi">1</span>
+      <span class="nv">y</span> <span class="mi">2</span>
+      <span class="nv">z</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">foo</span> <span class="mi">9</span>
+      <span class="nv">bar</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="imports">
+<h3>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h3>
+<p>As in Python, group imports.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Standard library imports (including Hy’s) first.</p></li>
+<li><p>Then third-party modules,</p></li>
+<li><p>and finally internal modules.</p></li>
+</ul>
+</div></blockquote>
+<p>PREFER one import form for each group.</p>
+<p>PREFER alphabetical order within groups.</p>
+<p>Require macros before any imports and group them the same way.</p>
+<p>But sometimes imports are conditional or must be ordered a certain way for programmatic reasons, which is OK.</p>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="c1">;; PREFERRED</span>
+<span class="p">(</span><span class="nf">require</span> <span class="nv">hy.extra.anaphoric</span> <span class="p">[</span><span class="nv">%</span><span class="p">])</span>
+<span class="p">(</span><span class="nf">require</span> <span class="nv">thirdparty</span> <span class="p">[</span><span class="nv">some-macro</span><span class="p">])</span>
+<span class="p">(</span><span class="nf">require</span> <span class="nv">mymacros</span> <span class="p">[</span><span class="nv">my-macro</span><span class="p">])</span>
+
+<span class="p">(</span><span class="nb">import </span><span class="nv">json</span> <span class="nv">re</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">import </span><span class="nv">numpy</span> <span class="ss">:as</span> <span class="nv">np</span>
+        <span class="nv">pandas</span> <span class="ss">:as</span> <span class="nv">pd</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">import </span><span class="nv">mymodule1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="underscores">
+<h3>Underscores<a class="headerlink" href="#underscores" title="Permalink to this headline">¶</a></h3>
+<p>Prefer hyphens when separating words.</p>
+<ul class="simple">
+<li><p>PREFERRED <code class="docutils literal notranslate"><span class="pre">foo-bar</span></code></p></li>
+<li><p>BAD <code class="docutils literal notranslate"><span class="pre">foo_bar</span></code></p></li>
+</ul>
+<p>Don’t use leading hyphens, except for “operators” or symbols meant to be read as including one,
+e.g. <code class="docutils literal notranslate"><span class="pre">-Inf</span></code>, <code class="docutils literal notranslate"><span class="pre">-&gt;foo</span></code>.</p>
+<p>Prefix private names with an underscore, not a dash.
+to avoid confusion with negated literals like <code class="docutils literal notranslate"><span class="pre">-Inf</span></code>, <code class="docutils literal notranslate"><span class="pre">-42</span></code> or <code class="docutils literal notranslate"><span class="pre">-4/2</span></code>.</p>
+<ul class="simple">
+<li><p>PREFERRED <code class="docutils literal notranslate"><span class="pre">_x</span></code></p></li>
+<li><p>BAD <code class="docutils literal notranslate"><span class="pre">-x</span></code></p></li>
+</ul>
+<p>Write Python’s magic “dunder” names the same as in Python.
+Like <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, not <code class="docutils literal notranslate"><span class="pre">--init--</span></code> or otherwise,
+to be consistent with the private names rule above.</p>
+<p>Private names should still separate words using dashes instead of underscores,
+to be consistent with non-private parameter names and such that need the same name sans prefix,
+like <code class="docutils literal notranslate"><span class="pre">foo-bar</span></code>, not <code class="docutils literal notranslate"><span class="pre">foo_bar</span></code>.</p>
+<ul class="simple">
+<li><p>PREFERRED <code class="docutils literal notranslate"><span class="pre">_foo-bar</span></code></p></li>
+<li><p>BAD <code class="docutils literal notranslate"><span class="pre">_foo_bar</span></code></p></li>
+</ul>
+<div class="highlight-clj notranslate"><div class="highlight"><pre><span></span><span class="c1">;; BAD</span>
+<span class="c1">;; What are you doing?</span>
+<span class="p">(</span><span class="nf">_=</span> <span class="nv">spam</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1">; Throwing it away?</span>
+<span class="p">(</span><span class="nf">_</span> <span class="mi">100</span> <span class="mi">7</span><span class="p">)</span>  <span class="c1">; i18n?</span>
+
+<span class="c1">;; PREFERRED</span>
+<span class="c1">;; Clearly subtraction.</span>
+<span class="p">(</span><span class="nf">-=</span> <span class="nv">spam</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">- </span><span class="mi">100</span> <span class="mi">7</span><span class="p">)</span>
+
+<span class="c1">;; BAD</span>
+<span class="c1">;; This looks weird.</span>
+<span class="p">(</span><span class="nf">_&gt;&gt;</span> <span class="nv">foo</span> <span class="nv">bar</span> <span class="nv">baz</span><span class="p">)</span>
+
+<span class="c1">;; PREFERRED</span>
+<span class="c1">;; OH, it&#39;s an arrow!</span>
+<span class="p">(</span><span class="nf">-&gt;&gt;</span> <span class="nv">foo</span> <span class="nv">bar</span> <span class="nv">baz</span><span class="p">)</span>
+
+<span class="c1">;; Negative x?</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">-x</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1">; BAD. Unless you really meant that?</span>
+
+<span class="c1">;; PREFERRED</span>
+<span class="c1">;; Oh, it&#39;s just a module private.</span>
+<span class="p">(</span><span class="nf">setv</span> <span class="nv">_x</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1">;; BAD</span>
+<span class="p">(</span><span class="nb">class </span><span class="nv">Foo</span> <span class="p">[]</span>
+  <span class="p">(</span><span class="kd">defn </span><span class="nv">__init--</span> <span class="p">[</span><span class="nv">self</span><span class="p">]</span> <span class="nv">...</span><span class="p">))</span>
+
+<span class="c1">;; OK</span>
+<span class="p">(</span><span class="nb">class </span><span class="nv">Foo</span> <span class="p">[]</span>
+  <span class="c1">;; Less weird?</span>
+  <span class="p">(</span><span class="kd">defn </span><span class="nv">--init--</span> <span class="p">[</span><span class="nv">self</span><span class="p">]</span> <span class="nv">...</span><span class="p">))</span>
+
+<span class="c1">;; PREFERRED</span>
+<span class="p">(</span><span class="nb">class </span><span class="nv">Foo</span> <span class="p">[]</span>
+  <span class="p">(</span><span class="kd">defn </span><span class="nv">__init__</span> <span class="p">[</span><span class="nv">self</span><span class="p">]</span> <span class="nv">...</span><span class="p">))</span>
+
+<span class="c1">;; OK, but would be module private. (No import *)</span>
+<span class="p">(</span><span class="k">def </span><span class="nv">-&gt;dict</span> <span class="p">[</span><span class="o">#</span><span class="nb">* </span><span class="nv">pairs</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">dict</span> <span class="p">(</span><span class="nf">partition</span> <span class="nv">pairs</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="thanks">
+<h2>Thanks<a class="headerlink" href="#thanks" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>This guide is heavily inspired from <a class="reference external" href="https://github.com/paultag">&#64;paultag</a> ‘s blog post <a class="reference external" href="https://notes.pault.ag/hy-survival-guide/">Hy Survival Guide</a></p></li>
+<li><p>The <a class="reference external" href="https://github.com/bbatsov/clojure-style-guide">Clojure Style Guide</a></p></li>
+<li><p><a class="reference external" href="https://shaunlebron.github.io/parinfer/">Parinfer</a> and <a class="reference external" href="https://github.com/shaunlebron/parlinter">Parlinter</a> (the three laws)</p></li>
+<li><p>The Community Scheme Wiki <a class="reference external" href="http://community.schemewiki.org/?scheme-style">scheme-style</a> (ending bracket ends the line)</p></li>
+<li><p><a class="reference external" href="http://mumble.net/~campbell/scheme/style.txt">Riastradh’s Lisp Style Rules</a> (Lisp programmers do not … Azathoth forbid, count brackets)</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="language/index.html" class="btn btn-neutral float-right" title="Documentation Index" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorial.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 the authors.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

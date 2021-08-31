@@ -1,0 +1,445 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Internal Hy Documentation &mdash; hy 1.0a3+120.g6b92d745 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/overrides.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Cheatsheet" href="../cheatsheet.html" />
+    <link rel="prev" title="Model Patterns" href="model_patterns.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> hy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0a3+120
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../whyhy.html">Why Hy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../style-guide.html">Hy Style Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation Index</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cli.html">Command Line Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repl.html">The Hy REPL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interop.html">Hy &lt;-&gt; Python interop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syntax.html">Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_patterns.html">Model Patterns</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Internal Hy Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hy-models">Hy Models</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction-to-hy-models">Introduction to Hy Models</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compound-models">Compound Models</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#atomic-models">Atomic Models</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hy-macros">Hy Macros</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-gensym-for-safer-macros">Using gensym for Safer Macros</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking.html">Hacking on Hy</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Documentation Index</a> &raquo;</li>
+        
+      <li>Internal Hy Documentation</li>
+    
+    
+  <li style="margin-left: 1em">Hy version 1.0a3+120.g6b92d745 <strong style='color: red;'>(unstable)</strong></li>
+  
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/language/internals.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="internal-hy-documentation">
+<h1>Internal Hy Documentation<a class="headerlink" href="#internal-hy-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These bits are mostly useful for folks who hack on Hy itself,
+but can also be used for those delving deeper in macro programming.</p>
+</div>
+<div class="section" id="hy-models">
+<span id="models"></span><h2>Hy Models<a class="headerlink" href="#hy-models" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="introduction-to-hy-models">
+<h3>Introduction to Hy Models<a class="headerlink" href="#introduction-to-hy-models" title="Permalink to this headline">¶</a></h3>
+<p>Hy models are a very thin layer on top of regular Python objects,
+representing Hy source code as data. Models only add source position
+information, and a handful of methods to support clean manipulation of
+Hy source code, for instance in macros. To achieve that goal, Hy models
+are mixins of a base Python class and <a class="reference external" href="https://docs.python.org/3.10/c-api/object.html#object" title="(in Python v3.10)"><span>Object Protocol</span></a>.</p>
+<div class="section" id="object">
+<span id="hyobject"></span><h4>Object<a class="headerlink" href="#object" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">hy.models.Object</span></code> is the base class of Hy models. It only
+implements one method, <code class="docutils literal notranslate"><span class="pre">replace</span></code>, which replaces the source position
+of the current object with the one passed as argument. This allows us to
+keep track of the original position of expressions that get modified by
+macros, be that in the compiler or in pure hy macros.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Object</span></code> is not intended to be used directly to instantiate Hy
+models, but only as a mixin for other classes.</p>
+</div>
+</div>
+<div class="section" id="compound-models">
+<h3>Compound Models<a class="headerlink" href="#compound-models" title="Permalink to this headline">¶</a></h3>
+<p>Parenthesized and bracketed lists are parsed as compound models by the
+Hy parser.</p>
+<p>Hy uses pretty-printing reprs for its compound models by default.
+If this is causing issues,
+it can be turned off globally by setting <code class="docutils literal notranslate"><span class="pre">hy.models.PRETTY</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code>,
+or temporarily by using the <code class="docutils literal notranslate"><span class="pre">hy.models.pretty</span></code> context manager.</p>
+<p>Hy also attempts to color pretty reprs and errors using <code class="docutils literal notranslate"><span class="pre">colorama</span></code>. These can
+be turned off globally by setting <code class="docutils literal notranslate"><span class="pre">hy.models.COLORED</span></code> and <code class="docutils literal notranslate"><span class="pre">hy.errors.COLORED</span></code>,
+respectively, to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="section" id="sequence">
+<span id="hysequence"></span><h4>Sequence<a class="headerlink" href="#sequence" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">hy.models.Sequence</span></code> is the abstract base class of “iterable” Hy
+models, such as hy.models.Expression and hy.models.List.</p>
+<p>Adding a Sequence to another iterable object reuses the class of the
+left-hand-side object, a useful behavior when you want to concatenate Hy
+objects in a macro, for instance.</p>
+<p>Sequences are (mostly) immutable: you can’t add, modify, or remove
+elements. You can still append to a variable containing a Sequence with
+<code class="docutils literal notranslate"><span class="pre">+=</span></code> and otherwise construct new Sequences out of old ones.</p>
+</div>
+<div class="section" id="list">
+<span id="hylist"></span><h4>List<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">hy.models.List</span></code> is a <a class="reference external" href="https://docs.python.org/3.10/c-api/sequence.html#sequence" title="(in Python v3.10)"><span>Sequence Protocol</span></a> for bracketed <code class="docutils literal notranslate"><span class="pre">[]</span></code>
+lists, which, when used as a top-level expression, translate to Python
+list literals in the compilation phase.</p>
+</div>
+<div class="section" id="expression">
+<span id="hyexpression"></span><h4>Expression<a class="headerlink" href="#expression" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">hy.models.Expression</span></code> inherits <a class="reference external" href="https://docs.python.org/3.10/c-api/sequence.html#sequence" title="(in Python v3.10)"><span>Sequence Protocol</span></a> for
+parenthesized <code class="docutils literal notranslate"><span class="pre">()</span></code> expressions. The compilation result of those
+expressions depends on the first element of the list: the compiler
+dispatches expressions between macros and and regular Python
+function calls.</p>
+</div>
+<div class="section" id="dict">
+<span id="hydict"></span><h4>Dict<a class="headerlink" href="#dict" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">hy.models.Dict</span></code> inherits <a class="reference external" href="https://docs.python.org/3.10/c-api/sequence.html#sequence" title="(in Python v3.10)"><span>Sequence Protocol</span></a> for curly-bracketed
+<code class="docutils literal notranslate"><span class="pre">{}</span></code> expressions, which compile down to a Python dictionary literal.</p>
+</div>
+</div>
+<div class="section" id="atomic-models">
+<h3>Atomic Models<a class="headerlink" href="#atomic-models" title="Permalink to this headline">¶</a></h3>
+<p>In the input stream, double-quoted strings, respecting the Python
+notation for strings, are parsed as a single token, which is directly
+parsed as a <span class="xref std std-ref">String</span>.</p>
+<p>An uninterrupted string of characters, excluding spaces, brackets,
+quotes, double-quotes and comments, is parsed as an identifier.</p>
+<p>Identifiers are resolved to atomic models during the parsing phase in
+the following order:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#hy-numeric-models"><span class="std std-ref">Integer</span></a></p></li>
+<li><p><a class="reference internal" href="#hy-numeric-models"><span class="std std-ref">Float</span></a></p></li>
+<li><p><a class="reference internal" href="#hy-numeric-models"><span class="std std-ref">Complex</span></a> (if the atom isn’t a bare <code class="docutils literal notranslate"><span class="pre">j</span></code>)</p></li>
+<li><p><span class="xref std std-ref">Keyword</span> (if the atom starts with <code class="docutils literal notranslate"><span class="pre">:</span></code>)</p></li>
+<li><p><span class="xref std std-ref">Symbol</span></p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="string">
+<span id="hystring"></span><h4>String<a class="headerlink" href="#string" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">hy.models.String</span></code> represents string literals (including bracket strings),
+which compile down to unicode string literals (<code class="docutils literal notranslate"><span class="pre">str</span></code>) in Python.</p>
+<p><code class="docutils literal notranslate"><span class="pre">String</span></code>s are immutable.</p>
+<p>Hy literal strings can span multiple lines, and are considered by the
+parser as a single unit, respecting the Python escapes for unicode
+strings.</p>
+<p><code class="docutils literal notranslate"><span class="pre">String</span></code>s have an attribute <code class="docutils literal notranslate"><span class="pre">brackets</span></code> that stores the custom
+delimiter used for a bracket string (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;==&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">#[==[hello</span>
+<span class="pre">world]==]</span></code> and the empty string for <code class="docutils literal notranslate"><span class="pre">#[[hello</span> <span class="pre">world]]</span></code>).
+<code class="docutils literal notranslate"><span class="pre">String</span></code>s that are not produced by bracket strings have their
+<code class="docutils literal notranslate"><span class="pre">brackets</span></code> set to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</div>
+<div class="section" id="bytes">
+<h4>Bytes<a class="headerlink" href="#bytes" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">hy.models.Bytes</span></code> is like <code class="docutils literal notranslate"><span class="pre">String</span></code>, but for sequences of bytes.
+It inherits from <code class="docutils literal notranslate"><span class="pre">bytes</span></code>.</p>
+</div>
+<div class="section" id="numeric-models">
+<span id="hy-numeric-models"></span><h4>Numeric Models<a class="headerlink" href="#numeric-models" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">hy.models.Integer</span></code> represents integer literals, using the <code class="docutils literal notranslate"><span class="pre">int</span></code>
+type.</p>
+<p><code class="docutils literal notranslate"><span class="pre">hy.models.Float</span></code> represents floating-point literals.</p>
+<p><code class="docutils literal notranslate"><span class="pre">hy.models.Complex</span></code> represents complex literals.</p>
+<p>Numeric models are parsed using the corresponding Python routine, and
+valid numeric python literals will be turned into their Hy counterpart.</p>
+</div>
+<div class="section" id="symbol">
+<span id="hysymbol"></span><h4>Symbol<a class="headerlink" href="#symbol" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">hy.models.Symbol</span></code> is the model used to represent symbols in the Hy
+language. Like <code class="docutils literal notranslate"><span class="pre">String</span></code>, it inherits from <code class="docutils literal notranslate"><span class="pre">str</span></code> (or <code class="docutils literal notranslate"><span class="pre">unicode</span></code> on Python
+2).</p>
+<p>Symbols are <a class="reference internal" href="syntax.html#mangling"><span class="std std-ref">mangled</span></a> when they are compiled
+to Python variable names.</p>
+</div>
+<div class="section" id="keyword">
+<span id="hykeyword"></span><h4>Keyword<a class="headerlink" href="#keyword" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">hy.models.Keyword</span></code> represents keywords in Hy. Keywords are
+symbols starting with a <code class="docutils literal notranslate"><span class="pre">:</span></code>. See <a class="reference internal" href="syntax.html#syntax-keywords"><span class="std std-ref">keywords</span></a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.name</span></code> attribute of a <code class="docutils literal notranslate"><span class="pre">hy.models.Keyword</span></code> provides
+the (<a class="reference internal" href="syntax.html#mangling"><span class="std std-ref">unmangled</span></a>) string representation of the keyword without the initial <code class="docutils literal notranslate"><span class="pre">:</span></code>.
+For example:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="nv">=&gt;</span> <span class="p">(</span><span class="nf">setv</span> <span class="nv">x</span> <span class="ss">:foo-bar</span><span class="p">)</span>
+<span class="nv">=&gt;</span> <span class="p">(</span><span class="nb">print </span><span class="nv">x.name</span><span class="p">)</span>
+<span class="nv">foo-bar</span>
+</pre></div>
+</div>
+<p>If needed, you can get the mangled name by calling <a class="reference internal" href="../api.html#hy.mangle" title="hy.mangle"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">mangle</span></code></a>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="hy-macros">
+<h2>Hy Macros<a class="headerlink" href="#hy-macros" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-gensym-for-safer-macros">
+<span id="using-gensym"></span><h3>Using gensym for Safer Macros<a class="headerlink" href="#using-gensym-for-safer-macros" title="Permalink to this headline">¶</a></h3>
+<p>When writing macros, one must be careful to avoid capturing external variables
+or using variable names that might conflict with user code.</p>
+<p>We will use an example macro <code class="docutils literal notranslate"><span class="pre">nif</span></code> (see <a class="reference external" href="http://letoverlambda.com/index.cl/guest/chap3.html#sec_5">http://letoverlambda.com/index.cl/guest/chap3.html#sec_5</a>
+for a more complete description.) <code class="docutils literal notranslate"><span class="pre">nif</span></code> is an example, something like a numeric <code class="docutils literal notranslate"><span class="pre">if</span></code>,
+where based on the expression, one of the 3 forms is called depending on if the
+expression is positive, zero or negative.</p>
+<p>A first pass might be something like:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">defmacro </span><span class="nv">nif</span> <span class="p">[</span><span class="nv">expr</span> <span class="nv">pos-form</span> <span class="nv">zero-form</span> <span class="nv">neg-form</span><span class="p">]</span>
+  <span class="o">`</span><span class="p">(</span><span class="nf">do</span>
+    <span class="p">(</span><span class="nf">setv</span> <span class="nv">obscure-name</span> <span class="o">~</span><span class="nv">expr</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">cond </span><span class="p">[(</span><span class="nb">&gt; </span><span class="nv">obscure-name</span> <span class="mi">0</span><span class="p">)</span> <span class="o">~</span><span class="nv">pos-form</span><span class="p">]</span>
+          <span class="p">[(</span><span class="nb">= </span><span class="nv">obscure-name</span> <span class="mi">0</span><span class="p">)</span> <span class="o">~</span><span class="nv">zero-form</span><span class="p">]</span>
+          <span class="p">[(</span><span class="nb">&lt; </span><span class="nv">obscure-name</span> <span class="mi">0</span><span class="p">)</span> <span class="o">~</span><span class="nv">neg-form</span><span class="p">])))</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">obscure-name</span></code> is an attempt to pick some variable name as not to
+conflict with other code. But of course, while well-intentioned,
+this is no guarantee.</p>
+<p>The method <a class="reference internal" href="../api.html#hy.gensym" title="hy.gensym"><code class="xref hy hy-func docutils literal notranslate"><span class="pre">gensym</span></code></a> is designed to generate a new, unique symbol for just
+such an occasion. A much better version of <code class="docutils literal notranslate"><span class="pre">nif</span></code> would be:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">defmacro </span><span class="nv">nif</span> <span class="p">[</span><span class="nv">expr</span> <span class="nv">pos-form</span> <span class="nv">zero-form</span> <span class="nv">neg-form</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">setv</span> <span class="nv">g</span> <span class="p">(</span><span class="nf">hy.gensym</span><span class="p">))</span>
+  <span class="o">`</span><span class="p">(</span><span class="nf">do</span>
+     <span class="p">(</span><span class="nf">setv</span> <span class="o">~</span><span class="nv">g</span> <span class="o">~</span><span class="nv">expr</span><span class="p">)</span>
+     <span class="p">(</span><span class="nb">cond </span><span class="p">[(</span><span class="nb">&gt; </span><span class="o">~</span><span class="nv">g</span> <span class="mi">0</span><span class="p">)</span> <span class="o">~</span><span class="nv">pos-form</span><span class="p">]</span>
+           <span class="p">[(</span><span class="nb">= </span><span class="o">~</span><span class="nv">g</span> <span class="mi">0</span><span class="p">)</span> <span class="o">~</span><span class="nv">zero-form</span><span class="p">]</span>
+           <span class="p">[(</span><span class="nb">&lt; </span><span class="o">~</span><span class="nv">g</span> <span class="mi">0</span><span class="p">)</span> <span class="o">~</span><span class="nv">neg-form</span><span class="p">])))</span>
+</pre></div>
+</div>
+<p>This is an easy case, since there is only one symbol. But if there is
+a need for several gensym’s there is a second macro <code class="xref hy hy-func docutils literal notranslate"><span class="pre">with-gensyms</span></code> that
+basically expands to a <code class="docutils literal notranslate"><span class="pre">setv</span></code> form:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">with-gensyms</span> <span class="p">[</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">]</span>
+  <span class="nv">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>expands to:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">do</span>
+  <span class="p">(</span><span class="nf">setv</span> <span class="nv">a</span> <span class="p">(</span><span class="nf">hy.gensym</span><span class="p">)</span>
+        <span class="nv">b</span> <span class="p">(</span><span class="nf">hy.gensym</span><span class="p">)</span>
+        <span class="nv">c</span> <span class="p">(</span><span class="nf">hy.gensym</span><span class="p">))</span>
+  <span class="nv">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>so our re-written <code class="docutils literal notranslate"><span class="pre">nif</span></code> would look like:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">defmacro </span><span class="nv">nif</span> <span class="p">[</span><span class="nv">expr</span> <span class="nv">pos-form</span> <span class="nv">zero-form</span> <span class="nv">neg-form</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">with-gensyms</span> <span class="p">[</span><span class="nv">g</span><span class="p">]</span>
+    <span class="o">`</span><span class="p">(</span><span class="nf">do</span>
+       <span class="p">(</span><span class="nf">setv</span> <span class="o">~</span><span class="nv">g</span> <span class="o">~</span><span class="nv">expr</span><span class="p">)</span>
+       <span class="p">(</span><span class="nb">cond </span><span class="p">[(</span><span class="nb">&gt; </span><span class="o">~</span><span class="nv">g</span> <span class="mi">0</span><span class="p">)</span> <span class="o">~</span><span class="nv">pos-form</span><span class="p">]</span>
+             <span class="p">[(</span><span class="nb">= </span><span class="o">~</span><span class="nv">g</span> <span class="mi">0</span><span class="p">)</span> <span class="o">~</span><span class="nv">zero-form</span><span class="p">]</span>
+             <span class="p">[(</span><span class="nb">&lt; </span><span class="o">~</span><span class="nv">g</span> <span class="mi">0</span><span class="p">)</span> <span class="o">~</span><span class="nv">neg-form</span><span class="p">]))))</span>
+</pre></div>
+</div>
+<p>Finally, though we can make a new macro that does all this for us. <code class="xref hy hy-func docutils literal notranslate"><span class="pre">defmacro/g!</span></code>
+will take all symbols that begin with <code class="docutils literal notranslate"><span class="pre">g!</span></code> and automatically call <code class="docutils literal notranslate"><span class="pre">gensym</span></code> with the
+remainder of the symbol. So <code class="docutils literal notranslate"><span class="pre">g!a</span></code> would become <code class="docutils literal notranslate"><span class="pre">(hy.gensym</span> <span class="pre">&quot;a&quot;)</span></code>.</p>
+<p>Our final version of <code class="docutils literal notranslate"><span class="pre">nif</span></code>, built with <code class="docutils literal notranslate"><span class="pre">defmacro/g!</span></code> becomes:</p>
+<div class="highlight-clojure notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">defmacro/g!</span> <span class="nv">nif</span> <span class="p">[</span><span class="nv">expr</span> <span class="nv">pos-form</span> <span class="nv">zero-form</span> <span class="nv">neg-form</span><span class="p">]</span>
+  <span class="o">`</span><span class="p">(</span><span class="nf">do</span>
+     <span class="p">(</span><span class="nf">setv</span> <span class="o">~</span><span class="nv">g!res</span> <span class="o">~</span><span class="nv">expr</span><span class="p">)</span>
+     <span class="p">(</span><span class="nb">cond </span><span class="p">[(</span><span class="nb">&gt; </span><span class="o">~</span><span class="nv">g!res</span> <span class="mi">0</span><span class="p">)</span> <span class="o">~</span><span class="nv">pos-form</span><span class="p">]</span>
+           <span class="p">[(</span><span class="nb">= </span><span class="o">~</span><span class="nv">g!res</span> <span class="mi">0</span><span class="p">)</span> <span class="o">~</span><span class="nv">zero-form</span><span class="p">]</span>
+           <span class="p">[(</span><span class="nb">&lt; </span><span class="o">~</span><span class="nv">g!res</span> <span class="mi">0</span><span class="p">)</span> <span class="o">~</span><span class="nv">neg-form</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../cheatsheet.html" class="btn btn-neutral float-right" title="Cheatsheet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="model_patterns.html" class="btn btn-neutral float-left" title="Model Patterns" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 the authors.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

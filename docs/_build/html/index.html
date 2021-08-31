@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>The Hy Manual &mdash; hy 1.0a3+120.g6b92d745 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/overrides.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Why Hy?" href="whyhy.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> hy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0a3+120
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="whyhy.html">Why Hy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="style-guide.html">Hy Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="language/index.html">Documentation Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking.html">Hacking on Hy</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">hy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>The Hy Manual</li>
+    
+    
+  <li style="margin-left: 1em">Hy version 1.0a3+120.g6b92d745 <strong style='color: red;'>(unstable)</strong></li>
+  
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-hy-manual">
+<h1>The Hy Manual<a class="headerlink" href="#the-hy-manual" title="Permalink to this headline">¶</a></h1>
+<img alt="Hy" class="align-left" src="_images/hy-logo-small.png" />
+<dl class="field-list simple">
+<dt class="field-odd">PyPI</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pypi.python.org/pypi/hy">https://pypi.python.org/pypi/hy</a></p>
+</dd>
+<dt class="field-even">Source</dt>
+<dd class="field-even"><p><a class="reference external" href="https://github.com/hylang/hy">https://github.com/hylang/hy</a></p>
+</dd>
+<dt class="field-odd">Discussions</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://github.com/hylang/hy/discussions">https://github.com/hylang/hy/discussions</a></p>
+</dd>
+<dt class="field-even">Stack Overflow</dt>
+<dd class="field-even"><p><a class="reference external" href="https://stackoverflow.com/questions/tagged/hy">The [hy] tag</a></p>
+</dd>
+</dl>
+<p>Hy is a Lisp dialect that’s embedded in Python. Since Hy transforms its Lisp
+code into Python abstract syntax tree (AST) objects, you have the whole
+beautiful world of Python at your fingertips, in Lisp form.</p>
+<p>To install the latest alpha of Hy, just use the command <code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">--pre</span>
+<span class="pre">--user</span> <span class="pre">hy</span></code>. Then you can start an interactive read-eval-print loop (REPL) with
+the command <code class="docutils literal notranslate"><span class="pre">hy</span></code>, or run a Hy program with <code class="docutils literal notranslate"><span class="pre">hy</span> <span class="pre">myprogram.hy</span></code>.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="whyhy.html">Why Hy?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="whyhy.html#hy-versus-python">Hy versus Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whyhy.html#hy-versus-other-lisps">Hy versus other Lisps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#lisp-stick-on-a-python">Lisp-stick on a Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#literals">Literals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#basic-operations">Basic operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#functions-classes-and-modules">Functions, classes, and modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#macros">Macros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#hyrule">Hyrule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#next-steps">Next steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="style-guide.html">Hy Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="style-guide.html#layout-indentation">Layout &amp; Indentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="style-guide.html#the-three-laws">The Three Laws</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style-guide.html#limits">Limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style-guide.html#whitespace">Whitespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style-guide.html#alignment">Alignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style-guide.html#hold-it-open">Hold it Open</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style-guide.html#snuggle">Snuggle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style-guide.html#grouping">Grouping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style-guide.html#special-arguments">Special Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style-guide.html#removing-whitespace">Removing Whitespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style-guide.html#close-bracket-close-line">Close Bracket, Close Line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style-guide.html#comments">Comments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="style-guide.html#coding-style">Coding Style</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="style-guide.html#pythonic-names">Pythonic Names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style-guide.html#threading-macros">Threading Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style-guide.html#method-calls">Method Calls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style-guide.html#use-more-arguments">Use More Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style-guide.html#imports">Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style-guide.html#underscores">Underscores</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="style-guide.html#thanks">Thanks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="language/index.html">Documentation Index</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="language/cli.html">Command Line Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="language/cli.html#hy">hy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="language/cli.html#hyc">hyc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="language/cli.html#hy2py">hy2py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="language/repl.html">The Hy REPL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="language/repl.html#repl-built-ins">REPL Built-ins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="language/repl.html#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="language/interop.html">Hy &lt;-&gt; Python interop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="language/interop.html#using-python-from-hy">Using Python from Hy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="language/interop.html#using-hy-from-python">Using Hy from Python</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="language/syntax.html">Syntax</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="language/syntax.html#identifiers">identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="language/syntax.html#numeric-literals">numeric literals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="language/syntax.html#string-literals">string literals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="language/syntax.html#format-strings">format strings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="language/syntax.html#keywords">keywords</a></li>
+<li class="toctree-l3"><a class="reference internal" href="language/syntax.html#symbols">symbols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="language/syntax.html#discard-prefix">discard prefix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="language/model_patterns.html">Model Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="language/model_patterns.html#a-motivating-example">A motivating example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="language/model_patterns.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="language/internals.html">Internal Hy Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="language/internals.html#hy-models">Hy Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="language/internals.html#hy-macros">Hy Macros</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">Cheatsheet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cheatsheet.html#hy">Hy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cheatsheet.html#core">Core</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#core-macros">Core Macros</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#placeholder-macros">Placeholder macros</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#hy">Hy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-hy.pyops">Python Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-hy.reserved">Reserved</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hacking.html">Hacking on Hy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hacking.html#join-our-hyve">Join our Hyve!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hacking.html#hack">Hack!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hacking.html#test">Test!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hacking.html#document">Document!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hacking.html#contributor-guidelines">Contributor Guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hacking.html#issues">Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hacking.html#pull-requests">Pull requests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hacking.html#contributor-code-of-conduct">Contributor Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hacking.html#core-team">Core Team</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="whyhy.html" class="btn btn-neutral float-right" title="Why Hy?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 the authors.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
